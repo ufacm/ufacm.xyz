@@ -42,8 +42,14 @@
                 <li><a href="/">Home</a></li>
                 <li><a href="/events">Events</a></li>
                 <li><a href="/contact">Contact</a></li>
+                <% if (user == undefined) { %>
                 <li><a href="/login">Log In</a></li>
                 <li><a href="/signup">Sign Up</a></li>
+                <% } %>
+                <% if (user != undefined) { %>
+                <li><a href="/logout">Log Out</a></li>
+                <% } %>
+
                 <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Sub Groups<i class="material-icons right">arrow_drop_down</i></a></li>
             </ul>
             <ul id="slide-out" class="side-nav">
