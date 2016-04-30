@@ -1,0 +1,86 @@
+// Rem output with px fallback
+@mixin font-size($sizeValue: 1.6) {
+	font-size: ($sizeValue * 10) + px;
+	font-size: $sizeValue + rem;
+}
+
+// Center block
+@mixin center-block {
+	display: block;
+	margin: 0 auto;
+}
+
+// Clearfix
+@mixin clearfix() {
+	content: "";
+	display: table;
+}
+
+// Clear after (not all clearfix need this also)
+@mixin clearfix-after() {
+	clear: both;
+}
+
+// Border radius
+@mixin border-radius($radius) {
+	background-clip: padding-box; /* stops bg color from leaking outside the border: */
+	-webkit-border-radius: $radius;
+	border-radius: $radius;
+}
+
+// Box model
+@mixin box-sizing($box-model) {
+	-webkit-box-sizing: $box-model; // Safari <= 7
+	-moz-box-sizing: $box-model; // Firefox <= 19
+	box-sizing: $box-model;
+}
+
+// Layout wrapping
+@mixin wrap( $width ){
+	display: block;
+	width: $width;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+// Tablet typography
+@mixin font-size-tablet( $size ){
+	@media screen and ( min-width: $size__breakpoint-tablet ){
+		@include font-size( $size );
+	}		
+}
+
+// Desktop typography
+@mixin font-size-desktop( $size ){
+	@media screen and ( min-width: $size__breakpoint-desktop ){
+		@include font-size( $size );
+	}	
+}
+
+// Widget link behavior
+@mixin widget_link_ux{
+	text-decoration: none;
+	display: block;
+	position: relative;
+
+	&:before{
+		display: none;
+		background: #dfdfdf;
+		content: '';
+		position: absolute;
+		top: -7px;
+		right: -15px;
+		bottom: -7px;
+		left: -50%;
+		opacity: .2;
+	}
+
+	&:hover,
+	&:active{
+		text-decoration: none;
+		
+		&:before{
+			display: block;
+		}
+	}	
+}

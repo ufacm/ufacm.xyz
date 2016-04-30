@@ -1,0 +1,24 @@
+/*everypage*/
+body {
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+}
+.parallax-container {
+      height: 200px;
+    }
+       
+main {
+	flex: 1 0 auto;
+}
+
+/*homepage*/
+
+.header{
+	font-family: 'Roboto', sans-serif;
+	font-weight: 200;
+	text-align: center;
+	font-size:12vw;
+}
+
+.ui-helper-hidden-accessible { display:none; }

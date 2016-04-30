@@ -1,0 +1,51 @@
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+	border: none;
+	border-radius: 3px;
+	background: $color__accent;
+	color: rgba(0, 0, 0, .8);
+	cursor: pointer; /* Improves usability and consistency of cursor style between image-type 'input' and others */
+	-webkit-appearance: button; /* Corrects inability to style clickable 'input' types in iOS */
+	@include font-size(1.2);
+	line-height: 1;
+	padding: 1em 1.4em;
+	text-transform: uppercase;
+	color: white;
+	box-shadow: 0 2px 2px darken( $color__accent, 20% );
+
+	&:hover{
+		background-color: lighten( $color__accent, 3% );
+	}
+
+	&:active{
+		background-color: darken( $color__accent, 3% );
+	}
+
+	&:focus{
+		outline: none;
+		background-color: darken( $color__accent, 10% );
+		box-shadow: 0 2px 2px darken( $color__accent, 30% );
+
+		&:hover{
+			background-color: lighten( $color__accent, 6% );
+		}
+
+		&:active{
+			background-color: darken( $color__accent, 6% );
+		}		
+	}
+}
+
+/**
+* Tablet adjustment
+*/
+@media screen and ( min-width: $size__breakpoint-tablet ){
+	button,
+	input[type="button"],
+	input[type="reset"],
+	input[type="submit"] {
+		@include font-size( 1.4 );
+	}
+}

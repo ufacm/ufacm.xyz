@@ -1,0 +1,307 @@
+.comments-title{
+	color: $color__accent;
+	font-weight: bold;
+	@include font-size( 1.2 );
+	text-transform: uppercase;
+	margin: 0 0 13px;	
+}
+
+.page{
+	.comments-title{
+		margin-top: 20px;
+	}
+}
+
+#comments{
+	background: white;
+	box-shadow: 0 1px 2px rgba( 151, 151, 151, .58 );
+}
+
+.page{
+	#comments{
+		margin-top: 20px;
+	}
+}
+
+.comment-navigation{
+	padding: 15px;
+	border-bottom: 1px solid $color__border;
+	display: block;
+	width: 100%;
+	@include clearfix;
+
+	a{
+		text-decoration: none;
+		// color: $color__text_main;
+	}
+
+	.nav-previous{
+		float: left;
+	}
+
+	.nav-next{
+		float: right;
+	}
+}
+
+.comment-list{
+	list-style: none;
+	margin: 0;
+
+	.comment{
+		border-bottom: 1px solid $color__border;
+		list-style: none;
+
+		.comment-body{
+			padding: 15px 15px 15px 60px;
+			position: relative;		
+			@include font-size( 1.4 );	
+		}
+
+		.comment-author{
+			text-decoration: none;
+			@include font-size( 1.6 );
+			font-style: normal;
+
+			cite{				
+				font-style: normal;
+			}
+
+			a{
+				text-decoration: none;
+
+				&:hover{
+					opacity: .7;
+				}				
+			}
+		}
+
+		.comment-meta{
+			@include font-size( 1.1 );
+			margin-bottom: 15px;
+
+			a{
+				text-decoration: none;
+				color: $color__text-date;
+
+				&:hover{
+					opacity: .7;
+				}								
+			}
+		}
+
+		.avatar{
+			position: absolute;
+			top: 15px;
+			left: 15px;
+			@include border-radius( 50% );
+			width: 30px;
+			height: 30px;
+		}
+
+		.comment-reply-link{
+			position: absolute;
+			top: 15px;
+			right: 15px;
+			text-transform: uppercase;
+			text-decoration: none;
+			@include font-size( 1.1 );
+
+			&:hover{
+				opacity: .7;
+			}			
+		}
+
+		.children{
+			margin-left: 50px;
+
+			.comment{
+				border: none;
+			}
+		}
+	}
+
+	.pingback,
+	.trackback{
+		padding: 15px;
+		border-bottom: 1px solid $color__border;
+	}
+}
+
+.no-comments{
+	padding: 15px;
+	text-align: center;
+}
+
+.comment-content a {
+	word-wrap: break-word;
+}
+.bypostauthor {
+	display: block;
+}
+
+#respond{
+	padding: 15px;
+	position: relative;
+
+	label{
+		margin-bottom: 5px;
+		display: block;
+		color: $color__text_date;
+		@include font-size( 1.2 );
+	}
+
+	.logged-in-as{
+		color: $color__text-date;
+		@include font-size( 1.2 );
+		margin-top: -7px;
+
+		a{
+			text-decoration: none;
+			// color: $color__text-date;
+		}
+	}
+
+	p{
+		margin-bottom: 2em;
+
+		&.comment-subscription-form{
+			margin-bottom: .5em;
+		}
+	}
+}
+
+#comments{
+	#respond{
+		input[type="text"],
+		input[type="email"],
+		input[type="url"],
+		textarea{
+			width: 100%;
+		}
+	}
+}
+
+#reply-title{
+	color: $color__accent;
+	font-weight: bold;
+	@include font-size( 1.2 );
+	text-transform: uppercase;
+	margin-bottom: 10px;	
+}
+
+#cancel-comment-reply-link{
+	text-decoration: none;
+	position: absolute;
+	top: 18px;
+	right: 15px;
+	font-weight: 300;
+	@include font-size( 1.1 );
+
+	&:hover{
+		opacity: .7;
+	}				
+}
+
+/**
+* Tablet adjustment
+*/
+@media screen and ( min-width: $size__breakpoint-tablet ){
+	.comments-title{
+		@include font-size( 1.4 );
+	}	
+
+	.comment-list{
+		.comment{
+			.avatar{
+				width: 40px;
+				height: 40px;
+				top: 48px;
+				left: 25px;
+			}
+
+			.comment-reply-link{
+				top: 40px;
+				right: 40px;
+				@include font-size( 1.2 );
+			}
+
+			.comment-body{
+				padding: 40px 40px 40px 120px;
+				@include font-size( 1.6 );
+				line-height: 1.8;
+			}
+
+			.comment-author{
+				@include font-size( 1.8 );
+			}
+
+			.comment-meta{
+				@include font-size( 1.2 );
+			}
+		}
+
+
+		.pingback,
+		.trackback{
+			padding: 15px 25px; 
+		}		
+	}
+
+	.comment-navigation{
+		padding: 15px 25px;
+	}
+
+	.no-comments{
+		padding: 15px 25px;
+		@include font-size( 1.6 );
+	}
+
+	#respond{
+		padding: 60px;
+
+		label{
+			@include font-size( 1.4 );
+		}
+
+		input[type="text"],
+		input[type="email"],
+		input[type="url"],
+		textarea{
+			@include font-size( 1.6 );
+			padding: 10px;
+		}
+	}
+
+	#cancel-comment-reply-link{
+		right: 60px;
+		top: 60px;
+		@include font-size( 1.2 );
+	}
+
+	#reply-title{
+		@include font-size( 1.4 );
+		margin-bottom: 20px;
+	}
+}
+
+/**
+* Desktop adjustment
+*/
+@media screen and ( min-width: $size__breakpoint-desktop ){
+	.comment-list{
+		.comment{
+			.avatar{
+				top: 33px;
+			}
+
+			.comment-body{
+				padding: 25px 25px 25px 110px;				
+			}
+		}
+	}
+
+	#respond{
+		padding: 60px 110px;
+	}
+}

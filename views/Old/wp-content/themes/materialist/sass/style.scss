@@ -1,0 +1,135 @@
+/*
+Theme Name: Materialist
+Theme URI: http://fikrirasy.id/portfolio/materialist
+Author: Fikri Rasyid
+Author URI: http://fikrirasy.id
+Description: A minimalist theme, (obviously) inspired by Material Design
+Version: 1.0.1
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: materialist
+Tags: black, blue, gray, pink, purple, white, yellow, dark, light, responsive-layout, custom-colors, custom-menu, editor-style, featured-images, microformats, post-formats, rtl-language-support, sticky-post, threaded-comments, translation-ready
+
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+
+Materialist is based on Underscores http://underscores.me/, (C) 2012-2015 Automattic, Inc.
+
+Resetting and rebuilding styles have been helped along thanks to the fine work of
+Eric Meyer http://meyerweb.com/eric/tools/css/reset/index.html
+along with Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
+and Blueprint http://www.blueprintcss.org/
+
+Genericons Font Icon - http://genericons.com/
+License: Distributed under the terms of GNU General Public License
+Copyright: Automattic, http://automattic.com/
+
+Simple Color Adjuster library which is used for color scheme generator is developed by modifying following resources:
+
+scssphp library - http://leafo.net/scssphp/
+License: Distributed under the terms of GNU General Public License v3
+Copyright: Leaf Corcoran, http://leafo.net/
+
+Twenty Fifteen - https://wordpress.org/themes/twentyfifteen
+License: Distributed under the terms of GNU General Public License
+Copyright: The WordPress team, http://wordpress.org
+
+Opus - http://fikrirasy.id/portfolio/opus
+License: Distributed under the terms of GNU General Public License
+Copyright: Fikri Rasyid, http://fikrirasy.id
+
+*/
+
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+1.0 Reset
+2.0 Typography
+3.0 Elements
+4.0 Forms
+5.0 Navigation
+	5.1 Links
+	5.2 Menus
+6.0 Accessibility
+7.0 Alignments
+8.0 Clearings
+9.0 Widgets
+10.0 Content
+	10.1 Header
+	10.2 Posts and pages
+	10.3 Asides
+	10.4 Comments
+	10.4 Footer
+11.0 Infinite scroll
+12.0 Media
+	12.1 Captions
+	12.2 Galleries
+--------------------------------------------------------------*/
+@import "variables-site/variables-site";
+@import "mixins/mixins-master";
+
+/*--------------------------------------------------------------
+1.0 Reset
+--------------------------------------------------------------*/
+@import "reset";
+
+/*--------------------------------------------------------------
+2.0 Typography
+--------------------------------------------------------------*/
+@import "typography/typography";
+
+/*--------------------------------------------------------------
+3.0 Elements
+--------------------------------------------------------------*/
+@import "elements/elements";
+
+/*--------------------------------------------------------------
+4.0 Forms
+--------------------------------------------------------------*/
+@import "forms/forms";
+
+/*--------------------------------------------------------------
+5.0 Navigation
+--------------------------------------------------------------*/
+@import "navigation/navigation";
+
+/*--------------------------------------------------------------
+6.0 Accessibility
+--------------------------------------------------------------*/
+@import "modules/accessibility";
+
+/*--------------------------------------------------------------
+7.0 Alignments
+--------------------------------------------------------------*/
+@import "modules/alignments";
+
+/*--------------------------------------------------------------
+8.0 Clearings
+--------------------------------------------------------------*/
+@import "modules/clearings";
+
+/*--------------------------------------------------------------
+9.0 Widgets
+--------------------------------------------------------------*/
+@import "site/secondary/widgets";
+
+/*--------------------------------------------------------------
+10.0 Content
+--------------------------------------------------------------*/
+@import "site/site";
+
+/*--------------------------------------------------------------
+11.0 Infinite scroll
+--------------------------------------------------------------*/
+@import "modules/infinite-scroll";
+
+/*--------------------------------------------------------------
+12.0 Media
+--------------------------------------------------------------*/
+@import "media/media";
+
+/*--------------------------------------------------------------
+13.0 Plugins
+--------------------------------------------------------------*/
+@import "plugins/plugin-civil-footnotes";

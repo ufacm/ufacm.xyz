@@ -1,0 +1,20 @@
+#colophon{
+	border-top: 1px solid $color__border;
+	padding: 15px;
+	text-align: center;
+	@include font-size( 1.4 );
+}
+
+/**
+* Tablet adjustment
+*/
+@media screen and ( min-width: $size__breakpoint-tablet ){
+
+}
+
+/**
+* Desktop adjustment
+*/
+@media screen and ( min-width: $size__breakpoint-desktop ){
+
+}
