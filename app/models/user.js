@@ -8,6 +8,13 @@ var userSchema = mongoose.Schema({
     local            : {
         email        : String,
         password     : String,
+        firstName    : String,
+        lastName     : String,
+        PhoneNumber  : String,
+        onListServe  : Boolean,
+        isAdmin      : Boolean,
+        //still thinking of how to model this one because of space constraints
+        resumeLink   : String
     }
 });
 

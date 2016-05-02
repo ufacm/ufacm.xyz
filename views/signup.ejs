@@ -43,16 +43,53 @@
     <div class="container">
 
       <form action="/signup" method="post" id="sub">
+
+        <div class="row">
+          <div class="input-field col s6">
+            <input id="firstName" type="text" class="validate" name="firstName" required>
+            <label for="firstName">First Name</label>
+          </div>
+          <div class="input-field col s6">
+            <input id="lastName" type="text" class="validate" name="lastName" required>
+            <label for="lastName">Last Name</label>
+          </div>
+        </div>
+
        <div class="row">
         <div class="input-field col s12">
-          <input id="email" type="email" class="validate" name="email">
+          <input id="email" type="email" class="validate" name="email" required>
           <label for="email" data-error="Please Enter Valid Email">Email</label>
         </div>
       </div>
 
       <div class="row">
+       <div class="input-field col s6">
+         <input id="phoneNumber" type="text" class="validate" name="phoneNumber" required>
+         <label for="phoneNumber" data-error="Please Enter a Valid Phone number">Phone Number</label>
+       </div>
+     </div>
+
+      <div class = "row">
+        <div class = "col s12">
+          <p class = "text-center">Would you like to be put on the ACM list serve?</p>
+          <p>
+           <input class="with-gap" name="listServe" type="radio" id="LSYes" value = "true" required/>
+           <label for="LSYes">Yes</label>
+         </p>
+         <p>
+           <input class="with-gap" name="listServe" type="radio" id="LSNo" value = "false" required/>
+           <label for="LSNo">No</label>
+         </p>
+         <p>
+           <input class="with-gap" name="listServe" type="radio" id="LSAlreadyOnIt" value = "true" required/>
+           <label for="LSAlreadyOnIt">Already on it!</label>
+         </p>
+        </div>
+      </div>
+
+      <div class="row">
         <div class="input-field col s12">
-          <input id="password" type="password" class="validate" name="password">
+          <input id="password" type="password" class="validate" name="password" required>
           <label for="password">Password</label>
         </div>
       </div>

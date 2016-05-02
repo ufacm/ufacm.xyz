@@ -5,8 +5,6 @@ var User            = require('../app/models/user');
 
 module.exports = function(passport) {
 
-
-
     passport.serializeUser(function(user, done) {
         done(null, user.id);
     });
@@ -19,19 +17,17 @@ module.exports = function(passport) {
     });
 
 
-    passport.use('local-signup', new LocalStrategy({
-   
+    passport.use('local-signup', new LocalStrategy(
+      {
+
         usernameField : 'email',
         passwordField : 'password',
-        majorField    : 'major',
-        gyearField    : 'year',
-        passReqToCallback : true 
+        passReqToCallback : true
     },
     function(req, email, password, done) {
 
 
         process.nextTick(function() {
-
 
         User.findOne({ 'local.email' :  email }, function(err, user) {
             // if there are any errors, return the error
@@ -45,13 +41,17 @@ module.exports = function(passport) {
 
                 // if there is no user with that email
                 // create the user
-                var newUser            = new User();
+                var newUser = new User();
 
-                // set the user's local credentials
+                // set the user's data
                 newUser.local.email    = email;
                 newUser.local.password = newUser.generateHash(password);
-                //newUser.local.major = major;
-                //newUser.local.year = year;
+                newUser.local.firstName = req.body.firstName;
+                newUser.local.lastName = req.body.lastName;
+                newUser.local.PhoneNumber = req.body.phoneNumber;
+                newUser.local.onListServe = req.body.listServe;
+                newUser.local.isAdmin = false;
+
 
                 // save the user
                 newUser.save(function(err) {
@@ -61,7 +61,7 @@ module.exports = function(passport) {
                 });
             }
 
-        });    
+        });
 
         });
 
@@ -69,12 +69,12 @@ module.exports = function(passport) {
 
 
         passport.use('local-login', new LocalStrategy({
-        
+
         usernameField : 'email',
         passwordField : 'password',
         passReqToCallback : true
     },
-    function(req, email, password, done) { 
+    function(req, email, password, done) {
 
 
         User.findOne({ 'local.email' :  email }, function(err, user) {
@@ -84,11 +84,11 @@ module.exports = function(passport) {
 
             // if no user is found, return the message
             if (!user)
-                return done(null, false, req.flash('loginMessage', 'The email you entered does not belong to any account.')); 
+                return done(null, false, req.flash('loginMessage', 'The email you entered does not belong to any account.'));
 
             // if the user is found but the password is wrong
             if (!user.validPassword(password))
-                return done(null, false, req.flash('loginMessage', 'Oops! Wrong password.')); 
+                return done(null, false, req.flash('loginMessage', 'Oops! Wrong password.'));
 
             // all is well, return successful user
             return done(null, user);
