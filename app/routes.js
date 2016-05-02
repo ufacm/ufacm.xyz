@@ -4,20 +4,24 @@ module.exports = function(app, passport) {
 
 	app.get('/', function(req, res) {
 		res.render('index.ejs', {
-			user : req.user 
-		}); 
+			user : req.user
+		});
 	});
 
 	app.get('/contact', function(req, res) {
-		res.render('contact.ejs'); 
+		res.render('contact.ejs', {
+			user : req.user
+		});
 	});
 
 	app.get('/events', function(req, res) {
-		res.render('events.ejs'); 
+		res.render('events.ejs', {
+			user : req.user
+		});
 	});
 
 	app.get('/ufpt', function(req, res) {
-		res.render('ufpt.ejs'); 
+		res.render('ufpt.ejs');
 	});
 
 
@@ -26,9 +30,9 @@ module.exports = function(app, passport) {
 	});
 
 	app.post('/login', passport.authenticate('local-login', {
-		successRedirect : '/profile', 
-		failureRedirect : '/login', 
-		failureFlash : true 
+		successRedirect : '/profile',
+		failureRedirect : '/login',
+		failureFlash : true
 	}));
 
 
@@ -39,15 +43,15 @@ module.exports = function(app, passport) {
 
 
 	app.post('/signup', passport.authenticate('local-signup', {
-		successRedirect : '/profile', 
-		failureRedirect : '/signup', 
-		failureFlash : true 
+		successRedirect : '/profile',
+		failureRedirect : '/signup',
+		failureFlash : true
 	}));
 
-
+	//Checks for profile.ejs in the profile directory folder
 	app.get('/profile', isLoggedIn, function(req, res) {
-		res.render('profile.ejs', {
-			user : req.user 
+		res.render('profile/profile.ejs', {
+			user : req.user
 		});
 	});
 

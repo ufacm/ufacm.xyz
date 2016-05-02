@@ -1,11 +1,11 @@
   $(function() {
+
+    // Autocomplete Functionality
     var availableTags = [
         "UFPT",
         "SEC",
         "FTP"
     ];
-
-
     $( "#tags" ).autocomplete({
       source: availableTags,
       messages: {
@@ -17,4 +17,7 @@
           $("#chips").append(' <div class="chip">'+ui.item.value+'</div>');
         }
     });
+
+
+
   })
