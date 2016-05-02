@@ -9,23 +9,23 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-    <!-- Font --> 
+    <!-- Font -->
     <link href='https://fonts.googleapis.com/css?family=Roboto:100,100italic' rel='stylesheet' type='text/css'>
     <!-- Script for nav -->
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
       <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
       <script type="text/javascript" src="js/autocomplete.js"></script>
     <script src="js/bin/materialize.js"></script>
-    <script> 
-      
+    <script>
+
       $(document).ready(function(){
         $('.parallax').parallax();
         $('select').material_select();
         $(".button-collapse").sideNav();
         $(".dropdown-button").dropdown();
-        
+
       });
-      
+
     </script>
 
       <script>
@@ -33,40 +33,13 @@
 ;
 
 
-  </script> 
+  </script>
     </head>
-<ul id="dropdown1" class="dropdown-content">
-  <li><a href="ufpt.html">UFPT</a></li>
-  <li><a href="http://ufsec.com/">SEC</a></li>
-</ul>
-    <nav class="white-text transparent z-depth-0">
-        <div class="nav-wrapper  white-text z-index:3; ">
-            <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
-            <ul class="right hide-on-med-and-down">
-                <li><a href="/">Home</a></li>
-                <li><a href="/events">Events</a></li>
-                <li><a href="/contact">Contact</a></li>
-                <% if (user == undefined) { %>
-                <li><a href="/login">Log In</a></li>
-                <li><a href="/signup">Sign Up</a></li>
-                <% } %>
-                <% if (user != undefined) { %>
-                <li><a href="/logout">Log Out</a></li>
-                <% } %>
-                <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Sub Groups<i class="material-icons right">arrow_drop_down</i></a></li>
-            </ul>
-            <ul id="slide-out" class="side-nav">
-                <li><a href="/">Home</a></li>
-                <li><a href="/events">Events</a></li>
-                <li><a href="/contact">Contact</a></li>
-                <li><a href="/ufpt">UFPT</a></li>
-                <li><a href="http://ufsec.com/">SEC</a></li>
+    
+    <!-- navbar include directive  -->
+    <% include navBar %>
 
-            </ul>
-        </div>
-    </nav>
-  
-  <body> 
+  <body>
       <div style="height:30%;  background-image: url('img/0036.jpg'); position:relative; top:-75px; z-index:-1;">
       <h1 class="header white-text">Profile</h1>
     </div>
@@ -101,11 +74,11 @@
         </div>
     </div>
 
-     
+
 
 
     </main>
-  
+
     <!--  Scripts-->
     <script src="js/bin/materialize.js"></script>
   </body>

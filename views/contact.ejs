@@ -9,55 +9,28 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-    <!-- Font --> 
+    <!-- Font -->
     <link href='https://fonts.googleapis.com/css?family=Roboto:100,100italic' rel='stylesheet' type='text/css'>
     <!-- Script for nav -->
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="js/bin/materialize.js"></script>
-    <script> 
-      
+    <script>
+
       $(document).ready(function(){
         $('.parallax').parallax();
         $('select').material_select();
         $(".button-collapse").sideNav();
         $(".dropdown-button").dropdown();
-        
-      });
-      
-    </script> 
-    </head>
-<ul id="dropdown1" class="dropdown-content">
-  <li><a href="ufpt.html">UFPT</a></li>
-  <li><a href="http://ufsec.com/">SEC</a></li>
-</ul>
-    <nav class="white-text transparent z-depth-0">
-        <div class="nav-wrapper  white-text z-index:3; ">
-            <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
-            <ul class="right hide-on-med-and-down">
-                <li><a href="/">Home</a></li>
-                <li><a href="/events">Events</a></li>
-                <li><a href="/contact">Contact</a></li>
-                <% if (user == undefined) { %>
-                <li><a href="/login">Log In</a></li>
-                <li><a href="/signup">Sign Up</a></li>
-                <% } %>
-                <% if (user != undefined) { %>
-                <li><a href="/logout">Log Out</a></li>
-                <% } %>
-                <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Sub Groups<i class="material-icons right">arrow_drop_down</i></a></li>
-            </ul>
-            <ul id="slide-out" class="side-nav">
-                <li><a href="/">Home</a></li>
-                <li><a href="/events">Events</a></li>
-                <li><a href="/contact">Contact</a></li>
-                <li><a href="/ufpt">UFPT</a></li>
-                <li><a href="http://ufsec.com/">SEC</a></li>
 
-            </ul>
-        </div>
-    </nav>
-  
-  <body> 
+      });
+
+    </script>
+    </head>
+
+    <!-- navbar include directive  -->
+    <% include navBar %>
+
+  <body>
       <div style="height:30%;  background-image: url('img/0036.jpg'); position:relative; top:-75px; z-index:-1;">
       <h1 class="header white-text">Contact</h1>
     </div>
@@ -70,13 +43,13 @@
       </div>
       <div class="row">
         <div class="col s12 m4 center">
-      <h4>ListServ</h4> 
+      <h4>ListServ</h4>
 Join our listserv by sending an e-mail to listserv@lists.ufl.edu with subject: subscribe ACM-L [first name] [last name]
      </div>
      <div class="col s12 m4 center">
       <h4>Gator connect</h4>
       Connect with us on <span><a href="https://ufl.collegiatelink.net/organization/ufacm">Gator Connect</a></span>
-     </div> 
+     </div>
      <div class="col s12 m4 center">
       <h4>Facebook</h4>
       Non-UF students <span><a href="http://www.facebook.com/ufacm">link</a></span><br>
@@ -93,7 +66,7 @@ Join our listserv by sending an e-mail to listserv@lists.ufl.edu with subject: s
         <img class="responsive-img circle"src="img/bernie.jpg" alt="Bernard Marger"/>
         <h5>Bernard Marger</h5>
         <h6>President</h6>
-        
+
         <a href="mailto:bern422@gmail.com?Subject=ACM%20Website" class="waves-effect waves-light btn" target="_top">Send Mail</a>
       </div>
       <div class="col s12 m3 center">
@@ -101,20 +74,20 @@ Join our listserv by sending an e-mail to listserv@lists.ufl.edu with subject: s
         <h5>Joshua Kirstein</h5>
         <h6>Vice President</h6>
         <a href="mailto:joshkirstein@ufl.edu?Subject=ACM%20Website" class="waves-effect waves-light btn" target="_top">Send Mail</a>
-       
+
       </div>
       <div class="col s12 m3 center">
         <img class="responsive-img circle"src="img/shiwam.jpg "alt="Shiwam Mittal"/>
         <h5>Shiwam Mittal</h5>
         <h6>Treasurer</h6>
         <a href="mailto:shiwammittal@ufl.edu?Subject=ACM%20Website" class="waves-effect waves-light btn" target="_top">Send Mail</a>
-        
+
       </div>
       <div class="col s12 m3 center">
         <img class="responsive-img circle"src="img/annie.jpg "alt="Annie Luc"/>
         <h5>Annie Luc</h5>
         <h6>Secretary</h6>
-        
+
         <a href="mailto:annieluc@ufl.edu?Subject=ACM%20Website" class="waves-effect waves-light btn" target="_top">Send Mail</a>
       </div>
     </div>
@@ -171,7 +144,7 @@ Join our listserv by sending an e-mail to listserv@lists.ufl.edu with subject: s
 
 </div>
     </main>
-  
+
     <!--  Scripts-->
     <script src="js/bin/materialize.js"></script>
   </body>
