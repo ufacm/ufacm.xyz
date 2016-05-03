@@ -55,6 +55,13 @@ module.exports = function(app, passport) {
 		});
 	});
 
+	//Checks for profile.ejs in the profile directory folder
+	app.get('/profile/settings', isLoggedIn, function(req, res) {
+		res.render('settings/settings.ejs', {
+			user : req.user
+		});
+	});
+
 	app.get('/logout', function(req, res) {
 		req.logout();
 		res.redirect('/');
