@@ -56,11 +56,15 @@ module.exports = function(app, passport) {
 	});
 
 	//Checks for profile.ejs in the profile directory folder
-	app.get('/profile/settings', isLoggedIn, function(req, res) {
+	app.get('/settings', isLoggedIn, function(req, res) {
 		res.render('settings/settings.ejs', {
 			user : req.user
 		});
 	});
+
+	//used when a user goes to the setting's page and updates information
+	var settingsMiddleWare = require('./middleware/settings.middleware.js');
+	app.post('/settings', isLoggedIn, settingsMiddleWare.updateUser);
 
 	app.get('/logout', function(req, res) {
 		req.logout();

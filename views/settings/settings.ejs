@@ -14,7 +14,7 @@
   <!-- Script for nav -->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-  <script type="text/javascript" src="profile.controller.js"></script>
+  <script type="text/javascript" src="settings.controller.js"></script>
   <script src="../js/bin/materialize.js"></script>
   <script>
   $(document).ready(function(){
@@ -43,7 +43,7 @@
         <div class="switch">
           <label>
             Off
-            <input type="checkbox"
+            <input id = "listServe" type="checkbox"
               <% if(user.local.onListServe) {%>
                 checked
               <% } %>
@@ -54,7 +54,7 @@
           </label>
         </div>
       </div>
-      
+
       <div class="row">
         <div class="input-field col s6">
           <input id="firstName" type="text" value = "<%= user.local.firstName%>" class="validate" name="firstName" required>
@@ -80,7 +80,7 @@
         </div>
       </div>
 
-      <a class="waves-effect waves-light btn teal lighten-1" id="buts" type="submit"><i class="material-icons left">lock_open</i>Save Changes</a>
+      <a class="waves-effect waves-light btn teal lighten-1" id="submitButton" type="submit"><i class="material-icons left">lock_open</i>Save Changes</a>
 
     </form>
   </div>
