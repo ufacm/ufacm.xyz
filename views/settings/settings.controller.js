@@ -27,11 +27,19 @@ $(function() {
         window.location.href = location.origin + "/profile";
       });
 
+<<<<<<< HEAD
       request.fail(function()
       {
         console.log("Server 500, contact ACM officer/webmaster");
         window.location.href = location.origin + "/";
       });
+=======
+      request.fail(function())
+      {
+        console.log("Server 500, contact ACM officer/webmaster");
+        window.location.href = location.origin + "/";
+      }
+>>>>>>> b0cf80efb79faa38b8e85f85fced9be970a6b441
 
   });
 
