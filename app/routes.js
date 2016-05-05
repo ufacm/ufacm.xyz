@@ -37,7 +37,6 @@ module.exports = function(app, passport) {
 
 
 	app.get('/signup', function(req, res) {
-
 		res.render('signup/signup.ejs', { message: req.flash('signupMessage') });
 	});
 
@@ -55,7 +54,14 @@ module.exports = function(app, passport) {
 		});
 	});
 
-	//Checks for profile.ejs in the profile directory folder
+	//Checks for changepassword.ejs in the changepassword directory folder
+	app.get('/changePassword', isLoggedIn, function(req, res) {
+		res.render('changePassword/changePassword.ejs', {
+			user : req.user
+		});
+	});
+
+	//Checks for settings.ejs in the settings directory folder
 	app.get('/settings', isLoggedIn, function(req, res) {
 		res.render('settings/settings.ejs', {
 			user : req.user
