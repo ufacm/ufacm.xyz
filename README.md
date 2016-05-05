@@ -22,4 +22,5 @@
 4. Implement Resume repository for sponsors to see
 5. Implement Admin panel
 6. Implement anonymous feedback page
-7. ***ADDMORE***
+7. Input validations lol
+8. ***ADDMORE***
