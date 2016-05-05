@@ -62,6 +62,9 @@ module.exports = function(app, passport) {
 		});
 	});
 
+	var eventsAPI = require('./middleware/eventsAPI.js')
+	app.get('/eventStream', eventsAPI);
+
 	//used when a user goes to the setting's page and updates information
 	var settingsMiddleWare = require('./middleware/settings.middleware.js');
 	app.post('/settings', isLoggedIn, settingsMiddleWare.updateUser);

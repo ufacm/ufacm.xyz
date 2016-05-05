@@ -59,7 +59,7 @@ var insertIntoDB = function(json)
 	var arrLength = json.data.length;
 	for(var i = 0; i < arrLength; i++)
 	{
-
+			//wrote it like this so we don't worry about the index being asynchronous
 			(function(index){
 				eventStream.findOne({'facebookEventId' : json.data[index].id}, function(err, dbEvent){
 
@@ -71,10 +71,6 @@ var insertIntoDB = function(json)
 
 					if(!dbEvent)
 					{
-						// console.log('No event found creating one');
-
-						// console.log(json.data[index]);
-
 						//creates event.
 						var event = new eventStream();
 						event.description = json.data[index].description;
@@ -102,20 +98,20 @@ var insertIntoDB = function(json)
 	}
 }
 
-var token = '';
-request( ('https://graph.facebook.com/v2.6/494011427297346/events?access_token=' + token), function (error, response, body) {
-  if (!error && response.statusCode == 200) {
-    // console.log(body)
-		// console.log(response.data);
-		// console.log(response);
-		var json = JSON.parse(body);
-		insertIntoDB(json);
-  }
-	//display the error for the API
-	else
-	{
-		console.log('response: \n');
-		console.log(response);
-		console.log('error: ' + error);
-	}
-})
+// var token = 'EAACEdEose0cBANPy4Qy9EA8FTZBTarpv1MCUqJIzsLc3Q85g9LxAEjWqdIqEjRQfSn9xZBayecL7tqX6y8rIdeMxCd4p3YTscx35RAgruwuuTJMQwe2io0FnaNMYzvQx0MRz1JJouajjvwmfggBP8xu5ZA3V5n9Kblx9OQFYwZDZD';
+// request( ('https://graph.facebook.com/v2.6/494011427297346/events?access_token=' + token), function (error, response, body) {
+//   if (!error && response.statusCode == 200) {
+//     // console.log(body)
+// 		// console.log(response.data);
+// 		// console.log(response);
+// 		var json = JSON.parse(body);
+// 		insertIntoDB(json);
+//   }
+// 	//display the error for the API
+// 	else
+// 	{
+// 		console.log('response: \n');
+// 		console.log(response);
+// 		console.log('error: ' + error);
+// 	}
+// })

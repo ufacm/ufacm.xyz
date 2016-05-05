@@ -1,23 +1,28 @@
 <h2 class="thin">Events Stream</h2>
 <div class="results"></div>
 <script>
+var request = $.ajax(
+  {
+    url: "/eventStream",
+    type: "get",
+  });
 
-ID of the Google Spreadsheet
-var spreadsheetID = "1p1S8Zak1kk9MpV_QEHlMfpbSGWBWjgMB4E8Po_bo7Sw/ozbi5jp";
+  request.success(function(res,status, obj){
 
-Make sure it is public or set to Anyone with link can view
-var url = "https://spreadsheets.google.com/feeds/list/" + spreadsheetID + "/public/values?alt=json";
+    console.log(res);
 
 
-$.getJSON(url, function(data) {
+    $(res).sort(function(a,b){
+      return new Date($(a).attr("starttime")) > new Date($(b).attr("starttime"));
+    }).each(function(){
+      $('.results').prepend('<div class="row"><div class="col s12 m3"><p>'+(moment(this.starttime).format('dddd, MMMM Do')) +'</p><p> at&nbsp'+(moment(this.starttime).format('h:mm a'))+'</p></div><div class="col s12 m3"></div><div class="col s12 m6"><h3>'+this.name+'</h3><p></p>'+'<p>'+this.description+'</p>'+'<div class="row"><div class="col s10"><p><i class="material-icons">location_on</i>'+this.place.name+'</p></div><div class="col s2"><a href="'+'https://www.facebook.com/events/' + this.facebookEventId +'"><img style="width:30px;"src="font/material-design-icons/social-media.svg"</a></div></div></div></div>');
+    })
 
-var entry = data.feed.entry;
+  });
 
-$(entry).each(function(){
-//<img class="circle responsive-img"src="'+this.gsx$imageurl.$t+'">
-$('.results').prepend('<div class="row"><div class="col s12 m3"><p>'+this.gsx$date.$t+'</p><p> at&nbsp'+this.gsx$time.$t+'</p></div><div class="col s12 m3"></div><div class="col s12 m6"><h3>'+this.gsx$nameofevent.$t+'</h3><p></p>'+'<p>'+this.gsx$description.$t+'</p>'+'<div class="row"><div class="col s10"><p><i class="material-icons">location_on</i>'+this.gsx$location.$t+'</p></div><div class="col s2"><a href="'+this.gsx$facebookevent.$t+'"><img style="width:30px;"src="font/material-design-icons/social-media.svg"</a></div></div></div></div>');
-});
-
-});
+  request.fail(function()
+  {
+    console.log('something happened to the event stream. Contact an ACM officer to proceed');
+  });
 
 </script>
