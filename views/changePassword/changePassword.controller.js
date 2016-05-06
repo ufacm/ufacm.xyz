@@ -115,7 +115,6 @@ $(function(){
 
         request.done(function(res,status,obj)
         {
-          console.log(res);
 
           if(res.credError == true)
           {

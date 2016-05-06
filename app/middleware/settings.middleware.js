@@ -28,7 +28,6 @@ var settingsMiddleWare = {
   },
 
   changePassword: function(req,res,next) {
-    console.log(req.body);
 
       if(req.body.newPassword1 !== req.body.newPassword2 || !req.body.oldPassword)
       {
