@@ -14,6 +14,12 @@ module.exports = function(app, passport) {
 		});
 	});
 
+	app.get('/contactus', function(req,res){
+		res.render('contactus/contactus.ejs', {
+			user : req.user
+		});
+	});
+
 	app.get('/events', function(req, res) {
 		res.render('events.ejs', {
 			user : req.user
