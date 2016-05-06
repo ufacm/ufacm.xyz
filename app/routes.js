@@ -61,6 +61,9 @@ module.exports = function(app, passport) {
 		});
 	});
 
+	var settingsMiddleWare = require('./middleware/settings.middleware.js');
+	app.post('/changePassword', isLoggedIn, settingsMiddleWare.changePassword);
+
 	//Checks for settings.ejs in the settings directory folder
 	app.get('/settings', isLoggedIn, function(req, res) {
 		res.render('settings/settings.ejs', {

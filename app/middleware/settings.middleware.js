@@ -28,22 +28,36 @@ var settingsMiddleWare = {
   },
 
   changePassword: function(req,res,next) {
+    console.log(req.body);
+
+      if(req.body.newPassword1 !== req.body.newPassword2 || !req.body.oldPassword)
+      {
+        return res.send(500);
+      }
+
+
       User.findOne({ '_id' :  req.user.id }, function(err, user) {
         // if there are any errors, return the error before anything else
-        if (err)
+        if (err || !user)
             return res.send(500);
 
-        // if no user is found, return 500
-        if (!user)
+        if((req.body.email != user.local.email) || !user.validPassword(req.body.oldPassword))
         {
-              //this should never happen in this state
-              res.send(500);
+          return res.status(200).send({'credError' : 'true'});
         }
 
-        // if the user is found but the password is wrong send a 401?
-        if (!user.validPassword(req.body.originalPassword))
-              res.status(401).send({'error' : 'The password you typed is incorrect'});
+        //set password
+        user.local.password = user.generateHash(req.body.newPassword1);
 
+        //save it
+        user.save(function(err){
+          if(err)
+          {
+            return res.send(500);
+          }
+        });
+
+        res.status(200).send({'credError' : 'false'});
       });
     }
 };
