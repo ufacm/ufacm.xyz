@@ -1,0 +1,40 @@
+.top{
+	background-color: white;
+	height: 15vh;
+}
+
+body{
+	background-color: #A5A5A5;
+}
+
+iframe{
+	border: none;
+	width: 100%;
+	background: #ffffff;
+	height: 80vh;
+	/*border-radius: 20px;*/
+}
+
+.ta{
+	color: white;
+}
+
+.codemirror{
+	/*border-radius: 25px;*/
+}
+
+
+.logout{
+	margin-left: 28vh;
+	width: 15vh;
+}
+
+.lesson{
+	font-size: 25px;
+}
+/*#f6f6f6*/
+
+.submit{
+	width: 15vh;
+	border-radius: 3vh;
+}

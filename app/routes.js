@@ -1,4 +1,8 @@
 // app/routes.js
+
+var Subgroup  = require('./models/subgroup');
+var lesson = require('../config/lessons.js')
+
 module.exports = function(app, passport) {
 
 
@@ -42,6 +46,8 @@ module.exports = function(app, passport) {
 	}));
 
 
+
+
 	app.get('/signup', function(req, res) {
 		res.render('signup/signup.ejs', { message: req.flash('signupMessage') });
 	});
@@ -58,6 +64,37 @@ module.exports = function(app, passport) {
 		res.render('profile/profile.ejs', {
 			user : req.user
 		});
+	});
+
+		//Checks for profile.ejs in the profile directory folder
+	app.get('/code', isLoggedIn, function(req, res) {
+		res.render('code_tuts/code.ejs', {
+			user : req.user
+		});
+	});
+
+
+	app.get('/update', isLoggedIn, function(req,res){		
+
+
+
+		Subgroup.find({ name: req.query.name }, function(err, subgroup) {
+		  if (err) throw err;
+		  	subgroup.members.push(req.user._id);
+
+		});
+
+	});
+
+
+	app.get('/up', function(req,res){
+
+		req.user.local.level = req.user.local.level + 1;
+		req.user.save(function(err){
+			res.send(lesson[req.user.local.level])
+		});
+		
+		
 	});
 
 	//Checks for changepassword.ejs in the changepassword directory folder

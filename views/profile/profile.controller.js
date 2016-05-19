@@ -15,6 +15,8 @@
 
       select: function( event, ui ) {
           $("#chips").append(' <div class="chip">'+ui.item.value+'</div>');
+          $.get('/update', {name: ui.item.value});
+
         }
     });
 

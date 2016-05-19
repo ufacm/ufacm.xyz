@@ -14,7 +14,8 @@ var userSchema = mongoose.Schema({
         onListServe  : Boolean,
         isAdmin      : Boolean,
         //still thinking of how to model this one because of space constraints
-        resumeLink   : String
+        resumeLink   : String,
+        level        : Number,
     }
 });
 

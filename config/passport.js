@@ -51,6 +51,7 @@ module.exports = function(passport) {
                 newUser.local.PhoneNumber = req.body.phoneNumber;
                 newUser.local.onListServe = req.body.listServe;
                 newUser.local.isAdmin = false;
+                newUser.local.level = 0;
 
 
                 // save the user
