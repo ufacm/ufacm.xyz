@@ -1,9 +1,16 @@
 // app/routes.js
 
 var Subgroup  = require('./models/subgroup');
-var lesson = require('../config/lessons.js')
+var lesson = require('../config/lessons.js');
+var multer = require('multer');
+var fs = require('fs');
+var Grid = require('gridfs-stream');
 
-module.exports = function(app, passport) {
+module.exports = function(app, passport, mongoose) {
+
+
+Grid.mongo = mongoose.mongo;
+var gfs = Grid(mongoose.connection.db);
 
 
 	app.get('/', function(req, res) {
@@ -44,6 +51,58 @@ module.exports = function(app, passport) {
 		failureRedirect : '/login',
 		failureFlash : true
 	}));
+
+	var uploading = multer({
+  		dest: __dirname + '../pdfs/',
+	});
+
+
+	var name = "";
+
+	app.post('/profile/upload',uploading.array('pdfs',10000), function(req, res) {
+		     var dirname = require('path').dirname(__dirname);
+     var filename = req.files[0].originalname;
+     var path = req.files[0].path;
+     var type = req.files[0].mimetype;
+      
+     var read_stream =  fs.createReadStream(path);
+ 
+     var conn = req.conn;
+     
+     
+ 
+     
+      
+     var writestream = gfs.createWriteStream({
+        filename: filename
+    });
+
+  	req.user.local.dudud = filename;
+  	console.log(req.user.local);
+     read_stream.pipe(writestream);
+	});
+
+	app.get('/file',function(req,res){
+
+	  var pic_id = req.user.local.resumeLink;
+
+ 
+       gfs.files.find({filename: pic_id}).toArray(function (err, files) {
+ 
+        if (err) {
+            res.json(err);
+        }
+        if (files.length > 0) {
+            var mime = 'application/pdf';
+            res.set('Content-Type', mime);
+            var read_stream = gfs.createReadStream({filename: pic_id});
+            read_stream.pipe(res);
+        } else {
+            res.json('File Not Found');
+        }
+    });
+});
+
 
 
 

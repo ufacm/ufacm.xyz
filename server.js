@@ -22,7 +22,8 @@ app.configure(function() {
 	// set up our express application
 	app.use(express.logger('dev'));
 	app.use(express.cookieParser());
-	app.use(express.bodyParser());
+	app.use(express.json())
+   .use(express.urlencoded())
 
 	app.set('view engine', 'ejs'); // set up ejs for templating
 
@@ -33,7 +34,7 @@ app.configure(function() {
 	app.use(flash());
 });
 
-require('./app/routes.js')(app, passport);
+require('./app/routes.js')(app, passport, mongoose);
 
 app.listen(port);
 console.log('The magic happens on port ' + port);

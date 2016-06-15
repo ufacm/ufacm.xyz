@@ -13,7 +13,6 @@ var userSchema = mongoose.Schema({
         PhoneNumber  : String,
         onListServe  : Boolean,
         isAdmin      : Boolean,
-        //still thinking of how to model this one because of space constraints
         resumeLink   : String,
         level        : Number,
     }
