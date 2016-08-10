@@ -3,8 +3,8 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
-    <title>UF ACM | UFPT</title>
     <link rel="icon " type = "image/x-icon" href="img/icon.png"/>
+    <title>UF ACM | CONTACT</title>
     <!-- CSS  -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
@@ -22,55 +22,49 @@
         $(".button-collapse").sideNav();
         $(".dropdown-button").dropdown();
 
-        document.getElementById("buts").onclick = function() {
-            document.getElementById("sub").submit();
-        }
-
       });
 
     </script>
     </head>
-    
+
     <!-- navbar include directive  -->
     <% include navBar %>
 
   <body>
-      <div style="height:30%;  background-image: url('img/ufpt.jpg'); position:relative; top:-75px; z-index:-1;">
-      <h1 class="header white-text">Login</h1>
+      <div style="height:30%;  background-image: url('img/0036.jpg'); position:relative; top:-75px; z-index:-1;">
+      <h1 class="header white-text">Facebook</h1>
     </div>
     <main>
     <div class="container">
-
-      <form action="/login" method="post" id="sub">
-
-       <div class="row">
-        <div class="input-field col s12">
-          <input id="email" type="email" class="validate" name="email">
-          <label for="email" data-error="Please Enter Valid Email" data-success="Valid Email">Email</label>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="password" type="password" class="validate" name="password">
-          <label for="password">Password</label>
-        </div>
-      </div>
-      <a class="waves-effect waves-light btn teal lighten-1" type="submit" id="buts"><i class="material-icons left">lock_open</i>Login</a>
-      </form>
+      
+<!--       <div class="row">
 
 
 
 
 
+
+ 
+
+      </div> -->
 
     </div>
-
-
-
     </main>
 
     <!--  Scripts-->
     <script src="js/bin/materialize.js"></script>
+    <script type="text/javascript">
+                $.post( "/facebook", function(data){
+                  console.log(data);
+                    for(var i=0; i<data.length; i++){
+                     var m = data[i].start_time.slice(5,7);
+                     var d = data[i].start_time.slice(8,10);
+                     var y = data[i].start_time.slice(0,4);
+                    $(".container").append(' <div> <div class="card"> <div class="card-content"> <p>'+data[i].description+'</p> </div> <div class="card-action"><b>'+data[i].name+'</b>    '+m+'/'+d+'/'+y+'</div> </div> </div>');
+                }
+                });
+
+
+    </script>
   </body>
 </html>

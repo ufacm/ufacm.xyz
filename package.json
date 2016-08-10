@@ -13,6 +13,11 @@
     "passport-google-oauth": "~0.1.5",
     "passport-local": "~0.1.6",
     "passport-twitter": "~1.0.2",
-    "request": "^2.72.0"
+    "request": "^2.72.0",
+    "express-zip": "2.0.1",
+    "fs": "0.0.2",
+    "gridfs-strea": "1.1.1",
+    "http-auth": "2.4.4",
+    "multer": "1.1.0"
   }
 }

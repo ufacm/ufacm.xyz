@@ -17,3 +17,4 @@ node_modules
 config/secretDatabase.js
 config/secretAuth.js
 config/database.js
+app/users.htpasswd

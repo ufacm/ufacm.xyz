@@ -101,21 +101,5 @@ var insertIntoDB = function(json)
 	}
 }
 
-// var token = 'EAACEdEose0cBANPy4Qy9EA8FTZBTarpv1MCUqJIzsLc3Q85g9LxAEjWqdIqEjRQfSn9xZBayecL7tqX6y8rIdeMxCd4p3YTscx35RAgruwuuTJMQwe2io0FnaNMYzvQx0MRz1JJouajjvwmfggBP8xu5ZA3V5n9Kblx9OQFYwZDZD';
-// request( ('https://graph.facebook.com/v2.6/494011427297346/events?access_token=' + token), function (error, response, body) {
-//   if (!error && response.statusCode == 200) {
-//     // console.log(body)
-// 		// console.log(response.data);
-// 		// console.log(response);
-// 		var json = JSON.parse(body);
-// 		insertIntoDB(json);
-//   }
-// 	//display the error for the API
-// 	else
-// 	{
-// 		console.log('response: \n');
-// 		console.log(response);
-// 		console.log('error: ' + error);
-// 	}
-// })
+
 

@@ -15,6 +15,10 @@ var userSchema = mongoose.Schema({
         isAdmin      : Boolean,
         resumeLink   : String,
         level        : Number,
+        question1    : String,
+        question2    : String,
+        question3    : String,
+        tags         : [String]
     }
 });
 
