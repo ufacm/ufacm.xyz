@@ -15,19 +15,14 @@
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="../js/bin/materialize.js"></script>
     <script>
-
       $(document).ready(function(){
         $('.parallax').parallax();
         $('select').material_select();
         $(".button-collapse").sideNav();
         $(".dropdown-button").dropdown();
-
-
         document.getElementById("buts").onclick = function() {
             document.getElementById("sub").submit();
         }
-
-
         $("#tags").on('input', function () {
             var val = this.value;
             if($('#names option').filter(function(){
@@ -37,27 +32,23 @@
                 $.post( "/updateTags", this.value);
             }
         });
-
       });
+
+      function refresh(){
+        location.reload();
+      }
 
     </script>
 
 <style type="text/css">
-
-
 object{
     width: 70vw;
     height: 70vh;
     margin-bottom: 3vh;
 }
-
 .container{
     margin-bottom: 3vh;
 }
-
-
-
-
 </style>
 
 
@@ -71,20 +62,41 @@ object{
       <h1 class="header white-text">Your Resume</h1>
     </div>
     <main>
-        <form action="/updateProfile" method="post" id="sub">
+        <!-- <form action="/updateProfile" method="post" id="sub"> -->
     <div class="container">
-        <textarea id="question1" class="materialize-textarea" name="question1"><%= user.local.question1 %></textarea>
-        <label for="question1">Where do you see yourself in 10 years?</label>
-
-        <textarea id="question2" class="materialize-textarea" name="question2"><%= user.local.question2 %></textarea>
-        <label for="question2">Where do you see yourself in 10 years?</label>
-
-        <textarea id="question3" class="materialize-textarea" name="question3"><%= user.local.question3 %></textarea>
-        <label for="question3">Where do you see yourself in 10 years?</label>
-        <br><br>
-<a class="waves-effect waves-light btn teal lighten-1" type="submit" id="buts">Submit Form</a>
+        <div class="row">
+            <div class="col s9 m9 l9">
+                <textarea id="question1" class="materialize-textarea" name="question1"><%= user.local.question1 %></textarea>
+                <label for="question1">Where do you see yourself in 10 years?</label>
+            </div>
+            <div class="col s2 m2 l2">
+                <a class="waves-effect waves-light btn teal lighten-1" id="q1">Update</a>
+            </div>
     </div>
-    </form>
+
+        <div class="row">
+            <div class="col s9 m9 l9">
+                <textarea id="question2" class="materialize-textarea" name="question2"><%= user.local.question2 %></textarea>
+                <label for="question2">Where do you see yourself in 10 years?</label>
+            </div>
+            <div class="col s2 m2 l2">
+                <a class="waves-effect waves-light btn teal lighten-1" id="q2">Update</a>
+            </div>
+    </div>
+
+        <div class="row">
+            <div class="col s9 m9 l9">
+                <textarea id="question3" class="materialize-textarea" name="question3"><%= user.local.question3 %></textarea>
+                <label for="question3">Where do you see yourself in 10 years?</label>
+            </div>
+            <div class="col s2 m2 l2">
+                <a class="waves-effect waves-light btn teal lighten-1" id="q3">Update</a>
+            </div>
+    </div>
+        <br><br>
+<!-- <a class="waves-effect waves-light btn teal lighten-1" type="submit" id="buts">Submit Form</a> -->
+    </div>
+    <!-- </form> -->
 
     <div class="container">
 
@@ -113,7 +125,7 @@ object{
 
      <form action="upload" method="post" enctype="multipart/form-data">
      <input type="file" name="pdfs">
-     <input type="submit" value="Submit Resume">
+     <input type="submit" class=" waves-effect waves-light btn teal lighten-1" value="Submit Resume" onclick="refresh()">
     </form>
 
 
@@ -123,6 +135,26 @@ object{
     </div>
 
     </main>
+
+    <script type="text/javascript">
+
+
+$('#q1').on('click', function() {
+    console.log($("#question1").val());
+    $.post( "/updateProfile1", $("#question1").val());
+});
+
+$('#q2').on('click', function() {
+    console.log($("#question2").val());
+    $.post( "/updateProfile2", $("#question2").val());
+});
+
+$('#q3').on('click', function() {
+    console.log($("#question3").val());
+    $.post( "/updateProfile3", $("#question3").val());
+});
+
+    </script>
 
     <!--  Scripts-->
     <script src="../js/bin/materialize.js"></script>

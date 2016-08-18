@@ -96,10 +96,19 @@ app.get('/feed', function(req,res){
         });
     });
 
-    app.post('/updateProfile', function(req,res){
-        req.user.local.question1 = req.body.question1;
-        req.user.local.question2 = req.body.question2;
-        req.user.local.question3 = req.body.question3;
+    app.post('/updateProfile1', function(req,res){
+
+        req.user.local.question1 = Object.keys(req.body)[0];
+        req.user.save();
+    })
+
+    app.post('/updateProfile2', function(req,res){
+        req.user.local.question2 = Object.keys(req.body)[0];
+        req.user.save();
+    });
+
+    app.post('/updateProfile3', function(req,res){
+        req.user.local.question3 = Object.keys(req.body)[0];
         req.user.save();
     })
 

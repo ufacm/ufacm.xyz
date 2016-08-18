@@ -13,7 +13,6 @@
   <link href='https://fonts.googleapis.com/css?family=Roboto:100,100italic' rel='stylesheet' type='text/css'>
   <!-- Script for nav -->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
   <script type="text/javascript" src="profile.controller.js"></script>
   <script src="../js/bin/materialize.js"></script>
   <script>
@@ -23,7 +22,18 @@
     $(".button-collapse").sideNav();
     $(".dropdown-button").dropdown();
 
+            $("#tags").on('input', function () {
+            var val = this.value;
+            if($('#names option').filter(function(){
+                return this.value === val;        
+            }).length) {
+                $('#results').append('<div class="chip">'+this.value+'</div>');
+            }
+        });
+
   });
+
+
 
   </script>
 </head>
@@ -60,14 +70,21 @@
     <div class="container">
       <div class="row">
         <div class="input-field col s12">
-          <input id="tags" type="text" class="validate">
+          <input id="tags" type="text" class="validate" list="names">
           <label for="tags">List Suborgs Here</label>
+
+      <datalist id="names">
+        <option value="UFPT" />
+        <option value="SEC" />
+        <option value="FTP" />
+    </datalist>
         </div>
+            <div id="results">
+
+    </div>
       </div>
 
-      <div class="row">
-        <div id="chips"></div>
-      </div>
+
     </div>
 
 
