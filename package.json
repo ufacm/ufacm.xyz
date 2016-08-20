@@ -1,30 +1,31 @@
 {
-    "name": "uf_acm_webapp",
-    "description": "The official webapp for our ACM website",
-    "license": "MIT",
-    "version": "0.0.1",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/UniversityOfFloridaACM/WebAPP.git"
-    },
-    "main": "server.js",
-    "dependencies": {
-        "bcrypt-nodejs": "latest",
-        "connect-flash": "~0.1.1",
-        "ejs": "~0.8.5",
-        "express": "~3.4.4",
-        "mongoose": "~3.8.1",
-        "node-schedule": "^1.1.0",
-        "passport": "~0.1.17",
-        "passport-facebook": "~1.0.2",
-        "passport-google-oauth": "~0.1.5",
-        "passport-local": "~0.1.6",
-        "passport-twitter": "~1.0.2",
-        "request": "^2.72.0",
-        "express-zip": "2.0.1",
-        "fs": "0.0.2",
-        "gridfs-stream": "1.1.1",
-        "http-auth": "2.4.4",
-        "multer": "1.1.0"
-    }
+  "name": "uf_acm_webapp",
+  "description": "The official webapp for our ACM website",
+  "license": "MIT",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/UniversityOfFloridaACM/WebAPP.git"
+  },
+  "main": "server.js",
+  "dependencies": {
+    "bcrypt-nodejs": "latest",
+    "connect-flash": "~0.1.1",
+    "ejs": "~0.8.5",
+    "express": "~3.4.4",
+    "express-zip": "2.0.1",
+    "fs": "0.0.2",
+    "gridfs-stream": "1.1.1",
+    "htpasswd": "^2.2.6",
+    "http-auth": "2.4.4",
+    "mongoose": "^4.5.9",
+    "multer": "1.1.0",
+    "node-schedule": "^1.1.0",
+    "passport": "~0.1.17",
+    "passport-facebook": "~1.0.2",
+    "passport-google-oauth": "~0.1.5",
+    "passport-local": "~0.1.6",
+    "passport-twitter": "~1.0.2",
+    "request": "^2.72.0"
+  }
 }

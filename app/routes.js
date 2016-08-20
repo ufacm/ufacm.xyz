@@ -9,9 +9,6 @@ var request = require('request');
 var zip = require('express-zip');
 var auth = require("http-auth");
 
-
-
-
 module.exports = function(app, passport, mongoose) {
 
 
@@ -33,42 +30,42 @@ module.exports = function(app, passport, mongoose) {
 
     var pdfs = [];
 
-    app.post("/testpdf", function(req, res){
-        for(var i=0; i<req.body.pdfs.length; i++){
+    app.post("/testpdf", function(req, res) {
+        for (var i = 0; i < req.body.pdfs.length; i++) {
             var str = req.body.pdfs[i].slice(24, req.body.pdfs[i].length);
-            pdfs.push({"path": "app../pdfs/"+req.body.pdfs[i], "name":str})
-            //pdfs.push(req.body.pdfs[i]);
+            pdfs.push({
+                    "path": "localStorage/pdfs/" + req.body.pdfs[i],
+                    "name": str
+                })
+                //pdfs.push(req.body.pdfs[i]);
         }
         console.log(pdfs);
         res.send("asdf");
-
-
     });
 
-    app.get("/downloadPDF", function(req,res){
+    app.get("/downloadPDF", function(req, res) {
         res.zip(pdfs);
     })
 
 
-app.get('/feed', function(req,res){
-    res.render('feed.ejs');
-})
+    app.get('/feed', function(req, res) {
+        res.render('feed.ejs');
+    })
 
-    app.post('/facebook', function(req, res){
+    app.post('/facebook', function(req, res) {
         var json;
         var token = 'EAASBfsZBnMkUBAIWgtabr6IzPANJ8NE8027RaKYeG52P09iRDyoJZAPkeKQxPfq7ZBqHe3GehgyB3A7JOYi4LIX6U0fKoWTOcDZCKCfo9IJbRyBHWNVWaUA324Cw8p4kPdTBSoqzbNbT9RGYY2NqesDzWZC1jG7AZD';
-        request( ('https://graph.facebook.com/v2.6/494011427297346/events?access_token=' + token), function (error, response, body) {
-          if (!error && response.statusCode == 200) {
-            // console.log(body)
+        request(('https://graph.facebook.com/v2.6/494011427297346/events?access_token=' + token), function(error, response, body) {
+            if (!error && response.statusCode == 200) {
+                // console.log(body)
                 // console.log(response.data);
                 // console.log(response);
                 json = JSON.parse(body);
                 res.send(json.data)
-                //insertIntoDB(json);
-          }
+                    //insertIntoDB(json);
+            }
             //display the error for the API
-            else
-            {
+            else {
                 console.log('response: \n');
                 console.log(response);
                 console.log('error: ' + error);
@@ -96,18 +93,18 @@ app.get('/feed', function(req,res){
         });
     });
 
-    app.post('/updateProfile1', function(req,res){
+    app.post('/updateProfile1', function(req, res) {
 
         req.user.local.question1 = Object.keys(req.body)[0];
         req.user.save();
     })
 
-    app.post('/updateProfile2', function(req,res){
+    app.post('/updateProfile2', function(req, res) {
         req.user.local.question2 = Object.keys(req.body)[0];
         req.user.save();
     });
 
-    app.post('/updateProfile3', function(req,res){
+    app.post('/updateProfile3', function(req, res) {
         req.user.local.question3 = Object.keys(req.body)[0];
         req.user.save();
     })
@@ -143,23 +140,25 @@ app.get('/feed', function(req,res){
 
 
 
-var storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, __dirname + '../pdfs/')
-  },
-  filename: function (req, file, cb) {
-    cb(null, req.user._id+file.originalname)
-  }
-})
+    var storage = multer.diskStorage({
+        destination: function(req, file, cb) {
+            cb(null, __dirname + '../pdfs/')
+        },
+        filename: function(req, file, cb) {
+            cb(null, req.user._id + file.originalname)
+        }
+    })
 
-var uploading = multer({ storage: storage });
+    var uploading = multer({
+        storage: storage
+    });
 
 
     var name = "";
 
     app.post('/resume/upload', uploading.array('pdfs', 10000), function(req, res) {
         var dirname = require('path').dirname(__dirname);
-        var filename = req.user._id+req.files[0].originalname;
+        var filename = req.user._id + req.files[0].originalname;
         var path = req.files[0].path;
         var type = req.files[0].mimetype;
 
@@ -173,7 +172,7 @@ var uploading = multer({ storage: storage });
         });
 
 
-        req.user.local.resumeLink =filename;
+        req.user.local.resumeLink = filename;
         req.user.save();
         read_stream.pipe(writestream);
     });
@@ -203,7 +202,7 @@ var uploading = multer({ storage: storage });
     });
 
 
-    app.get("/clicks/:link", function(req,res){
+    app.get("/clicks/:link", function(req, res) {
 
         var pic_id = req.params.link;
 
@@ -257,21 +256,22 @@ var uploading = multer({ storage: storage });
         });
     });
 
-    app.post('/updateTags', function(req,res){
+    app.post('/updateTags', function(req, res) {
         req.user.local.tags.push(Object.keys(req.body)[0]);
         req.user.save();
     });
 
-    app.post('/dude', function(req,res){
-        if(Object.keys(req.body)[0]==null){
+    app.post('/dude', function(req, res) {
+        if (Object.keys(req.body)[0] == null) {
             User.find({}, function(err, users) {
-                res.send(users); 
-            }); 
-        }
-        else{
-              User.find({"local.tags": Object.keys(req.body)[0]}, function(err, users) {
-                res.send(users); 
-              });
+                res.send(users);
+            });
+        } else {
+            User.find({
+                "local.tags": Object.keys(req.body)[0]
+            }, function(err, users) {
+                res.send(users);
+            });
         }
     });
 
