@@ -45,7 +45,7 @@ const settingsMiddleWare = {
           return res.send(500);
         }
 
-        if ((req.body.email != user.local.email) || !user.validPassword(req.body.oldPassword))
+        if (!user.validPassword(req.body.oldPassword))
         {
           return res.status(200).send({ credError: 'true' });
         }

@@ -43,10 +43,6 @@ $(function () {
     $('#newPassword2').removeClass('valid').removeClass('invalid');
   });
 
-  $('#email').keypress(function () {
-    $('#email').removeClass('valid').removeClass('invalid');
-  });
-
   $('#oldPassword').keypress(function () {
     $('#oldPassword').removeClass('valid').removeClass('invalid');
   });
@@ -60,7 +56,6 @@ $(function () {
   //go ahead and submit for the change. Await response.
   $('#submitButton').click(function () {
 
-    var email = $('#email').val();
     var oldPassword = $('#oldPassword').val();
 
     var newPassword1 = $('#newPassword1').val();
@@ -72,13 +67,6 @@ $(function () {
     //do not do anything because the other functions should already handle this
     if (!passwordMatching()) {
       return;
-    }
-
-    if (email === '')
-    {
-      hasError = true;
-      $('#emaillabel').attr('data-error', 'Please fill out this field');
-      $('#email').removeClass('valid').addClass('invalid');
     }
 
     if (oldPassword === '')
@@ -106,10 +94,10 @@ $(function () {
         {
           url: '/changePassword',
           type: 'post',
-          data: { email: email,
+          data: {
                   oldPassword: oldPassword,
                   newPassword1: newPassword1,
-                  newPassword2: newPassword2,
+                  newPassword2: newPassword2
                 },
         });
 
@@ -118,7 +106,7 @@ $(function () {
 
         if (res.credError == true)
         {
-          Materialize.toast('Either email or old password is incorrect!', 4000);
+          Materialize.toast('Old password is incorrect!', 4000);
         } else
         {
           window.location.href = location.origin + '/profile';

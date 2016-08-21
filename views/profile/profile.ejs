@@ -16,21 +16,22 @@
     <script type="text/javascript" src="profile.controller.js"></script>
     <script src="../js/bin/materialize.js"></script>
     <!-- Commented out because of no currently tied functionality -->
-    <!-- <script>
+     <script>
         $(document).ready(function() {
             $('.parallax').parallax();
             $('select').material_select();
             $(".button-collapse").sideNav();
             $(".dropdown-button").dropdown();
 
-            $("#tags").on('input', function() {
-                var val = this.value;
-                if ($('#names option').filter(function() {
-                        return this.value === val;
-                    }).length) {
-                    $('#results').append('<div class="chip">' + this.value + '</div>');
-                }
-            });
+            // commented out because of lack of functionality
+            // $("#tags").on('input', function() {
+            //     var val = this.value;
+            //     if ($('#names option').filter(function() {
+            //             return this.value === val;
+            //         }).length) {
+            //         $('#results').append('<div class="chip">' + this.value + '</div>');
+            //     }
+            // });
 
         });
     </script> -->
@@ -45,22 +46,33 @@
         </div>
         <main>
             <div class="container">
-                <a href="/settings"><i class="medium material-icons">settings</i></a>
                 <div class="row">
-                    <div class="col s6 offset-s3">
-                        <div class="card light-blue darken-1">
-                            <div class="card-content white-text">
-                                <span class="card-title">Welcome!</span>
-                                <p>
-                                    <%= user.local.firstName%>
-                                </p>
-                            </div>
-                            <div class="card-action">
-
-                            </div>
-                        </div>
+                    <h2 style="margin-top: 0px"> Welcome, <%= user.local.firstName%></h2>
+                </div>
+                <div class="row">
+                    <div class="col md4">
+                      <div class = "center">
+                        <a href="/settings"><i class="large material-icons">settings</i></a>
+                        <h5 class="promo-caption">Account settings</h5>
+                        <p class="light center" style = "text-align: justify">Change the information associated with your account</p>
+                      </div>
+                    </div>
+                    <div class="col md4">
+                      <div class = "center">
+                        <a href="/resume"><i class="large material-icons">perm_media</i></a>
+                        <h5 class="promo-caption">Resume Repository</h5>
+                        <p class="light center" style = "text-align: justify">Upload your resume and answer the three essential questions! Your resume and answers will be given to our sponsors/other employers, so make it your best!</p>
+                      </div>
+                    </div>
+                    <div class="col md4">
+                      <div class = "center">
+                        <a href="/code"><i class="large material-icons">launch</i></a>
+                        <h5 class="promo-caption">Code Tutorial</h5>
+                        <p class="light center" style = "text-align: justify">Our webmaster, Archit, designed this awesome code tutorial. You should totally check it out!</p>
+                      </div>
                     </div>
                 </div>
+            </div>
             </div>
 
             <!-- Commented out because of no tied functionality -->
