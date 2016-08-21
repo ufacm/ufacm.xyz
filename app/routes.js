@@ -40,27 +40,27 @@ module.exports = (app, passport, mongoose) => {
           });
       });
 
-    app.post('/testpdf', (req, res) => {
-        let pdfs = [];
-
-        for (let i = 0; i < req.body.pdfs.length; i++) {
-          let str = req.body.pdfs[i].slice(24, req.body.pdfs[i].length);
-          pdfs.push({
-                  path: 'localStorage/pdfs/' + req.body.pdfs[i],
-                  name: str
-                });
-
-          // pdfs.push(req.body.pdfs[i]);
-        }
-
-        console.log(pdfs);
-        res.send('asdf');
-      });
+    // app.post('/testpdf', (req, res) => {
+    //     let pdfs = [];
+    //
+    //     for (let i = 0; i < req.body.pdfs.length; i++) {
+    //       let str = req.body.pdfs[i].slice(24, req.body.pdfs[i].length);
+    //       pdfs.push({
+    //               path: 'localStorage/pdfs/' + req.body.pdfs[i],
+    //               name: str
+    //             });
+    //
+    //       // pdfs.push(req.body.pdfs[i]);
+    //     }
+    //
+    //     console.log(pdfs);
+    //     res.send('asdf');
+    //   });
 
     // mass download PDFs but this is still not secure
-    app.get('/downloadPDF', (req, res) => {
-        res.zip(pdfs);
-      });
+    // app.get('/downloadPDF', (req, res) => {
+    //     res.zip(pdfs);
+    //   });
 
     app.get('/feed', (req, res) => {
         res.render('feed.ejs');
@@ -269,7 +269,7 @@ module.exports = (app, passport, mongoose) => {
       });
 
     app.post('/dude', (req, res) => {
-        if (Object.keys(req.body)[0] == null) {
+        if (Object.keys(req.body)[0] === null) {
           User.find({}, (err, users) => {
               res.send(users);
             });

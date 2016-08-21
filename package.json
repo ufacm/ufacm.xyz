@@ -3,6 +3,7 @@
   "description": "The official webapp for our ACM website",
   "license": "MIT",
   "version": "0.0.1",
+  "precommit": "gulp precommit",
   "repository": {
     "type": "git",
     "url": "https://github.com/UniversityOfFloridaACM/WebAPP.git"
@@ -16,6 +17,7 @@
     "express-zip": "2.0.1",
     "fs": "0.0.2",
     "gridfs-stream": "1.1.1",
+    "gulp-precommit": "0.0.4",
     "htpasswd": "^2.2.6",
     "http-auth": "2.4.4",
     "mongoose": "^4.5.9",
@@ -31,6 +33,9 @@
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-jscs": "^4.0.0",
-    "gulp-nodemon": "^2.1.0"
+    "gulp-jshint": "^2.0.1",
+    "gulp-nodemon": "^2.1.0",
+    "jshint": "^2.9.3",
+    "jshint-stylish": "^2.2.1"
   }
 }
