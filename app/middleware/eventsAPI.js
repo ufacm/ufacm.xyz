@@ -1,20 +1,15 @@
-var events  = require('../models/eventStream');
+'use strict';
+const events  = require('../models/eventStream');
 
-
-var eventsOutput = function(req,res,next)
-{
-  events.find({}, function(err, eventStream)
-  {
-    if(err)
+const eventsOutput = (req, res, next) => {
+  events.find({}, (err, eventStream) => {
+    if (err)
     {
       res.send(500);
-    }
-
-    else{
+    } else {
       res.send(eventStream);
     }
   });
-}
-
+};
 
 module.exports = eventsOutput;

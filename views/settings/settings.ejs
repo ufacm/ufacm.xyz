@@ -68,14 +68,14 @@
 
       <div class="row">
         <div class="input-field col s12">
-          <input id="email" type="email" value = "<%= user.local.email%>"class="validate" name="email" required>
+          <input id="email" type="email" value = "<%= user.local.email%>"class="validate" name="email" disabled>
           <label for="email" data-error="Please Enter Valid Email">Email</label>
         </div>
       </div>
 
       <div class="row">
         <div class="input-field col s6">
-          <input id="phoneNumber" type="text" value = "<%= user.local.firstName%>" class="validate" name="phoneNumber" required>
+          <input id="phoneNumber" type="text" value = "<%= user.local.PhoneNumber%>" class="validate" name="phoneNumber" required>
           <label for="phoneNumber" data-error="Please Enter a Valid Phone number">Phone Number</label>
         </div>
       </div>
@@ -90,7 +90,7 @@
       </div>
 
 
-    
+
     </form>
   </div>
 </body>

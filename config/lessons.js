@@ -1,4 +1,6 @@
-var lessons = [
+'use strict';
+
+const lessons = [
     "The websites you see today are all programmed by <code>&lt;html&gt</code> or <b>H</b>yper <b>T</b>ext <b>M</b>arkup <b>L</b>anguage. HTML provides the skeleton and structure for every singe webpage out there and learning it is the first step to create a website. Press submit to go on. ",
     "What you see below is the skeleton of all HTML pages. Majority of all your code will appear between the body tags! Let's start adding some code.",
     "<code>&lt;h1&gt;</code> and <code>&lt;/h1&gt;</code> through  <code>&lt;h6&gt;</code> and <code>&lt;/h6&gt;</code> are the basic text tags, with <b>h1</b> being the largest and <b>h6</b> being the smallest. Go try it out with <code>&lt;h1&gt;Name Here&lt;/h1&gt;</code>",
@@ -28,7 +30,7 @@ var lessons = [
     "I'll give you a quick example: create a button on the home page using <code>&lt;button onclick='func()'&gt;Click me&lt;/button&gt;</code>",
     "Now in your JavaScript tab add this: <code>function func(){alert('YAY!');}</code>",
 
-    
+
 ];
 
 module.exports = lessons;

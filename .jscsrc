@@ -1,0 +1,17 @@
+{
+    "preset": "airbnb",
+    "requireArrowFunctions": true,
+    "maximumLineLength": 200,
+    "disallowTrailingComma": true,
+    "requireTrailingComma": false,
+    "requireUseStrict": true,
+    "disallowVar": true,
+    "disallowUnusedVariables": true,
+    "requireSpaceAfterComma": true,
+    "requireCurlyBraces": true,
+    "requireSpaceAfterLineComment": true,
+    "requireSpaceAfterKeywords": true,
+    "requireSpaceBeforeKeywords": true,
+    "disallowEmptyBlocks": true,
+    "requireShorthandArrowFunctions": false
+}
