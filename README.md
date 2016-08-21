@@ -1,7 +1,7 @@
 #UFL ACM FTW
 
 Required:
-  node 6
+  node 6, gulp (npm install --global gulp-cli)
 
 *To Install:*  
 1.  Clone this respository  
@@ -16,7 +16,10 @@ Required:
   };
   ```
   
-Run  node server.js
+  Run
+  ```
+  $ gulp
+  ```
 
 Still a WIP 
 
