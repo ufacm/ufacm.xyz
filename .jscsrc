@@ -13,5 +13,6 @@
     "requireSpaceAfterKeywords": true,
     "requireSpaceBeforeKeywords": true,
     "disallowEmptyBlocks": true,
-    "requireShorthandArrowFunctions": false
+    "requireShorthandArrowFunctions": false,
+    "requireDotNotation": false
 }

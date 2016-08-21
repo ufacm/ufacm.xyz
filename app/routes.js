@@ -10,6 +10,7 @@ const Subgroup = require('./models/subgroup');
 const User = require('./models/user');
 const lesson = require('../config/lessons.js');
 const settingsMiddleWare = require('./middleware/settings.middleware.js');
+const pullEventsMiddleWare = require('./middleware/pullEventsGivenAToken.js');
 const eventsAPI = require('./middleware/eventsAPI.js');
 
 // const zip = require('express-zip');
@@ -331,6 +332,15 @@ module.exports = (app, passport, mongoose) => {
         req.logout();
         res.redirect('/');
       });
+
+    app.get('/adminPageForStaffOnly', isAdmin, (req, res, next) => {
+        res.render('adminPageForStaffOnly/admin.ejs', {
+          user: req.user
+        });
+      });
+
+    app.post('/pullEventsFromFb', isAdmin, pullEventsMiddleWare);
+
   };
 
 // route middleware to make sure
@@ -342,5 +352,15 @@ function isLoggedIn(req, res, next) {
   }
 
   // if they aren't redirect them to the home page
+  res.redirect('/');
+}
+
+// boilerplate check to see if user is admin
+function isAdmin(req, res, next) {
+
+  if (req.isAuthenticated() && req.user.local.isAdmin) {
+    return next();
+  }
+
   res.redirect('/');
 }

@@ -46,25 +46,28 @@
         </div>
         <main>
             <div class="container">
+              <% if (user.local.isAdmin) { %>
+              <a href="/adminPageForStaffOnly">Admin Page!</a>
+              <% } %>
                 <div class="row">
                     <h2 style="margin-top: 0px"> Welcome, <%= user.local.firstName%></h2>
                 </div>
                 <div class="row">
-                    <div class="col md4">
+                    <div class="col m4">
                       <div class = "center">
                         <a href="/settings"><i class="large material-icons">settings</i></a>
                         <h5 class="promo-caption">Account settings</h5>
                         <p class="light center" style = "text-align: justify">Change the information associated with your account</p>
                       </div>
                     </div>
-                    <div class="col md4">
+                    <div class="col m4">
                       <div class = "center">
                         <a href="/resume"><i class="large material-icons">perm_media</i></a>
                         <h5 class="promo-caption">Resume Repository</h5>
                         <p class="light center" style = "text-align: justify">Upload your resume and answer the three essential questions! Your resume and answers will be given to our sponsors/other employers, so make it your best!</p>
                       </div>
                     </div>
-                    <div class="col md4">
+                    <div class="col m4">
                       <div class = "center">
                         <a href="/code"><i class="large material-icons">launch</i></a>
                         <h5 class="promo-caption">Code Tutorial</h5>
