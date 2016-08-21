@@ -21,9 +21,18 @@ module.exports = function(app, passport, mongoose) {
     Grid.mongo = mongoose.mongo;
     var gfs = Grid(mongoose.connection.db);
 
+    //render the index page
     app.get('/', function(req, res) {
 
         res.render('index.ejs', {
+            user: req.user
+        });
+    });
+
+    //render the UFPT page
+    app.get('/ufpt', function(req, res) {
+
+        res.render('ufpt.ejs', {
             user: req.user
         });
     });
@@ -43,6 +52,7 @@ module.exports = function(app, passport, mongoose) {
         res.send("asdf");
     });
 
+    //mass download PDFs but this is still not secure
     app.get("/downloadPDF", function(req, res) {
         res.zip(pdfs);
     })

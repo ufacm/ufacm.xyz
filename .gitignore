@@ -11,6 +11,7 @@ pids
 logs
 results
 
+config/database.js
 config/secretDatabase.js
 config/secretAuth.js
 app/users.htpasswd

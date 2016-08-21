@@ -1,74 +1,78 @@
-
 <html lang="en">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
     <title>UF ACM | UFPT</title>
-    <link rel="icon " type = "image/x-icon" href="img/icon.png"/>
+    <link rel="icon " type="image/x-icon" href="img/icon.png" />
     <!-- CSS  -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-    <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
     <!-- Font -->
     <link href='https://fonts.googleapis.com/css?family=Roboto:100,100italic' rel='stylesheet' type='text/css'>
     <!-- Script for nav -->
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="js/bin/materialize.js"></script>
     <script>
+        $(document).ready(function() {
+            $('.parallax').parallax();
+            $('select').material_select();
+            $(".button-collapse").sideNav();
+            $(".dropdown-button").dropdown();
 
-      $(document).ready(function(){
-        $('.parallax').parallax();
-        $('select').material_select();
-        $(".button-collapse").sideNav();
-        $(".dropdown-button").dropdown();
-
-      });
-
+        });
     </script>
-    </head>
+</head>
 
-    <!-- navbar include directive  -->
-    <% include navBar %>
+<!-- navbar include directive  -->
+<% include navBar %>
 
-  <body>
-      <div style="height:30%;  background-image: url('img/ufpt.jpg'); position:relative; top:-75px; z-index:-1;">
-      <h1 class="header white-text">UFPT</h1>
-    </div>
-    <main>
-    <div class="container">
-      <p>Do you love coding? Ever wonder what a programming contest is all about? Come out to one of our meetings and we'll show you the ropes. All majors and programming experience levels are welcome, but should you decide to join us, prepare to become an AWESOME coder</p>
+    <body>
+        <div style="height:30%;  background-image: url('img/ufpt.jpg'); position:relative; top:-75px; z-index:-1;">
+            <h1 class="header white-text">UFPT</h1>
+        </div>
+        <main>
+            <div class="container">
 
-<p>We represent the University of Florida in a variety of computer programming contests, under the umbrella of the ACM chapter at UF.</p>
+                <p>Check out our Facebook page for the latest info! <a href="https://www.facebook.com/groups/ufprogteam/">https://www.facebook.com/groups/ufprogteam/</a></p>
+                <br>
+                <p>Do you love coding? Ever wonder what a programming contest is all about? Come out to one of our meetings and we'll show you the ropes. All majors and programming experience levels are welcome, but should you decide to join us, prepare
+                    to become an AWESOME coder</p>
 
-<p>Our main event is the Southeast Regional of the International Collegiate Programming Contest, where in recent years our top team has gotten:</p>
-<p>
-<br>- 2015: 6th place
-<br>- 2014: 12th place
-<br>- 2013: 5th place
-<br>- 2012: 4th place (and made it to World Finals)
-<br>- 2011: 3rd place
-<br>- 2010: 2nd place
-<br>- 2009: 5th place
-<br>- 2008: 2nd place
-<br>- 2007: 1st place (and made it to WORLD FINALS!!!)
-<br>- 2006: 5th place
-</p>
-<p>In recent years, we've also participated in the software competition of the IEEE SoutheastCon, and our performance wasn't too shabby:</p>
+                <p>We represent the University of Florida in a variety of computer programming contests, under the umbrella of the ACM chapter at UF.</p>
 
-<p>- 2008: 1st place (and it was pure pwnage, the 2nd place team wasn't even close)
-<br>- 2007: 2nd place</p>
+                <p>Our main event is the Southeast Regional of the International Collegiate Programming Contest, where in recent years our top team has gotten:</p>
+                <p>
+                    <br>- 2015: 6th place
+                    <br>- 2014: 12th place
+                    <br>- 2013: 5th place
+                    <br>- 2012: 4th place (and made it to World Finals)
+                    <br>- 2011: 3rd place
+                    <br>- 2010: 2nd place
+                    <br>- 2009: 5th place
+                    <br>- 2008: 2nd place
+                    <br>- 2007: 1st place (and made it to WORLD FINALS!!!)
+                    <br>- 2006: 5th place
+                </p>
+                <p>In recent years, we've also participated in the software competition of the IEEE SoutheastCon, and our performance wasn't too shabby:</p>
 
-<p>We also have members active on many popular online practice sites and contests, including but not limited to Sphere Online Judge, TopCoder, Project Euler, and Google Code Jam.</p>
+                <p>- 2008: 1st place (and it was pure pwnage, the 2nd place team wasn't even close)
+                    <br>- 2007: 2nd place</p>
 
-<p>For Spring 2016, the meeting schedule is 6:15 PM every Monday and Thursday in CISE E113 (the dungeon)</p>
-<p>Meetings aren't held on holidays, and if anything else comes up, it'll be posted in the group. Typically the day before a Monday/Thursday meeting, we will post the topic of the meeting and the materials that will be used during the meeting. You can find more info about the topic beforehand, if you want</p>
-    </div>
+                <p>We also have members active on many popular online practice sites and contests, including but not limited to Sphere Online Judge, TopCoder, Project Euler, and Google Code Jam.</p>
+
+                <p>For Spring 2016, the meeting schedule is 6:15 PM every Monday and Thursday in CISE E113 (the dungeon)</p>
+                <p>Meetings aren't held on holidays, and if anything else comes up, it'll be posted in the group. Typically the day before a Monday/Thursday meeting, we will post the topic of the meeting and the materials that will be used during the meeting.
+                    You can find more info about the topic beforehand, if you want</p>
+            </div>
 
 
 
-    </main>
+        </main>
 
-    <!--  Scripts-->
-    <script src="js/bin/materialize.js"></script>
-  </body>
+        <!--  Scripts-->
+        <script src="js/bin/materialize.js"></script>
+    </body>
+
 </html>
