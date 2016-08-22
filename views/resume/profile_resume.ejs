@@ -1,162 +1,141 @@
-
 <html lang="en">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
     <title>UF ACM | UFPT</title>
-    <link rel="icon " type = "image/x-icon" href="img/icon.png"/>
+    <link rel="icon " type="image/x-icon" href="img/icon.png" />
     <!-- CSS  -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-    <link href="../css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="../css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
     <!-- Font -->
     <link href='https://fonts.googleapis.com/css?family=Roboto:100,100italic' rel='stylesheet' type='text/css'>
     <!-- Script for nav -->
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="../js/bin/materialize.js"></script>
     <script>
-      $(document).ready(function(){
-        $('.parallax').parallax();
-        $('select').material_select();
-        $(".button-collapse").sideNav();
-        $(".dropdown-button").dropdown();
-        document.getElementById("buts").onclick = function() {
-            document.getElementById("sub").submit();
-        }
-        $("#tags").on('input', function () {
-            var val = this.value;
-            if($('#names option').filter(function(){
-                return this.value === val;        
-            }).length) {
-                $('#results').append('<div class="chip">'+this.value+'</div>');
-                $.post( "/updateTags", this.value);
+        $(document).ready(function() {
+            $('.parallax').parallax();
+            $('select').material_select();
+            $(".button-collapse").sideNav();
+            $(".dropdown-button").dropdown();
+            document.getElementById("buts").onclick = function() {
+                document.getElementById("sub").submit();
             }
+
+            $('.chips').material_chip({
+
+            });
+
         });
-      });
-
-      function refresh(){
-        location.reload();
-      }
-
     </script>
 
-<style type="text/css">
-object{
-    width: 70vw;
-    height: 70vh;
-    margin-bottom: 3vh;
-}
-.container{
-    margin-bottom: 3vh;
-}
-</style>
+    <style type="text/css">
+        object {
+            width: 70vw;
+            height: 70vh;
+            margin-bottom: 3vh;
+        }
+
+        .container {
+            margin-bottom: 3vh;
+        }
+    </style>
 
 
-    </head>
+</head>
 
-    <!-- navbar include directive  -->
-    <% include ../navBar %>
+<!-- navbar include directive  -->
+<% include ../navBar %>
 
-  <body>
-      <div style="height:30%;  background-image: url('../img/ufpt.jpg'); position:relative; top:-75px; z-index:-1;">
-      <h1 class="header white-text">Your Resume</h1>
-    </div>
-    <main>
-        <!-- <form action="/updateProfile" method="post" id="sub"> -->
-    <div class="container">
-        <div class="row">
-            <div class="col s9 m9 l9">
-                <textarea id="question1" class="materialize-textarea" name="question1"><%= user.local.question1 %></textarea>
-                <label for="question1">Where do you see yourself in 10 years?</label>
-            </div>
-            <div class="col s2 m2 l2">
-                <a class="waves-effect waves-light btn teal lighten-1" id="q1">Update</a>
-            </div>
-    </div>
+    <body>
+        <div style="height:30%;  background-image: url('../img/ufpt.jpg'); position:relative; top:-75px; z-index:-1;">
+            <h1 class="header white-text">Resume Repo</h1>
+        </div>
+        <main>
+            <form action="/updateResume" enctype="multipart/form-data" method="post">
+                <!-- Start three essential questions -->
+                <div class="container">
 
-        <div class="row">
-            <div class="col s9 m9 l9">
-                <textarea id="question2" class="materialize-textarea" name="question2"><%= user.local.question2 %></textarea>
-                <label for="question2">Where do you see yourself in 10 years?</label>
-            </div>
-            <div class="col s2 m2 l2">
-                <a class="waves-effect waves-light btn teal lighten-1" id="q2">Update</a>
-            </div>
-    </div>
+                    <!-- Find a way to make this work, without breaking other functionality -->
+                    <!-- <div class="row">
+                        <div class="input-field col s12">
+                            <select id="technologies" multiple="multiple" multiple>
+                                <option value="" disabled selected>Choose your options</option>
+                                <option value="JavaScript" />JavaScript</option>
+                                <option value="PHP" />PHP</option>
+                                <option value="Go" />Go</option>
+                                <option value="Docker" />Docker</option>
+                                <option value="NodeJs" />NodeJs</option>
+                                <option value="Deis" />Deis</option>
+                                <option value="AWS" />AWS</option>
+                                <option value="Cloud Computing" />Cloud Computing</option>
+                                <option value="Competitive Programming" />Competitive Programming</option>
+                                <option value="AngularJs" />AngularJs</option>
+                                <option value="ReactJs" />ReactJs</option>
+                                <option value="MeteorJs" />MeteorJs</option>
+                                <option value="Java" />Java</option>
+                                <option value="HTML" />HTML</option>
+                                <option value="CSS" />CSS</option>
+                                <option value="C#" />C#</option>
+                                <option value="SQL" />SQL</option>
+                                <option value="MongoDB" />MongoDB</option>
+                                <option value="C++" />C++</option>
+                                <option value="iOS" />iOS</option>
+                                <option value="Android" />Android</option>
+                                <option value="WebDev" />WebDev</option>
+                            </select>
+                            <label for="technologies">What are some technologies and skills you are familiar with?</label>
+                        </div>
+                    </div> -->
 
-        <div class="row">
-            <div class="col s9 m9 l9">
-                <textarea id="question3" class="materialize-textarea" name="question3"><%= user.local.question3 %></textarea>
-                <label for="question3">Where do you see yourself in 10 years?</label>
-            </div>
-            <div class="col s2 m2 l2">
-                <a class="waves-effect waves-light btn teal lighten-1" id="q3">Update</a>
-            </div>
-    </div>
-        <br><br>
-<!-- <a class="waves-effect waves-light btn teal lighten-1" type="submit" id="buts">Submit Form</a> -->
-    </div>
-    <!-- </form> -->
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <textarea id="question1" class="materialize-textarea" name="question1" placeholder=""><%= user.local.question1 %></textarea>
+                            <label for="question1">How would you design a alarm clock for the blind?</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <textarea id="question2" class="materialize-textarea" name="question2"><%= user.local.question2 %></textarea>
+                            <label for="question2">If you were behind schedule on a project, how would you handle it?</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <textarea id="question3" class="materialize-textarea" name="question3"><%= user.local.question3 %></textarea>
+                            <label for="question3">What was the hardest bug you have faced in a project, how did you fix it?</label>
+                        </div>
+                    </div>
 
-    <div class="container">
+                    <!-- if you have a submitted resume, display it -->
+                    <% if (user.local.resumeLink !== undefined) { %>
+                        <object data="/file"></object>
+                        <% } %>
 
+                            <div class="row">
+                                <div class="file-field input-field">
+                                    <div class="btn">
+                                        <span>Resume PDF</span>
+                                        <input type="file" name="pdfFile" accept="application/pdf">
+                                    </div>
+                                    <div class="file-path-wrapper">
+                                        <input class="file-path validate" type="text">
+                                    </div>
+                                </div>
+                            </div>
 
-            <input id="tags" type="text" class="validate" list="names">
-    <label for="tags">What Are You Good At?</label>
-    <datalist id="names">
-        <option value="JavaScript" />
-        <option value="Java" />
-        <option value="HTML" />
-        <option value="CSS" />
-        <option value="C++" />
-        <option value="iOS" />
-        <option value="Android" />
-    </datalist>
+                            <div class="row">
+                              <button class="btn waves-effect waves-light" type="submit" name="action">Save & Submit Resume
+                                <i class="material-icons right">send</i>
+                              </button>
+                             </div>
+                </div>
+        </main>
 
-    <div id="results">
-         <% user.local.tags.forEach(function(tag) { %>
-            <div class="chip"><%= tag %></div>
-         <% }); %>
-    </div>
+        <!--  Scripts-->
+        <script src="../js/bin/materialize.js"></script>
+    </body>
 
-<% if (user.local.resumeLink !== undefined) { %>
-<object data="/file"></object>
-<% } %>
-
-     <form action="upload" method="post" enctype="multipart/form-data">
-     <input type="file" name="pdfs">
-     <input type="submit" class=" waves-effect waves-light btn teal lighten-1" value="Submit Resume" onclick="refresh()">
-    </form>
-
-
-
-
-
-    </div>
-
-    </main>
-
-    <script type="text/javascript">
-
-
-$('#q1').on('click', function() {
-    console.log($("#question1").val());
-    $.post( "/updateProfile1", $("#question1").val());
-});
-
-$('#q2').on('click', function() {
-    console.log($("#question2").val());
-    $.post( "/updateProfile2", $("#question2").val());
-});
-
-$('#q3').on('click', function() {
-    console.log($("#question3").val());
-    $.post( "/updateProfile3", $("#question3").val());
-});
-
-    </script>
-
-    <!--  Scripts-->
-    <script src="../js/bin/materialize.js"></script>
-  </body>
 </html>

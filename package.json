@@ -12,10 +12,13 @@
   "dependencies": {
     "bcrypt-nodejs": "latest",
     "connect-flash": "~0.1.1",
+    "cpy": "^4.0.1",
     "ejs": "~0.8.5",
     "express": "~3.4.4",
     "express-zip": "2.0.1",
+    "formidable": "^1.0.17",
     "fs": "0.0.2",
+    "fs-access": "^1.0.0",
     "gridfs-stream": "1.1.1",
     "gulp-precommit": "0.0.4",
     "htpasswd": "^2.2.6",

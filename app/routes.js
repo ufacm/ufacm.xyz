@@ -1,10 +1,15 @@
 'use strict';
 
-const multer = require('multer');
+// const multer = require('multer');
 const fs = require('fs');
-const Grid = require('gridfs-stream');
-const request = require('request');
+
+// const Grid = require('gridfs-stream');
 const auth = require('http-auth');
+const formidable = require('formidable');
+const cpy = require('cpy');
+const fsaccess = require('fs-access');
+
+// const util = require('util');
 
 const Subgroup = require('./models/subgroup');
 const User = require('./models/user');
@@ -21,9 +26,6 @@ module.exports = (app, passport, mongoose) => {
         realm: 'Companies Only.',
         file: __dirname + '/users.htpasswd'
       });
-
-    Grid.mongo = mongoose.mongo;
-    const gfs = Grid(mongoose.connection.db);
 
     // render the index page
     app.get('/', (req, res) => {
@@ -67,29 +69,6 @@ module.exports = (app, passport, mongoose) => {
         res.render('feed.ejs');
       });
 
-    app.post('/facebook', (req, res) => {
-        let token = 'EAASBfsZBnMkUBAIWgtabr6IzPANJ8NE8027RaKYeG52P09iRDyoJZAPkeKQxPfq7ZBqHe3GehgyB3A7JOYi4LIX6U0fKoWTOcDZCKCfo9IJbRyBHWNVWaUA324Cw8p4kPdTBSoqzbNbT9RGYY2NqesDzWZC1jG7AZD';
-        request(('https://graph.facebook.com/v2.6/494011427297346/events?access_token=' + token), (error, response, body) => {
-            if (!error && response.statusCode == 200) {
-              // console.log(body)
-              // console.log(response.data);
-              // console.log(response);
-              let json = JSON.parse(body);
-              res.send(json.data);
-
-              // insertIntoDB(json);
-            }
-
-            // display the error for the API
-            else {
-              console.log('response: \n');
-              console.log(response);
-              console.log('error: ' + error);
-            }
-          });
-
-      });
-
     app.get('/contact', (req, res) => {
         res.render('contact.ejs', {
             user: req.user
@@ -106,22 +85,6 @@ module.exports = (app, passport, mongoose) => {
         res.render('resume/repo.ejs', {
             user: req.user
           });
-      });
-
-    app.post('/updateProfile1', (req, res) => {
-
-        req.user.local.question1 = Object.keys(req.body)[0];
-        req.user.save();
-      });
-
-    app.post('/updateProfile2', (req, res) => {
-        req.user.local.question2 = Object.keys(req.body)[0];
-        req.user.save();
-      });
-
-    app.post('/updateProfile3', (req, res) => {
-        req.user.local.question3 = Object.keys(req.body)[0];
-        req.user.save();
       });
 
     app.get('/contactus', (req, res) => {
@@ -152,91 +115,104 @@ module.exports = (app, passport, mongoose) => {
         failureFlash: true
       }));
 
-    let storage = multer.diskStorage({
-        destination: (req, file, cb) => {
-            cb(null, __dirname + '../pdfs/');
-          },
+    // route for receiving resumeRepo form
+    app.post('/updateResume', isLoggedIn, (req, res) => {
+        let form = new formidable.IncomingForm();
 
-        filename: (req, file, cb) => {
-            cb(null, req.user._id + file.originalname);
+        // take in data
+        form.parse(req, (err, fields, files) => {
+
+          if (err) {
+            return res.send(500);
           }
-      });
 
-    let uploading = multer({
-        storage: storage
-      });
-
-    // let name = '';
-
-    app.post('/resume/upload', uploading.array('pdfs', 10000), (req, res) => {
-
-        // let dirname = require('path').dirname(__dirname);
-        let filename = req.user._id + req.files[0].originalname;
-        let path = req.files[0].path;
-
-        // let type = req.files[0].mimetype;
-
-        let readStream = fs.createReadStream(path);
-
-        // let conn = req.conn;
-
-        let writestream = gfs.createWriteStream({
-            filename: filename
-          });
-
-        req.user.local.resumeLink = filename;
-        req.user.save();
-        readStream.pipe(writestream);
-      });
-
-    app.get('/file', (req, res) => {
-
-        const picId = req.user.local.resumeLink;
-
-        gfs.files.find({
-            filename: picId
-          }).toArray((err, files) => {
+          // save the essential questions and resume.
+          // query the database for the user
+          User.findOne({ _id: req.user._id }, (err, user) => {
 
             if (err) {
-              res.json(err);
+              return res.send(500);
             }
 
-            if (files.length > 0) {
-              let mime = 'application/pdf';
-              res.set('Content-Type', mime);
-              let readStream = gfs.createReadStream({
-                  filename: picId
-                });
-              readStream.pipe(res);
-            } else {
-              res.json('Please Submit a file first');
+            // if we actually uploaded a file
+            if (files.pdfFile.size !== 0) {
+
+              // save it locally
+              let linkName = (user._id + '_' + user.local.firstName + '_' + user.local.lastName + '.pdf');
+              let linkPath = (__dirname + '/../localStorage/pdfs');
+              cpy([files.pdfFile.path], linkPath,
+                {
+                  rename: linkName
+                }
+              ).then(() => {
+
+                // save the link in the db
+                user.local.resumeLink = linkPath + '/' + linkName;
+              });
+
             }
+
+            // save the essential questions
+            user.local.question1 = fields.question1.trim();
+            user.local.question2 = fields.question2.trim();
+            user.local.question3 = fields.question3.trim();
+
+            user.save();
+
+            // bump them back to profile
+            res.render('profile/profile.ejs', {
+              user: user
+            });
           });
+        });
+
+        form.on('error', (err) => {
+          console.log('form uploading error');
+          return res.send(500);
+        });
+
       });
 
-    app.get('/clicks/:link', (req, res) => {
+    // route to pull file for preview
+    app.get('/file', isLoggedIn, (req, res) => {
 
-        const picId = req.params.link;
+        const resumePath = req.user.local.resumeLink;
 
-        gfs.files.find({
-            filename: picId
-          }).toArray((err, files) => {
-            if (err) {
-              res.json(err);
-            }
+        // if we have access, send it over
+        fsaccess(resumePath, (err) => {
+          if (err) {
+            console.log('err:', err);
+            return res.json('Error reading file, please contact webmaster!');
+          }
 
-            if (files.length > 0) {
-              let mime = 'application/pdf';
-              res.set('Content-Type', mime);
-              let readStream = gfs.createReadStream({
-                  filename: picId
-                });
-              readStream.pipe(res);
-            } else {
-              res.json('File Not Found');
-            }
-          });
+          res.set('Content-Type', 'application/pdf');
+          fs.createReadStream(resumePath).pipe(res);
+        });
       });
+
+    // app.get('/clicks/:link', (req, res) => {
+    //
+    //     const picId = req.params.link;
+    //
+    //     // gfs.files.find({
+    //     //     filename: picId
+    //     //   }).toArray((err, files) => {
+    //     //     if (err) {
+    //     //       res.json(err);
+    //     //     }
+    //     //
+    //     //     if (files.length > 0) {
+    //     //       let mime = 'application/pdf';
+    //     //       res.set('Content-Type', mime);
+    //     //       let readStream = gfs.createReadStream({
+    //     //           filename: picId
+    //     //         });
+    //     //       readStream.pipe(res);
+    //     //     } else {
+    //     //       res.json('File Not Found');
+    //     //     }
+    //     //   });
+    //   });
 
     app.get('/signup', (req, res) => {
         res.render('signup/signup.ejs', {
@@ -264,12 +240,7 @@ module.exports = (app, passport, mongoose) => {
           });
       });
 
-    app.post('/updateTags', (req, res) => {
-        req.user.local.tags.push(Object.keys(req.body)[0]);
-        req.user.save();
-      });
-
-    app.post('/dude', (req, res) => {
+    app.get('/getStudentResumes', (req, res) => {
         if (Object.keys(req.body)[0] === null) {
           User.find({}, (err, users) => {
               res.send(users);
