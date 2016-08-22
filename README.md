@@ -6,7 +6,8 @@ Required:
 *To Install:*  
 1.  Clone this respository  
 2.  In the directory of this project run 'npm i'  
-3.  Configure the mongoDB to look like below in config/database.js. Ask maintainer for production database URI. 
+3.  In the app/ directory, copy paste the users.htpasswd the admin will give you (this is for sponsor logins)
+4.  Configure the mongoDB to look like below in config/database.js. Ask maintainer for production database URI. 
   ```
   // config/database.js
   module.exports = {
@@ -20,6 +21,10 @@ Required:
   ```
   $ gulp
   ```
+  
+  go to the site and create an account.
+  
+  After successfully creating an account, a admin must go into the database and set at least one user's isAdmin flag to true.  
 
 Still a WIP 
 
