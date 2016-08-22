@@ -20,6 +20,10 @@ Required:
   ```
   $ gulp
   ```
+  
+  go to the site and create an account.
+  
+  After successfully creating an account, a admin must go into the database and set at least one user's isAdmin flag to true.  
 
 Still a WIP 
 
