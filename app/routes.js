@@ -148,8 +148,9 @@ module.exports = (app, passport, mongoose) => {
 
                 // save the link in the db
                 user.local.resumeLink = linkPath + '/' + linkName;
-              });
+                user.save();
 
+              });
             }
 
             // save the essential questions
