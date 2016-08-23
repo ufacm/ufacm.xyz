@@ -22,9 +22,17 @@ const eventsAPI = require('./middleware/eventsAPI.js');
 
 module.exports = (app, passport, mongoose) => {
 
+    // setup resume repo password for Companies Only
     const basic = auth.basic({
-        realm: 'Companies Only.',
+        realm: 'Sponsoring companies only.',
         file: __dirname + '/users.htpasswd'
+      });
+
+    // get the page for all student repo's
+    app.get('/repo', auth.connect(basic), (req, res) => {
+        res.render('resume/repo.ejs', {
+            user: req.user
+          });
       });
 
     // render the index page
@@ -77,12 +85,6 @@ module.exports = (app, passport, mongoose) => {
 
     app.get('/resume', isLoggedIn, (req, res) => {
         res.render('resume/profile_resume.ejs', {
-            user: req.user
-          });
-      });
-
-    app.get('/repo', auth.connect(basic), (req, res) => {
-        res.render('resume/repo.ejs', {
             user: req.user
           });
       });
@@ -148,8 +150,9 @@ module.exports = (app, passport, mongoose) => {
 
                 // save the link in the db
                 user.local.resumeLink = linkPath + '/' + linkName;
-              });
+                user.save();
 
+              });
             }
 
             // save the essential questions
