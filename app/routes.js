@@ -16,7 +16,9 @@ const User = require('./models/user');
 const lesson = require('../config/lessons.js');
 const settingsMiddleWare = require('./middleware/settings.middleware.js');
 const pullEventsMiddleWare = require('./middleware/pullEventsGivenAToken.js');
+const pullSECEventsFromfb = require('./middleware/pullSECEventFromfb.js');
 const eventsAPI = require('./middleware/eventsAPI.js');
+const secEvents = require('./middleware/secEvents');
 
 // const zip = require('express-zip');
 
@@ -299,9 +301,7 @@ module.exports = (app, passport, mongoose) => {
 
     app.get('/eventStream', eventsAPI);
 
-    app.get('/secEvents', (req, res) => {
-        res.send(200);
-      });
+    app.get('/secEvents', secEvents);
 
     // used when a user goes to the setting's page and updates information
     app.post('/settings', isLoggedIn, settingsMiddleWare.updateUser);
@@ -319,6 +319,7 @@ module.exports = (app, passport, mongoose) => {
 
     app.post('/pullEventsFromFb', isAdmin, pullEventsMiddleWare);
 
+    app.post('/pullSECEventsFronFb', isAdmin, pullSECEventsFromfb);
   };
 
 // route middleware to make sure

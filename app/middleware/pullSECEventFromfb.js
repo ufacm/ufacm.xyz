@@ -1,7 +1,7 @@
 'use strict';
 /*jshint loopfunc: true */
 const request = require('request');
-const EventStream = require('../models/eventStream');
+const EventStream = require('../models/secEvent');
 
 const insertIntoDB = (json, insertIntoDBCallBack) =>
 {
@@ -47,7 +47,7 @@ const pullEvents = (req, res) => {
   console.log(req.body.facebookToken);
 
   let token = req.body.facebookToken;
-  request(('https://graph.facebook.com/v2.6/494011427297346/events?access_token=' + token),  (error, response, body) => {
+  request(('https://graph.facebook.com/v2.6/420010478012940/events?access_token=' + token),  (error, response, body) => {
     if (!error && response.statusCode == 200) {
 
       console.log('Facebook events received, now processing');
