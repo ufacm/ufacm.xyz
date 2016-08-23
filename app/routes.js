@@ -301,6 +301,7 @@ module.exports = (app, passport, mongoose) => {
 
     app.get('/eventStream', eventsAPI);
 
+    // Sec event specific routes
     app.get('/secEvents', secEvents);
 
     // used when a user goes to the setting's page and updates information
