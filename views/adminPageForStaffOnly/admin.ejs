@@ -1,52 +1,69 @@
-
 <html lang="en">
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
-  <title>UF ACM | UFPT</title>
-  <link rel="icon " type = "image/x-icon" href="../img/icon.png"/>
-  <!-- CSS  -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="../css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <!-- Font -->
-  <link href='https://fonts.googleapis.com/css?family=Roboto:100,100italic' rel='stylesheet' type='text/css'>
-  <!-- Script for nav -->
-  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-  <script type="text/javascript" src="adminpanel.controller.js"></script>
-  <script src="../js/bin/materialize.js"></script>
-  <script>
-  $(document).ready(function(){
-    $('.parallax').parallax();
-    $('select').material_select();
-    $(".button-collapse").sideNav();
-    $(".dropdown-button").dropdown();
 
-  });
-  </script>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+    <title>UF ACM | UFPT</title>
+    <link rel="icon " type="image/x-icon" href="../img/icon.png" />
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="../css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <!-- Font -->
+    <link href='https://fonts.googleapis.com/css?family=Roboto:100,100italic' rel='stylesheet' type='text/css'>
+    <!-- Script for nav -->
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script type="text/javascript" src="adminpanel.controller.js"></script>
+    <script src="../js/bin/materialize.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.parallax').parallax();
+            $('select').material_select();
+            $(".button-collapse").sideNav();
+            $(".dropdown-button").dropdown();
+
+        });
+    </script>
 </head>
 
 <!-- navbar include directive  -->
 <% include ../navBar %>
-<div style="height:30%;  background-image: url('../img/0036.jpg'); position:relative; top:-75px; z-index:-1;">
-  <h1 class="header white-text">Admin Panel</h1>
-</div>
+    <div style="height:30%;  background-image: url('../img/0036.jpg'); position:relative; top:-75px; z-index:-1;">
+        <h1 class="header white-text">Admin Panel</h1>
+    </div>
 
-<body>
-  <div class = "container">
-    <form id="sub">
-      <p id="serverMessege" style="color: red"></p>
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="facebookEventToken" type="text" class="validate" name="facebookEventToken" required>
-          <label for="facebookEventToken">Facebook token</label>
+    <body>
+        <div class="container">
+            <form id="sub">
+                <p id="serverMessege" style="color: red"></p>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="facebookEventToken" type="text" class="validate" name="facebookEventToken" required>
+                        <label for="facebookEventToken">ACM Facebook token</label>
+                    </div>
+                    <div class="row">
+                        <div class="col s12">
+                            <a class="waves-effect waves-light btn teal lighten-1" id="submitButton" type="submit"><i class="material-icons left">lock_open</i>Pull events</a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <form id="token">
+                <p id="serverMessege" style="color: red"></p>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="facebookEventTokenforSEC" type="text" class="validate" name="facebookEventToken" required>
+                        <label for="facebookEventTokenforSEC">SEC Facebook token</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12">
+                        <a class="waves-effect waves-light btn teal lighten-1" id="submitButtonForSEC" type="submit"><i class="material-icons left">lock_open</i>Pull events</a>
+                    </div>
+                </div>
+            </form>
         </div>
-      <div class = "row">
-        <div class = "col s12">
-          <a class="waves-effect waves-light btn teal lighten-1" id="submitButton" type="submit"><i class="material-icons left">lock_open</i>Pull events</a>
-        </div>
-    </form>
-  </div>
-</body>
+    </body>
+
 </html>
