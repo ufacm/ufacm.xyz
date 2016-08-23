@@ -299,6 +299,10 @@ module.exports = (app, passport, mongoose) => {
 
     app.get('/eventStream', eventsAPI);
 
+    app.get('/secEvents', (req, res) => {
+        res.send(200);
+      });
+
     // used when a user goes to the setting's page and updates information
     app.post('/settings', isLoggedIn, settingsMiddleWare.updateUser);
 
