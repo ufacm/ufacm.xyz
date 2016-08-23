@@ -2,7 +2,7 @@
   "name": "uf_acm_webapp",
   "description": "The official webapp for our ACM website",
   "license": "MIT",
-  "version": "0.0.1",
+  "version": "0.1.2",
   "precommit": "gulp precommit",
   "repository": {
     "type": "git",
