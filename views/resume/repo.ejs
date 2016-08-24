@@ -90,7 +90,7 @@
 
            $("#search").keyup(function (e) {
                if (e.keyCode == 13) {
-                   $.post( "/dude", $("#search").val(), function(data){
+                   $.post( "/getStudentResumes", $("#search").val(), function(data){
                     $( ".clicks" ).remove();
                        for(var i=0; i<data.length; i++){
                        $(".with-header").append('<li class="collection-item clicks"><div>'+data[i].local.firstName+'<a href="/clicks/'+data[i].local.resumeLink+'" class="secondary-content"><i class="material-icons">send</i></a></div></li>');
