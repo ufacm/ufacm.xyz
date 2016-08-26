@@ -6,6 +6,7 @@ const port     = process.env.PORT || 8080;
 const mongoose = require('mongoose');
 const passport = require('passport');
 const flash    = require('connect-flash');
+const serveIndex = require('serve-index');
 
 const configDB = require('./config/database.js');
 
@@ -27,11 +28,16 @@ app.configure(() => {
 
   app.set('view engine', 'ejs'); // set up ejs for templating
 
+  // set up Josh's public directory for his ufptstuff
+  app.use('/ufpt/files', serveIndex('ufptstuff/', { icons: true }));
+  app.use('/ufpt/files/', express.static('ufptstuff/'));
+
   // required for passport
   app.use(express.session({ secret: 'architrocks' }));
   app.use(passport.initialize());
   app.use(passport.session()); // persistent login sessions
   app.use(flash());
+
 });
 
 require('./app/routes.js')(app, passport, mongoose);
