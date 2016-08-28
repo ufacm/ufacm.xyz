@@ -2,6 +2,7 @@
 
 // const multer = require('multer');
 const fs = require('fs');
+const cors = require('cors');
 
 // const Grid = require('gridfs-stream');
 const auth = require('http-auth');
@@ -302,7 +303,7 @@ module.exports = (app, passport, mongoose) => {
     app.get('/eventStream', eventsAPI);
 
     // Sec event specific routes
-    app.get('/secEvents', secEvents);
+    app.get('/secEvents', cors(), secEvents);
 
     // used when a user goes to the setting's page and updates information
     app.post('/settings', isLoggedIn, settingsMiddleWare.updateUser);
