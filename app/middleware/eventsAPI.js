@@ -29,6 +29,24 @@ const eventsOutput = (req, res, next) => {
           return (eventDate.getTime() >= lowerBounds.getTime() && eventDate.getTime() <= upperBounds.getTime());
         });
 
+      let deleteEvents = eventStream.filter((val) => {
+
+          let eventDate = new Date(val.starttime);
+
+          // logic checking
+          // console.log('eventdate', eventDate.getTime());
+          // console.log('lowerBounds', lowerBounds.getTime());
+          // console.log('upperBounds', upperBounds.getTime());
+          // console.log(eventDate.getTime() > lowerBounds.getTime());
+          // console.log(eventDate.getTime() <= upperBounds.getTime());
+
+          return (eventDate.getTime() < lowerBounds.getTime() && eventDate.getTime() > upperBounds.getTime());
+        });
+
+      for (let i = 0; i < deleteEvents.length; i++) {
+        deleteEvents[i].remove();
+      }
+
       res.send(currentEvents);
     }
   });
