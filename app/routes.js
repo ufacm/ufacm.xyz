@@ -53,6 +53,7 @@ module.exports = (app, passport, mongoose) => {
 
     let pdfs = [];
     app.post('/testpdf', (req, res) => {
+
         for (let i = 0; i < req.body.pdfs.length; i++) {
           let str = req.body.pdfs[i].slice(24, req.body.pdfs[i].length);
           pdfs.push({
@@ -60,7 +61,7 @@ module.exports = (app, passport, mongoose) => {
                   name: str
                 });
 
-          // pdfs.push(req.body.pdfs[i]);
+          // Assuming localstorage/pdfs is name on local directory
         }
 
         console.log(pdfs);
@@ -243,7 +244,8 @@ module.exports = (app, passport, mongoose) => {
       });
 
     app.post('/getStudentResumes', (req, res) => {
-        if (Object.keys(req.body)[0] === null) {
+        console.log(Object.keys(req.body)[0]);
+        if (Object.keys(req.body)[0] === undefined) {
           User.find({}, (err, users) => {
               res.send(users);
             });
