@@ -57,19 +57,20 @@ module.exports = (app, passport, mongoose) => {
         for (let i = 0; i < req.body.pdfs.length; i++) {
           let str = req.body.pdfs[i].slice(24, req.body.pdfs[i].length);
           pdfs.push({
-                  path: 'localStorage/pdfs/' + req.body.pdfs[i],
+                  path: __dirname + '/../localStorage/pdfs/' + req.body.pdfs[i],
                   name: str
                 });
 
           // Assuming localstorage/pdfs is name on local directory
         }
 
-        console.log(pdfs);
+        //console.log(pdfs);
         res.send('');
       });
 
     // mass download PDFs but this is still not secure
     app.get('/downloadPDF', (req, res) => {
+        console.log(pdfs);
         res.zip(pdfs);
       });
 

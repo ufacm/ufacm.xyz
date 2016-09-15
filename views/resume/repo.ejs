@@ -67,9 +67,33 @@
       <main>
          <div class="container">
             <div class="input-field">
-               <input id="search" type="search" required name="search">
-               <label for="search"><i class="material-icons">search</i></label>
-               <i class="material-icons">close</i>
+
+              <form>
+               
+               <input name="group1" type="radio" id="Java" />
+               <label for="Java">Java</label>
+
+               <input type="radio" name="group1" id="Android" />
+               <label for="Android">Android</label>
+
+               <input type="radio" name="group1" id="iOS" />
+               <label for="iOS">iOS</label>
+
+               <input type="radio"  name="group1" id="Python" />
+               <label for="Python">Python</label>
+
+               <input type="radio"  name="group1" id="C++" />
+               <label for="C++">C++</label>
+
+               <input type="radio"  name="group1" id="PHP" />
+               <label for="PHP">PHP</label>
+
+               <input type="radio"  name="group1" id="JavaScript" />
+               <label for="JavaScript">JavaScript</label>
+
+             </form>
+
+
             </div>
             <ul class="collection with-header">
                <li class="collection-header">
@@ -88,15 +112,22 @@
       <script type="text/javascript">
          var pdfs = []
 
-           $("#search").keyup(function (e) {
-               if (e.keyCode == 13) {
-                   $.post( "/getStudentResumes", $("#search").val(), function(data){
+
+         $("form input:radio").each(function(index){
+            $("input[name='group1']").change(function(){
+                $.post( "/getStudentResumes", this.id, function(data){
                     $( ".clicks" ).remove();
                        for(var i=0; i<data.length; i++){
                        $(".with-header").append('<li class="collection-item clicks"><div>'+data[i].local.firstName+'<a href="/clicks/'+data[i].local.resumeLink+'" class="secondary-content"><i class="material-icons">send</i></a></div></li>');
                        pdfs.push(data[i].local.resumeLink);
                    }
                    });
+            });
+         });
+
+           $("#search").keyup(function (e) {
+               if (e.keyCode == 13) {
+
                }
 
            });
