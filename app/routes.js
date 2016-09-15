@@ -64,13 +64,11 @@ module.exports = (app, passport, mongoose) => {
           // Assuming localstorage/pdfs is name on local directory
         }
 
-        //console.log(pdfs);
         res.send('');
       });
 
     // mass download PDFs but this is still not secure
     app.get('/downloadPDF', (req, res) => {
-        console.log(pdfs);
         res.zip(pdfs);
       });
 
