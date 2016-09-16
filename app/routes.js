@@ -300,7 +300,7 @@ module.exports = (app, passport, mongoose) => {
           });
       });
 
-    app.get('/eventStream', eventsAPI);
+    app.get('/eventStream', cors(), eventsAPI);
 
     // Sec event specific routes
     app.get('/secEvents', cors(), secEvents);
