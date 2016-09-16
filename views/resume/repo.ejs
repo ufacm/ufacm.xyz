@@ -26,14 +26,15 @@
            $(".dropdown-button").dropdown();
 
 
-           document.getElementById("buts").onclick = function() {
-               document.getElementById("sub").submit();
-           }
+   
 
-
-
-
-
+            $('input#search').autocomplete({
+              data: {
+                "Apple": null,
+                "Microsoft": null,
+                
+              }
+            });
 
 
          });
@@ -66,16 +67,25 @@
       </div>
       <main>
          <div class="container">
-            <div class="input-field">
-               <input id="search" type="search" required name="search">
-               <label for="search"><i class="material-icons">search</i></label>
-               <i class="material-icons">close</i>
-            </div>
+<!--             <div class="input-field">
+        
+                 <div class="row">
+                  <div class="col s12">
+                    <div class="row">
+                      <div class="input-field col s12">
+                        <i class="material-icons prefix">search</i>
+                        <input type="text" id="search" class="autocomplete">
+                        <label for="autocomplete-input">Search</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div> -->
             <ul class="collection with-header">
-               <li class="collection-header">
+               <!-- <li class="collection-header">
                   <h4>Search Results</h4>
-               </li>
-               <!-- <li class="collection-item"><div>Alvin<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div></li> -->
+               </li> -->
+              
             </ul>
          </div>
       <a class="waves-effect waves-light btn" id="zips">Download Zips</a>
@@ -88,18 +98,18 @@
       <script type="text/javascript">
          var pdfs = []
 
-           $("#search").keyup(function (e) {
-               if (e.keyCode == 13) {
-                   $.post( "/dude", $("#search").val(), function(data){
+           // $("#search").keyup(function (e) {
+           //     if (e.keyCode == 13) {
+                   $.post( "/getStudentResumes", $("#search").val(), function(data){
                     $( ".clicks" ).remove();
                        for(var i=0; i<data.length; i++){
                        $(".with-header").append('<li class="collection-item clicks"><div>'+data[i].local.firstName+'<a href="/clicks/'+data[i].local.resumeLink+'" class="secondary-content"><i class="material-icons">send</i></a></div></li>');
                        pdfs.push(data[i].local.resumeLink);
                    }
                    });
-               }
+           //     }
 
-           });
+           // });
 
 
 
@@ -114,6 +124,13 @@
 
       </script>
       <!--  Scripts-->
-      <script src="../js/bin/materialize.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+
+<script type="text/javascript">
+
+
+</script>
+
+
    </body>
 </html>

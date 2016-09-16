@@ -5,10 +5,10 @@ const fs = require('fs');
 const cors = require('cors');
 
 // const Grid = require('gridfs-stream');
-const auth = require('http-auth');
 const formidable = require('formidable');
 const cpy = require('cpy');
 const fsaccess = require('fs-access');
+require('express-zip');
 
 // const util = require('util');
 
@@ -26,13 +26,13 @@ const secEvents = require('./middleware/secEvents');
 module.exports = (app, passport, mongoose) => {
 
     // setup resume repo password for Companies Only
-    const basic = auth.basic({
-        realm: 'Sponsoring companies only.',
-        file: __dirname + '/users.htpasswd'
-      });
+    // const basic = auth.basic({
+    //     realm: 'Sponsoring companies only.',
+    //     file: __dirname + '/users.htpasswd'
+    //   });
 
     // get the page for all student repo's
-    app.get('/repo', auth.connect(basic), (req, res) => {
+    app.get('/repo', (req, res) => {
         res.render('resume/repo.ejs', {
             user: req.user
           });
@@ -54,27 +54,26 @@ module.exports = (app, passport, mongoose) => {
           });
       });
 
-    // app.post('/testpdf', (req, res) => {
-    //     let pdfs = [];
-    //
-    //     for (let i = 0; i < req.body.pdfs.length; i++) {
-    //       let str = req.body.pdfs[i].slice(24, req.body.pdfs[i].length);
-    //       pdfs.push({
-    //               path: 'localStorage/pdfs/' + req.body.pdfs[i],
-    //               name: str
-    //             });
-    //
-    //       // pdfs.push(req.body.pdfs[i]);
-    //     }
-    //
-    //     console.log(pdfs);
-    //     res.send('asdf');
-    //   });
+    let pdfs = [];
+    app.post('/testpdf', (req, res) => {
+
+        for (let i = 0; i < req.body.pdfs.length; i++) {
+          let str = req.body.pdfs[i].slice(24, req.body.pdfs[i].length);
+          pdfs.push({
+                  path: __dirname + '/../localStorage/pdfs/' + req.body.pdfs[i],
+                  name: str
+                });
+
+          // Assuming localstorage/pdfs is name on local directory
+        }
+
+        res.send('');
+      });
 
     // mass download PDFs but this is still not secure
-    // app.get('/downloadPDF', (req, res) => {
-    //     res.zip(pdfs);
-    //   });
+    app.get('/downloadPDF', (req, res) => {
+        res.zip(pdfs);
+      });
 
     app.get('/feed', (req, res) => {
         res.render('feed.ejs');
@@ -179,6 +178,11 @@ module.exports = (app, passport, mongoose) => {
 
       });
 
+    app.post('/updateTags', isLoggedIn, (req, res) => {
+        req.user.local.tags = req.body.skills;
+        req.user.save();
+      });
+
     // route to pull file for preview
     app.get('/file', isLoggedIn, (req, res) => {
 
@@ -246,18 +250,23 @@ module.exports = (app, passport, mongoose) => {
           });
       });
 
-    app.get('/getStudentResumes', (req, res) => {
-        if (Object.keys(req.body)[0] === null) {
-          User.find({}, (err, users) => {
-              res.send(users);
-            });
-        } else {
-          User.find({
-              'local.tags': Object.keys(req.body)[0]
-            }, (err, users) => {
-              res.send(users);
-            });
-        }
+    app.post('/getStudentResumes', (req, res) => {
+
+        // if (Object.keys(req.body)[0] === undefined) {
+        //   User.find({}, (err, users) => {
+        //       res.send(users);
+        //     });
+        // } else {
+        //   User.find({
+        //       'local.tags': Object.keys(req.body)[0]
+        //     }, (err, users) => {
+        //       res.send(users);
+        //     });
+        // }
+
+        User.find({}, (err, users) => {
+          res.send(users);
+        });
       });
 
     app.get('/update', isLoggedIn, (req, res) => {
