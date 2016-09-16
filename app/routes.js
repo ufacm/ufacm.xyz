@@ -5,7 +5,6 @@ const fs = require('fs');
 const cors = require('cors');
 
 // const Grid = require('gridfs-stream');
-const auth = require('http-auth');
 const formidable = require('formidable');
 const cpy = require('cpy');
 const fsaccess = require('fs-access');
