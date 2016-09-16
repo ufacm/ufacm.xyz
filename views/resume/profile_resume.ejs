@@ -29,6 +29,20 @@
             });
 
         });
+
+
+        function update(){
+
+            console.log($("#technologies").val());
+
+            $.post("/updateTags", {skills: $("#technologies").val()}, function(data){
+
+            });
+
+        }
+
+
+
     </script>
 
     <style type="text/css">
@@ -59,9 +73,9 @@
                 <div class="container">
 
                     <!-- Find a way to make this work, without breaking other functionality -->
-                    <!-- <div class="row">
+<!--                     <div class="row">
                         <div class="input-field col s12">
-                            <select id="technologies" multiple="multiple" multiple>
+                            <select id="technologies" multiple="multiple" multiple onchange="update()">
                                 <option value="" disabled selected>Choose your options</option>
                                 <option value="JavaScript" />JavaScript</option>
                                 <option value="PHP" />PHP</option>

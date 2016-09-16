@@ -178,6 +178,11 @@ module.exports = (app, passport, mongoose) => {
 
       });
 
+    app.post('/updateTags', isLoggedIn, (req, res) => {
+        req.user.local.tags = req.body.skills;
+        req.user.save();
+      });
+
     // route to pull file for preview
     app.get('/file', isLoggedIn, (req, res) => {
 
@@ -246,17 +251,22 @@ module.exports = (app, passport, mongoose) => {
       });
 
     app.post('/getStudentResumes', (req, res) => {
-        if (Object.keys(req.body)[0] === undefined) {
-          User.find({}, (err, users) => {
-              res.send(users);
-            });
-        } else {
-          User.find({
-              'local.tags': Object.keys(req.body)[0]
-            }, (err, users) => {
-              res.send(users);
-            });
-        }
+
+        // if (Object.keys(req.body)[0] === undefined) {
+        //   User.find({}, (err, users) => {
+        //       res.send(users);
+        //     });
+        // } else {
+        //   User.find({
+        //       'local.tags': Object.keys(req.body)[0]
+        //     }, (err, users) => {
+        //       res.send(users);
+        //     });
+        // }
+
+        User.find({}, (err, users) => {
+          res.send(users);
+        });
       });
 
     app.get('/update', isLoggedIn, (req, res) => {
