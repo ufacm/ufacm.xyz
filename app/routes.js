@@ -72,7 +72,6 @@ module.exports = (app, passport, mongoose) => {
 
     // mass download PDFs but this is still not secure
     app.get('/downloadPDF', (req, res) => {
-      console.log(pdfs);
         res.zip(pdfs);
       });
 
