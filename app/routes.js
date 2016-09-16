@@ -72,6 +72,7 @@ module.exports = (app, passport, mongoose) => {
 
     // mass download PDFs but this is still not secure
     app.get('/downloadPDF', (req, res) => {
+      console.log(pdfs);
         res.zip(pdfs);
       });
 
@@ -245,7 +246,7 @@ module.exports = (app, passport, mongoose) => {
           });
       });
 
-    app.get('/getStudentResumes', (req, res) => {
+    app.post('/getStudentResumes', (req, res) => {
         if (Object.keys(req.body)[0] === undefined) {
           User.find({}, (err, users) => {
               res.send(users);
