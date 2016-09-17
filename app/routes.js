@@ -250,23 +250,28 @@ module.exports = (app, passport, mongoose) => {
           });
       });
 
+    // gets Tags
+    app.get('/getTags',  (req, res) => {
+      res.send(req.user.local.tags);
+    });
+
     app.post('/getStudentResumes', (req, res) => {
 
-        // if (Object.keys(req.body)[0] === undefined) {
-        //   User.find({}, (err, users) => {
-        //       res.send(users);
-        //     });
-        // } else {
-        //   User.find({
-        //       'local.tags': Object.keys(req.body)[0]
-        //     }, (err, users) => {
-        //       res.send(users);
-        //     });
-        // }
+        if (Object.keys(req.body)[0] === undefined) {
+          User.find({}, (err, users) => {
+              res.send(users);
+            });
+        } else {
+          User.find({
+              'local.tags': Object.keys(req.body)[0]
+            }, (err, users) => {
+              res.send(users);
+            });
+        }
 
-        User.find({}, (err, users) => {
-          res.send(users);
-        });
+        // User.find({}, (err, users) => {
+        //   res.send(users);
+        // });
       });
 
     app.get('/update', isLoggedIn, (req, res) => {

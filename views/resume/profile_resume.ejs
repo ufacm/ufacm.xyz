@@ -20,13 +20,17 @@
             $('select').material_select();
             $(".button-collapse").sideNav();
             $(".dropdown-button").dropdown();
-            document.getElementById("buts").onclick = function() {
-                document.getElementById("sub").submit();
-            }
-
-            $('.chips').material_chip({
-
+       
+            
+            $.get( "/getTags", function( data ) {
+                $('#technologies').val(data);
+                $('#technologies').material_select();
             });
+
+
+
+
+            
 
         });
 
@@ -73,7 +77,7 @@
                 <div class="container">
 
                     <!-- Find a way to make this work, without breaking other functionality -->
-<!--                     <div class="row">
+                    <div class="row">
                         <div class="input-field col s12">
                             <select id="technologies" multiple="multiple" multiple onchange="update()">
                                 <option value="" disabled selected>Choose your options</option>
@@ -102,7 +106,7 @@
                             </select>
                             <label for="technologies">What are some technologies and skills you are familiar with?</label>
                         </div>
-                    </div> -->
+                    </div>
                     <div class="row">
                         <div class="col s12">
                             <p>You may answer the three optional essential questions below, but <em><b>please upload your resume!</b></em> Sponsors will be able to see your resume and optional responses!</p>
