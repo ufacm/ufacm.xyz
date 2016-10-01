@@ -9,7 +9,7 @@ const eventsOutput = (req, res, next) => {
 
       // set lower bounds
       let lowerBounds = new Date();
-      lowerBounds = new Date(lowerBounds.setDate(lowerBounds.getDate() - 4));
+      lowerBounds = new Date(lowerBounds.setDate(lowerBounds.getDate() - 1));
 
       // set upper bounds
       let upperBounds = new Date();

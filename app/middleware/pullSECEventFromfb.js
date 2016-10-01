@@ -3,6 +3,8 @@
 const request = require('request');
 const EventStream = require('../models/secEvent');
 
+const _ = require('lodash');
+
 const insertIntoDB = (json, insertIntoDBCallBack) =>
 {
 
@@ -17,21 +19,46 @@ const insertIntoDB = (json, insertIntoDBCallBack) =>
 
           if (!dbEvent) {
 
-            // creates event.
             let event = new EventStream();
-            event.description = json.data[index].description;
-            event.name =	json.data[index].name;
-            event.place.name =	json.data[index].place.name;
-            event.starttime =	json.data[index].start_time;
+
+            if (!_.isUndefined(json.data[index].description)) {
+              event.description = json.data[index].description;
+            }
+
+            if (!_.isUndefined(json.data[index].name)) {
+              event.name =	json.data[index].name;
+            }
+
+            if (!_.isUndefined(json.data[index].place)) {
+              event.place.name =	json.data[index].place.name;
+            }
+
+            if (!_.isUndefined(json.data[index].start_time)) {
+              event.starttime =	json.data[index].start_time;
+            }
+
             event.facebookEventId = json.data[index].id;
 
             // saves event
             event.save();
           } else {
-            dbEvent.description = json.data[index].description;
-            dbEvent.name =	json.data[index].name;
-            dbEvent.place.name =	json.data[index].place.name;
-            dbEvent.starttime =	json.data[index].start_time;
+
+            if (!_.isUndefined(json.data[index].description)) {
+              dbEvent.description = json.data[index].description;
+            }
+
+            if (!_.isUndefined(json.data[index].name)) {
+              dbEvent.name =	json.data[index].name;
+            }
+
+            if (!_.isUndefined(json.data[index].place)) {
+              dbEvent.place.name =	json.data[index].place.name;
+            }
+
+            if (!_.isUndefined(json.data[index].start_time)) {
+              dbEvent.starttime =	json.data[index].start_time;
+            }
+
             dbEvent.facebookEventId = json.data[index].id;
             dbEvent.save();
           }
