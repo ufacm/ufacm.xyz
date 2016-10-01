@@ -78,8 +78,6 @@ const pullEvents = (req, res) => {
 
       console.log('Facebook events received, now processing');
       let json = JSON.parse(body);
-      console.log('upper level Json');
-      console.log(json);
 
       insertIntoDB(json, (err) => {
         if (err) {
