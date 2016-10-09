@@ -44,7 +44,7 @@ We'll need to install Gulp and a few of it's dependencies:
 1. Clone this respository: `git clone https://github.com/ufacm/ufacm.xyz.git`
 2. In the root directory, install the correct dependencies using `npm`: `npm i`
 3. In the `/app` directory, create the `users.htpasswd` file: `touch users.htpasswd`
-4. Rename `config/database.js.sample` to `config/database.js` and use your mLab MongoDB connection string from above to point the web app towards your mLab database.
+4. Copy the `config/database.js.sample` to `config/database.js` and use your mLab MongoDB connection string from above to point the web app towards your mLab database.
 5. Run the application with Gulp in the root directory: `gulp`
 6. Using mLab's online user interface, make one of your test users an admin.
 
