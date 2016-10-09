@@ -14,7 +14,7 @@ The UFACM web app runs on the following technologies:
 
 ### Create Remote MongoDB Database
 
-In order to use a remote MongoDB database for development, do the following:
+In order to use a remote mLab MongoDB database for development, do the following:
 
 1. Make an account on [mLab](https://mlab.com)
 2. In upper right corner, press "Create New" (has a lightning bolt)
@@ -23,6 +23,8 @@ In order to use a remote MongoDB database for development, do the following:
 5. Wait for your DB to be deployed, click on it
 6. Go to the user's tab and add a database user (make a user/password). **DO NOT CHECK READ ONLY**
 7. Looking near the top, note this connection string using your newly made username/password. It should look like this: `mongodb://<dbuser>:<dbpassword>@ds053126.mlab.com:53126/acmlocaldb`
+
+More thorough setup instructions are available on the Wiki: [Creating a MongoDB database through mLab](https://github.com/ufacm/ufacm.xyz/wiki/Creating-a-MongoDB-database-through-mLab).
 
 ### Install Node.js
 
