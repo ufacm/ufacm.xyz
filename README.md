@@ -61,4 +61,4 @@ Want to contribute to the UFACM web app? It's as simple as:
 3. Come back to this repository and open a Pull Request with your new branch
 4. Wait for approval by one of the repository's maintainers.
 
-Questions? Join #ufacm_webapp in the [UFCISE Slack](https://slack.ufcise.com)!
+Questions? Join #ufacm_webapp in the [UFCISE Slack](http://slack.ufcise.com)!
