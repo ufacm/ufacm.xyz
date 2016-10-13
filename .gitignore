@@ -152,3 +152,6 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+# Ignore DB config
+config/database.js
