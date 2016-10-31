@@ -5,7 +5,7 @@ const fs = require('fs');
 const cors = require('cors');
 
 // const Grid = require('gridfs-stream');
-const auth = require('http-auth');
+// const auth = require('http-auth');
 const formidable = require('formidable');
 const cpy = require('cpy');
 const fsaccess = require('fs-access');
@@ -26,13 +26,13 @@ const secEvents = require('./middleware/secEvents');
 module.exports = (app, passport, mongoose) => {
 
     // setup resume repo password for Companies Only
-    const basic = auth.basic({
-        realm: 'Sponsoring companies only.',
-        file: __dirname + '/users.htpasswd'
-      });
+    // const basic = auth.basic({
+    //     realm: 'Sponsoring companies only.',
+    //     file: __dirname + '/users.htpasswd'
+    //   });
 
     // get the page for all student repo's
-    app.get('/repo', auth.connect(basic), (req, res) => {
+    app.get('/repo', (req, res) => {
         res.render('resume/repo.ejs', {
             user: req.user
           });
