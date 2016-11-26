@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+  <head>
+       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+       <link rel="icon " type = "image/x-icon" href="img/icon.png"/>
+       <title>UF ACM | University of Florida Association for Computing Machinery</title>
+       <!-- CSS -->
+       <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+       <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css"> -->
+       <!-- <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/> -->
+       <!-- Font -->
+       <link href='https://fonts.googleapis.com/css?family=Roboto:100,100italic,400,700' rel='stylesheet' type='text/css'>
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+       <!-- Script for nav --> <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script> <script src="js/bin/materialize.js"></script> <script src="js/bin/moment.min.js"></script> <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script> <script> $(document).ready(function(){ $('.parallax').parallax(); $('select').material_select(); $(".button-collapse").sideNav(); $(".dropdown-button").dropdown(); $('.slider').slider({full_width: true}); }); </script>
+       <script src="https://use.fontawesome.com/cb1f156474.js"></script>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-default navbar-fixed-top">
+          <div class="container">
+              <!-- Brand and toggle get grouped for better mobile display -->
+              <div class="navbar-header">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                  </button>
+
+              </div>
+              <!-- Collect the nav links, forms, and other content for toggling -->
+              <div class="collapse navbar-collapse" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="active"><a href="#page-top">Home</a></li>
+                    <li><a href="#menu">Events</a></li>
+                    <li><a href="#about">Contact Us</a></li>
+                    <li><a href="#about">Our Staff</a></li>
+                    <li><a href="#about">SIGs</a></li>
+                    <li><a class="fa fa-facebook-square fa-lg hidden-xs" href="https://www.facebook.com/groups/ufacm/" target="_blank"></a><span class="sr-only">Facebook</span></li>
+                </ul>
+                  <ul class="nav navbar-nav navbar-right">
+                      <li><a href="#page-top">Profile</a></li>
+                      <li><a href="#menu">Log Out</a></li>
+
+                  </ul>
+              </div><!-- /.navbar-collapse -->
+          </div><!-- /.container -->
+      </nav>
+    </header>
+    <div class="intro">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-8 col-sm-offset-2">
+            <div class="intro-elements">
+              <img src="./ACM_Logo_wordmark-white.png" width="100%" alt="" style="margin-top: 225px;"/>
+              <div class="buttons">
+                <a href="">Log In</a>
+                <a href="#">Sign Up</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="stuff">
+
+    </div>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript">
+      $('.intro').css('height', $(window).height());
+      $('.stuff').css('height', $(window).height());
+      $(window).resize(function(){
+        $('.intro').css('height', $(window).height());
+      });
+
+      function imgToBg(image){
+        //replace img with a background image
+        $(image).each(function(){
+          var imgSrc = $(this).attr('src');
+          $(this).parent().css({'background-image': 'url('+imgSrc+')'});
+          $(this).remove();
+        });
+      }
+    </script>
+  </body>
+  <style media="screen">
+    .intro{
+      background: #67daef; /* Old browsers */
+      background: -moz-linear-gradient(-45deg, #67daef 0%, #059bd3 100%); /* FF3.6-15 */
+      background: -webkit-linear-gradient(-45deg, #67daef 0%,#059bd3 100%); /* Chrome10-25,Safari5.1-6 */
+      background: linear-gradient(135deg, #67daef 0%,#059bd3 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#67daef', endColorstr='#059bd3',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+      width: auto;
+    }
+    .stuff{
+      width: auto;
+    }
+    .logo{
+      height: 54px;
+    }
+    .navbar-default{
+      background-color: transparent;
+      border-color: transparent;
+    }
+    .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover{
+      /*border-radius: 50px;*/
+      color: #67daef;
+      background-color: white;
+      border: 3px solid white;
+      font-weight: bold;
+      font-family: Roboto, sans-serif;
+    }
+    .navbar-default .navbar-nav>li>a{
+      border-radius: 50px;
+      color: white;
+      background-color: transparent;
+      border: 3px solid white;
+      /*font-weight: bold;*/
+      /*font-family: Roboto, sans-serif;*/
+    }
+    /*.buttons>a{
+      border-radius: 50px;
+      color: white;
+      background-color: transparent;
+      border: 3px solid white;
+      /*font-weight: bold;*/
+      /*font-family: Roboto, sans-serif;*/
+      display: inline-block;
+      width: 50px;
+      height: 2em;
+    }*/
+    .intro-elements{
+      position: absolute;
+      top:0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+
+      margin: auto;
+    }
+    .intro-elements>img{
+      width: 100%
+      height: 100%;
+    }
+    .btn-group{
+      text-align: center;
+      width: auto;
+      margin: 0 auto;
+    }
+  </style>
+</html>
