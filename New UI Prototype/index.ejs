@@ -5,7 +5,6 @@ TODO:
 - add down arrow at bottom of intro section that scrolls down to the next section
   -implement smooth scrolling from Ink framework
 -fix event stream layout
--make Google Map size responsive with jQuery
 -make login/signup modals
 -change buttons when user is logged in
  -->
@@ -69,13 +68,13 @@ TODO:
     </div>
     <div class="ink-grid">
       <section class="who-what column-group horizontal-gutters">
-        <div class="all-50">
+        <div class="who all-50 tiny-100 small-100">
           <span>
              <h3>Who are we?</h3>
              We are the University of Florida's student chapter of the Association for Computing Machinery. We are an organization dedicated to the promotion of computer science research, education, and involvement within the students of the CISE department.
           </span>
         </div>
-        <div class="all-50">
+        <div class="what all-50 tiny-100 small-100">
           <span>
              <h3>What do we do?</h3>
              During the year, you can find us bringing companies like Google and Microsoft to campus, promoting cool Special Interest Groups and throwing awesome department-wide events. <i><b>You should checkout some of our Special Interest Groups (SIGs) in the top right corner!</b></i>
@@ -83,13 +82,13 @@ TODO:
         </div>
       </section>
       <section class="where column-group horizontal-gutters">
-          <div class="all-50">
+          <div class="where-text all-50 tiny-100 small-100">
             <span>
                <h3>Where are we?</h3>
                Generally we are all over the place with our meetings and info-sessions, but our main office, the Fishbowl is located across the pathway in front of Marston Science library's entrance. Our door has the large, blue ACM logo on it. It's on the right side of the photo below!
             </span>
           </div>
-          <div class="all-50">
+          <div class="where-map all-50 tiny-100 small-100">
             <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d866.8704288329208!2d-82.34539252659759!3d29.64779286121216!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x4156837deaad6398!2sThe+Fishbowl+University+of+Florida+ACM+Office!5e0!3m2!1sen!2sus!4v1457289106346" width="600" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
           </div>
       </section>
@@ -163,7 +162,6 @@ TODO:
         nope : 'http://cdn.ink.sapo.pt/3.1.10/css/ink-legacy.min.css',
       });
       $('.intro').css('height', $(window).height());
-      $('.stuff').css('height', $(window).height());
       if($(window).width()   < 823){
         $('.buttons').removeClass('push-right');
         $('.buttons').addClass('push-center');
@@ -171,9 +169,10 @@ TODO:
         $('.buttons').removeClass('push-center');
         $('.buttons').addClass('push-right');
       }
+      $('.where-map>iframe').attr('width', $('.what').width());
       $(window).resize(function(){
         $('.intro').css('height', $(window).height());
-        $('.stuff').css('height', $(window).height());
+        $('.where-map>iframe').attr('width', $('.what').width());
         if($(window).width()   < 823){
           $('.buttons').removeClass('push-right');
           $('.buttons').addClass('push-center');
