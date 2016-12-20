@@ -33,6 +33,82 @@ TODO:
     <script src="https://use.fontawesome.com/cb1f156474.js"></script>
   </head>
   <body>
+    <div class="ink-shade fade">
+        <div id="loginModal" class="ink-modal fade" data-trigger=".login" data-width="80%" data-height="80%" role="dialog" aria-hidden="true" aria-labelled-by="login-title">
+          <div class="modal-header">
+              <button class="modal-close ink-dismiss"></button>
+              <h2 id="login-title">Login</h2>
+          </div>
+          <div class="modal-body" id="loginContent">
+            <form id="loginForm" class="ink-form ink-formvalidator" method="post" action="#">
+              <div class="control-group required">
+                  <label for="e-mail">Email</label>
+                  <div class="control">
+                      <input type="text" name="e-mail" id="e-mail" data-rules="required|email" />
+                  </div>
+              </div>
+              <div class="control-group required">
+                  <label for="pass">Password</label>
+                  <div class="control">
+                      <input type="password" name="password" id="pass" data-rules="required" />
+                  </div>
+              </div>
+              <input type="submit" name="sub" value="Submit" class="ink-button success" />
+            </form>
+          </div>
+        </div>
+    </div>
+    <div class="ink-shade fade">
+        <div id="signupModal" class="ink-modal fade" data-trigger=".signup" data-width="80%" data-height="80%" role="dialog" aria-hidden="true" aria-labelled-by="signup-title">
+          <div class="modal-header">
+              <button class="modal-close ink-dismiss"></button>
+              <h2 id="login-title">Sign Up</h2>
+          </div>
+          <div class="modal-body" id="signupContent">
+            <form id="signupForm" class="ink-form ink-formvalidator" method="post" action="#">
+              <div class="column-group gutters">
+                  <div class="control-group required all-50">
+                      <label for="fname">First Name</label>
+                      <div class="control">
+                          <input type="text" name="first name" id="fname" data-rules="required|alpha_dash" />
+                      </div>
+                  </div>
+                  <div class="control-group required all-50">
+                      <label for="lname">Last Name</label>
+                      <div class="control">
+                          <input type="text" name="last name" id="lname" data-rules="required|alpha_dash" />
+                      </div>
+                  </div>
+              </div>
+              <div class="control-group required">
+                  <label for="e-mail">Email</label>
+                  <div class="control">
+                      <input type="text" name="e-mail" id="e-mail" data-rules="required|email" />
+                  </div>
+              </div>
+              <div class="control-group required">
+                  <label for="phone">Phone</label>
+                  <div class="control">
+                      <input type="text" name="phone number" id="phone" data-rules="required|min_length[10]|max_length[11]" />
+                  </div>
+              </div>
+              <div class="control-group required">
+                  <label for="pass">Password </label>
+                  <div class="control">
+                      <input type="password" name="password" id="pass" data-rules="required|min_length[8]" />
+                  </div>
+              </div>
+              <div class="control-group required">
+                  <label for="confpass">Confirm Password:</label>
+                  <div class="control">
+                      <input type="password" name="password confirmation" id="confpass" data-rules="required|matches[password]" data-label="password confirmation" />
+                  </div>
+              </div>
+              <input type="submit" name="sub" value="Submit" class="ink-button success" />
+            </form>
+          </div>
+        </div>
+    </div>
     <header class="ink-grid" style="height: 0px;">
       <nav class="ink-navigation ink-sticky column-group">
         <div class="push-left all-70">
@@ -55,7 +131,7 @@ TODO:
         <div class="logo all-50 push-center push-middle">
           <img src="./ACM_Logo_wordmark-white.png" width="100%" alt="UF ACM Logo"/>
           <figcaption class="ink-flex">
-            <div class="logo-caption push-center push-middle">Code. Laugh. Get Hired.</div>
+            <div class="logo-caption push-center push-middle">University of Florida</div>
             <div class="buttons push-right logo-buttons">
               <button class="ink-button green login">Login</button>
               <button class="ink-button blue signup">Sign Up</button>
@@ -110,43 +186,7 @@ TODO:
       <section class="event-stream">
         <h2 class="thin">Events Stream</h2>
         <div class="results">
-      <div class="column-group">
-        <div class="small-100 medium-25">
-            <p>Thursday, December 1st</p>
-            <p> at&nbsp;6:15 pm</p>
         </div>
-        <div class="small-100 medium-25"></div>
-        <div class="small-100 medium-50">
-            <h3>Complements 12</h3>
-            <p></p>
-            <p>(Desciption)</p>
-            <div class="column-group">
-                <div class="small-85">
-                    <p><i class="fa fa-location-arrow" aria-hidden="true"></i> LIT 121</p>
-                </div>
-                <div class="small-15"><a href="https://www.facebook.com/events/308269532898014"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></div>
-            </div>
-        </div>
-    </div>
-    <div class="column-group">
-        <div class="small-100 medium-25">
-            <p>Friday, December 2nd</p>
-            <p> at&nbsp;6:15 pm</p>
-        </div>
-        <div class="small-100 medium-25"></div>
-        <div class="small-100 medium-50">
-            <h3>Supplements 3: Java GUI w/ Software Engineering Club</h3>
-            <p></p>
-            <p>Our last Supplement of the semester will focus on making a Graphical User Interface in Java. Put all of the skills you've learned this semester together in this interactive tutorial co-hosted by the Software Engineering Club.</p>
-            <div class="column-group">
-                <div class="small-85">
-                    <p><i class="fa fa-location-arrow" aria-hidden="true"></i></p>
-                </div>
-                <div class="small-15"><a href="https://www.facebook.com/events/368757526793879"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></div>
-            </div>
-        </div>
-    </div>
-</div>
       </section>
     </div>
     <!-- jQuery -->
@@ -154,7 +194,7 @@ TODO:
     <!-- Ink JS -->
     <script type="text/javascript" src="http://fastly.ink.sapo.pt/3.1.10/js/ink-all.js"></script>
     <!-- Ink Autoload -->
-    <script type="text/javascript" src="http://fastly.ink.sapo.pt/3.1.10/js/autoload.js"></script>
+    <!-- <script type="text/javascript" src="http://fastly.ink.sapo.pt/3.1.10/js/autoload.js"></script> -->
     <script type="text/javascript" src="http://cdn.ink.sapo.pt/3.1.10/js/modernizr.js"></script>
     <script type="text/javascript" src="./parallax.min.js"></script>
     <script type="text/javascript">
@@ -162,25 +202,66 @@ TODO:
         test: Modernizr.flexbox,
         nope : 'http://cdn.ink.sapo.pt/3.1.10/css/ink-legacy.min.css',
       });
-      $('.intro').css('height', $(window).height());
-      if($(window).width()   < 823){
-        $('.buttons').removeClass('push-right');
-        $('.buttons').addClass('push-center');
-      } else {
-        $('.buttons').removeClass('push-center');
-        $('.buttons').addClass('push-right');
-      }
-      $('.where-map>iframe').attr('width', $('.what').width());
-      $(window).resize(function(){
-        $('.intro').css('height', $(window).height());
-        $('.where-map>iframe').attr('width', $('.what').width());
-        if($(window).width()   < 823){
-          $('.buttons').removeClass('push-right');
-          $('.buttons').addClass('push-center');
-        } else {
-          $('.buttons').removeClass('push-center');
-          $('.buttons').addClass('push-right');
-        }
+      Ink.requireModules([
+          'Ink.UI.Modal_1',
+          'Ink.UI.FormValidator_2'
+        ], function( Modal, FormValidator){
+          //Set up modals
+          var loginModal = new Modal('#loginModal', {closeOnClick: true});
+          var signupModal = new Modal('#signupModal', {closeOnClick: true});
+
+          //Set up forms
+          var loginForm = new FormValidator('#loginForm');
+          var signupForm = new FormValidator('#signupForm');
+
+          //Change message from password confirmation field when passwords do not match
+          FormValidator.setRule('matches', 'Passwords do not match', function( value, fieldToCompare ){
+            // Find the other field in the FormValidator.
+            var otherField = this.getFormElements()[fieldToCompare];
+
+            if (!otherField) {
+                // It's in the actual <form>, not in the FormValidator's fields
+                var possibleFields = Ink.ss('input, select, textarea, .control-group', this._options.form._element);
+                for (var i = 0; i < possibleFields.length; i++) {
+                    if ((possibleFields[i].name || possibleFields[i].id) === fieldToCompare) {
+                        return getValue(possibleFields[i]) === value;
+                    }
+                }
+                return false;
+            } else {
+                otherField = otherField[0];
+            }
+
+            var otherFieldValue = otherField.getValue();
+            if (otherField._rules.required) {
+                if (otherFieldValue === '') {
+                    return false;
+                }
+            }
+            return value === otherFieldValue;
+          });
+
+          $('.intro').css('height', ($(window).height() * .9));
+          if($(window).width()   < 823){
+            $('.buttons').removeClass('push-right');
+            $('.buttons').addClass('push-center');
+          } else {
+            $('.buttons').removeClass('push-center');
+            $('.buttons').addClass('push-right');
+          }
+          $('.where-map>iframe').attr('width', $('.what').width())
+
+          $(window).resize(function(){
+            $('.intro').css('height', ($(window).height() * .9));
+            $('.where-map>iframe').attr('width', $('.what').width());
+            if($(window).width()   < 823){
+              $('.buttons').removeClass('push-right');
+              $('.buttons').addClass('push-center');
+            } else {
+              $('.buttons').removeClass('push-center');
+              $('.buttons').addClass('push-right');
+            }
+          });
       });
     </script>
   </body>
@@ -219,12 +300,5 @@ TODO:
     .ink-navigation .pills li a{
       padding: 6.5px 1em;
     }
-    /*.ink-sticky-stuck{
-      background-color: rgba(5, 155, 210, 0.6);
-      transition-property: background-color;
-      transition-duration: .3s;
-      transition-timing-function: ease-out;
-      /*transition-delay: 1s;*/
-    }*/
   </style>
 </html>
