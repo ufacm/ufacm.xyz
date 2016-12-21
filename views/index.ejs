@@ -1,110 +1,93 @@
-<html lang="en">
-   <head>
-      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
-      <link rel="icon " type = "image/x-icon" href="img/icon.png"/>
-      <title>UF ACM | University of Florida Association for Computing Machinery</title>
-      <!-- CSS -->
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
-      <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-      <!-- Font -->
-      <link href='https://fonts.googleapis.com/css?family=Roboto:100,100italic' rel='stylesheet' type='text/css'>
-      <!-- Script for nav --> <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script> <script src="js/bin/materialize.js"></script> <script src="js/bin/moment.min.js"></script> <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script> <script> $(document).ready(function(){ $('.parallax').parallax(); $('select').material_select(); $(".button-collapse").sideNav(); $(".dropdown-button").dropdown(); $('.slider').slider({full_width: true}); }); </script>
-   </head>
-   <!-- navbar include directive --> <% include navBar %>
-   <body>
-      <div style="height:30%; background-image: url('img/marston.jpg'); position:relative; top:-75px; z-index:-1;">
-         <h1 class="header white-text">UFACM</h1>
+<!DOCTYPE html>
+<!--
+TODO:
+-fix event stream layout
+ -->
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+    <link rel="icon " type = "image/x-icon" href="img/favicon.png"/>
+    <title>UF ACM | University of Florida Association for Computing Machinery</title>
+    <link rel="stylesheet" type="text/css" href="http://fastly.ink.sapo.pt/3.1.10/css/ink.css"> <!-- inks css file  -->
+    <!-- Ink Flexbox support -->
+    <link rel="stylesheet" href="http://cdn.ink.sapo.pt/3.1.10/css/ink-flex.min.css">
+    <!--[if lt IE 9 ]>
+      <link rel="stylesheet" href="ink-ie.min.css" type="text/css">
+    <![endif]-->
+    <link rel="stylesheet" href="css/style.css" media="screen">
+    <script src="https://use.fontawesome.com/cb1f156474.js"></script>
+  </head>
+  <body>
+    <!-- navbar include directive --> <% include navBar %>
+    <div class="ink-flex">
+      <div class="intro column-group">
+        <div class="logo all-50 push-center push-middle">
+          <img src="img/ACM_Logo_wordmark-white.png" width="100%" alt="UF ACM Logo"/>
+          <figcaption class="ink-flex">
+            <div class="logo-caption push-center push-middle">University of Florida</div>
+            <div class="buttons push-right logo-buttons">
+              <button class="ink-button green login">Login</button>
+              <button class="ink-button blue signup">Sign Up</button>
+            </div>
+          </figcaption>
+        </div>
       </div>
-      <main>
-         <div class="container">
-            <div class="slider" >
-               <ul class="slides">
-                  <li>
-                     <img src="img/0044.jpg" alt="UFACM"> <!-- random image -->
-                     <div class="caption bottom">
-                        <h2 class="thin" style="top:100px; position:relative;">We have info sessions</h2>
-                        <!--<h5 class="light grey-text text-lighten-3">Come to our info sessions</h5>-->
-                     </div>
-                  </li>
-                  <li>
-                     <img src="img/0036.jpg" alt="UFACM"> <!-- random image -->
-                     <div class="caption right-align">
-                        <h2 class="thin">Friday Night Hacks</h2>
-                        <!--<h5 class="light grey-text text-lighten-3">Every other friday night we get together and work on a projects</h5>-->
-                     </div>
-                  </li>
-                  <li>
-                     <img src="img/0004.jpg" alt="UFACM"> <!-- random image -->
-                     <div class="caption center-align">
-                        <h2 class="thin">We also bring great talent to speak</h2>
-                        <!--<h5 class="light grey-text text-lighten-3">Show up to our talks!</h5>-->
-                     </div>
-                  </li>
-                  <li>
-                     <img src="img/0014.jpg" alt="UFACM"> <!-- random image -->
-                     <div class="caption center-align">
-                        <h2 class="thin black-text">We host tutorials</h2>
-                        <!--<h5 class="light grey-text text-lighten-3">Such as web development</h5>-->
-                     </div>
-                  </li>
-               </ul>
-            </div>
-            <div class="row">
-               <div class="col s12 m6">
-                  <div>
-                     <span>
-                        <h3 class="thin">Who are we?</h3>
-                        We are the University of Florida's student chapter of the Association for Computing Machinery. We are an organization dedicated to the promotion of computer science research, education, and involvement within the students of the CISE department.
-                     </span>
-                  </div>
-               </div>
-               <div class="col s12 m6 ">
-                  <div>
-                     <span>
-                        <h3 class="thin">What do we do?</h3>
-                        During the year, you can find us bringing companies like Google and Microsoft to campus, promoting cool Special Interest Groups and throwing awesome department-wide events. <i><b>You should checkout some of our Special Interest Groups (SIGs) in the top right corner!</b></i>
-                     </span>
-                  </div>
-               </div>
-               <div class="col s12 m6">
-                  <!--<img class="responsive-img"src="img/infosession.jpg"/>-->
-               </div>
-            </div>
-            <div class="divider"></div>
-            <div class ="row">
-               <div class="col s12 m6">
-                  <span>
-                     <h3 class="thin">Where are we?</h3>
-                     Generally we are all over the place with our meetings and info-sessions, but our main office, the Fishbowl is located right next to Marston Science library.
-                  </span>
-               </div>
-               <div class="col s12 m6">
-                  <div class="video-container"> <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d866.8704288329208!2d-82.34539252659759!3d29.64779286121216!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x4156837deaad6398!2sThe+Fishbowl+University+of+Florida+ACM+Office!5e0!3m2!1sen!2sus!4v1457289106346" width="600" height="300" frameborder="0" style="border:0" allowfullscreen></iframe> </div>
-               </div>
-            </div>
-            <div class="divider"></div>
-            <div class ="row">
-               <div class="col s12 m12">
-                  <span>
-                     <h2 class="thin center-align">Sponsors</h2>
-                  </span>
-               </div>
-            </div>
-            <div class ="row" style="text-align:center;">
-               <div class="col s12 m6"> <img src="img/infinite-energy.png"style = "width: 80%; height: auto;" /> </div>
-               <div class="col s12 m6"> <img src="img/bloomberg.jpg" style = "width: 80%; height: auto;"/> </div>
-           </div>
-             <div class ="row" style="text-align:center;">
-               <div class="col s12"> <img src="img/airwatch.png" style = "width: 40%; height: auto; padding-bottom:40px;"/> </div>
-               <div class="col s12 "> <img style="width:15%; height:auto;"src="img/statefarm.jpg"/> </div>
-            </div>
-            <div class="divider"></div>
-            <% include eventStream/eventstream %>
-         </div>
-
-      </main>
-      <!-- Scripts--> <script src="js/bin/materialize.js"></script>
-   </body>
+    </div>
+    <div class="ink-grid">
+      <section class="who-what column-group horizontal-gutters">
+        <div class="who all-50 tiny-100 small-100">
+          <span>
+             <h3>Who are we?</h3>
+             We are the University of Florida's student chapter of the Association for Computing Machinery. We are an organization dedicated to the promotion of computer science research, education, and involvement within the students of the CISE department.
+          </span>
+        </div>
+        <div class="what all-50 tiny-100 small-100">
+          <span>
+             <h3>What do we do?</h3>
+             During the year, you can find us bringing companies like Google and Microsoft to campus, promoting cool Special Interest Groups, and throwing awesome department-wide events. <i><b>You should checkout some of our Special Interest Groups (SIGs) in the top right corner!</b></i>
+          </span>
+        </div>
+      </section>
+      <section class="where column-group horizontal-gutters">
+          <div class="where-text all-50 tiny-100 small-100">
+            <span>
+               <h3>Where are we?</h3>
+               Generally we are all over the place with our meetings and info-sessions, but our main office, the Fishbowl is located across the pathway in front of Marston Science library's entrance. Our door has the large, blue ACM logo on it. It's on the right side of the photo below!
+            </span>
+          </div>
+          <div class="where-map all-50 tiny-100 small-100">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d866.8704288329208!2d-82.34539252659759!3d29.64779286121216!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x4156837deaad6398!2sThe+Fishbowl+University+of+Florida+ACM+Office!5e0!3m2!1sen!2sus!4v1457289106346" width="600" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+          </div>
+      </section>
+    </div>
+    <div class="parallax-window" data-parallax="scroll" data-image-src="img/pano.jpg" data-speed="0.55"></div>
+    <div class="ink-grid">
+      <section class="sponsors column-group push-center align-center">
+        <div class="all-100 align-center">
+          <span>
+             <h2 class="align-center">Sponsors</h2>
+          </span>
+        </div>
+        <div class="small-100 medium-50"> <img src="img/infinite-energy.png" style = "width: 80%; height: auto;" /> </div>
+        <div class="small-100 medium-50"> <img src="img/bloomberg.jpg" style = "width: 80%; height: auto;"/> </div>
+        <div class="all-100 align-center"><img src="img/airwatch.png" style = "width: 40%; height: auto; padding-bottom:40px;"/> </div>
+        <div class="all-100 align-center"><img style="width:15%; height:auto;"src="img/statefarm.jpg"/></div>
+      </section>
+      <section class="event-stream">
+        <h2 class="thin">Events Stream</h2>
+        <div class="results">
+        </div>
+      </section>
+    </div>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <!-- Ink JS -->
+    <script type="text/javascript" src="http://fastly.ink.sapo.pt/3.1.10/js/ink-all.js"></script>
+    <!-- Ink Autoload -->
+    <!-- <script type="text/javascript" src="http://fastly.ink.sapo.pt/3.1.10/js/autoload.js"></script> -->
+    <script type="text/javascript" src="http://cdn.ink.sapo.pt/3.1.10/js/modernizr.js"></script>
+    <script type="text/javascript" src="js/bin/parallax.min.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+  </body>
 </html>

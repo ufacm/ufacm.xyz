@@ -7,7 +7,7 @@ body {
 .parallax-container {
       height: 200px;
     }
-       
+
 main {
 	flex: 1 0 auto;
 }
@@ -22,3 +22,51 @@ main {
 }
 
 .ui-helper-hidden-accessible { display:none; }
+
+/*new page*/
+
+/*navbar*/
+.nav-up{
+	top: -45px !important;
+}
+.nav-down{
+	top: 0 !important;
+}
+nav{
+	-webkit-transition: top .5s; /* Safari */
+	transition: top .5s;
+	font-weight: 500;
+}
+.ink-sticky-wrapper{
+	background-color: #20acdb;
+}
+.ink-navigation ul.menu.blue {
+	background-color: #20acdb;
+}
+
+/*homepage*/
+.intro{
+	background: #67daef; /* Old browsers */
+	background: -moz-linear-gradient(-45deg, #67daef 0%, #059bd3 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(-45deg, #67daef 0%,#059bd3 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(135deg, #67daef 0%,#059bd3 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#67daef', endColorstr='#059bd3',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+	width: auto;
+}
+.ink-button{
+	font-weight: 400;
+	border-radius: 50px;
+}
+.logo-caption{
+	color: #fff;
+	font-size: 1.5em;
+}
+.parallax-window {
+	min-height: 350px;
+	width: 100%;
+	background: transparent;
+}
+.who-what, .where, .sponsors{
+	margin-top: 25px;
+	margin-bottom: 25px;
+}

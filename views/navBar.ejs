@@ -1,56 +1,112 @@
-<ul id="dropdownMobile" class="dropdown-content">
-  <li><a href="/ufpt">UFPT</a></li>
-  <li><a href="http://ufsec.com/">SEC</a></li>
-  <li><a href="https://www.facebook.com/groups/1499711090349840/">UF Hackathoners</a></li>
-  <li><a href="https://www.facebook.com/groups/1695957843991327/">First Time Programmers</a></li>
-  <li><a href="https://www.facebook.com/groups/UFAIClub/">AI Club</a></li>
-  <li><a href="https://www.facebook.com/groups/1050011381726686/">GatorVR</a></li>
-  <li><a href="http://ufsit.org/">UFSIT</a></li>
-</ul>
-<ul id="dropdownMain" class="dropdown-content">
-  <li><a href="/ufpt">UFPT</a></li>
-  <li><a href="http://ufsec.com/">SEC</a></li>
-  <li><a href="https://www.facebook.com/groups/1499711090349840/">UF Hackathoners</a></li>
-  <li><a href="https://www.facebook.com/groups/1695957843991327/">First Time Programmers</a></li>
-  <li><a href="https://www.facebook.com/groups/UFAIClub/">AI Club</a></li>
-  <li><a href="https://www.facebook.com/groups/1050011381726686/">GatorVR</a></li>
-  <li><a href="http://ufsit.org/">UFSIT</a></li>
-</ul>
-    <nav class="white-text transparent z-depth-0">
-        <div class="nav-wrapper  white-text z-index:3;">
-            <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
-            <ul class="right hide-on-med-and-down">
-                <li><a href="/">Home</a></li>
-                <li><a href="/events">Events</a></li>
-                <li><a href="/contactus">Contact Us</a></li>
-                <li><a href="/contact">Our Staff</a></li>
-                <% if (typeof user == 'undefined') { %>
-                <li><a href="/login">Log In</a></li>
-                <li><a href="/signup">Sign Up</a></li>
-                <% } %>
-                <% if (typeof user !== 'undefined') { %>
-                  <li><a href="/profile">Profile</a></li>
-                  <li><a href="/logout">Log Out</a></li>
-                <% } %>
-                <li><a class="dropdown-button" style="padding-left: 30px" href="#" data-activates="dropdownMain">SIGS<i class="material-icons right">arrow_drop_down</i></a></li>
-            </ul>
-            <ul id="slide-out" class="side-nav">
-              <li><a href="/">Home</a></li>
-              <li><a href="/events">Events</a></li>
-              <li><a href="/contactus">Contact Us</a></li>
-              <li><a href="/contact">Our Staff</a></li>
-              <% if (typeof user == 'undefined') { %>
-              <li><a href="/login">Log In</a></li>
-              <li><a href="/signup">Sign Up</a></li>
-              <% } %>
-              <% if (typeof user !== 'undefined') { %>
-                <li><a href="/resume">Resume</a></li>
-                <li><a href="/code">Code Tutorial</a></li>
-                <li><a href="/profile">Profile</a></li>
-                <li><a href="/logout">Log Out</a></li>
-              <% } %>
-              <li><a class="dropdown-button" href="#" data-activates="dropdownMobile">SIGS<i class="material-icons right">arrow_drop_down</i></a></li>
-
-            </ul>
-        </div>
-    </nav>
+<div class="ink-shade fade">
+    <div id="loginModal" class="ink-modal fade" data-trigger=".login" data-width="80%" data-height="80%" role="dialog" aria-hidden="true" aria-labelled-by="login-title">
+      <div class="modal-header">
+          <button class="modal-close ink-dismiss"></button>
+          <h2 id="login-title">Login</h2>
+      </div>
+      <div class="modal-body" id="loginContent">
+        <form id="loginForm" class="ink-form ink-formvalidator" method="post" action="#">
+          <div class="control-group required">
+              <label for="e-mail">Email</label>
+              <div class="control">
+                  <input type="text" name="e-mail" id="e-mail" data-rules="required|email" />
+              </div>
+          </div>
+          <div class="control-group required">
+              <label for="pass">Password</label>
+              <div class="control">
+                  <input type="password" name="password" id="pass" data-rules="required" />
+              </div>
+          </div>
+          <input type="submit" name="sub" value="Submit" class="ink-button success" />
+        </form>
+      </div>
+    </div>
+</div>
+<div class="ink-shade fade">
+    <div id="signupModal" class="ink-modal fade" data-trigger=".signup" data-width="80%" data-height="80%" role="dialog" aria-hidden="true" aria-labelled-by="signup-title">
+      <div class="modal-header">
+          <button class="modal-close ink-dismiss"></button>
+          <h2 id="login-title">Sign Up</h2>
+      </div>
+      <div class="modal-body" id="signupContent">
+        <form id="signupForm" class="ink-form ink-formvalidator" method="post" action="#">
+          <div class="column-group gutters">
+              <div class="control-group required all-50">
+                  <label for="fname">First Name</label>
+                  <div class="control">
+                      <input type="text" name="first name" id="fname" data-rules="required|alpha_dash" />
+                  </div>
+              </div>
+              <div class="control-group required all-50">
+                  <label for="lname">Last Name</label>
+                  <div class="control">
+                      <input type="text" name="last name" id="lname" data-rules="required|alpha_dash" />
+                  </div>
+              </div>
+          </div>
+          <div class="control-group required">
+              <label for="e-mail">Email</label>
+              <div class="control">
+                  <input type="text" name="e-mail" id="e-mail" data-rules="required|email" />
+              </div>
+          </div>
+          <div class="control-group">
+              <label for="phone">Phone</label>
+              <div class="control">
+                  <input type="text" name="phone number" id="phone" data-rules="min_length[10]|max_length[11]" />
+              </div>
+          </div>
+          <div class="control-group required">
+              <label for="pass">Password </label>
+              <div class="control">
+                  <input type="password" name="password" id="pass" data-rules="required|min_length[8]" />
+              </div>
+          </div>
+          <div class="control-group required">
+              <label for="confpass">Confirm Password:</label>
+              <div class="control">
+                  <input type="password" name="password confirmation" id="confpass" data-rules="required|matches[password]" data-label="password confirmation" />
+              </div>
+          </div>
+          <input type="submit" name="sub" value="Submit" class="ink-button success" />
+        </form>
+      </div>
+    </div>
+</div>
+<nav class="ink-navigation ink-sticky">
+    <ul class="menu horizontal blue">
+      <div class="push-left">
+        <li class="active"><a href="/">Home</a></li>
+        <li><a href="/events">Events</a></li>
+        <li><a href="/contactus">Contact Us</a></li>
+        <li><a href="/contact">Our Staff</a></li>
+        <li><a href="#">SIGS <i class="fa fa-caret-down" aria-hidden="true"></i></a>
+          <ul class="submenu">
+            <li><a href="/ufpt">UFPT</a></li>
+            <li><a href="http://ufsec.com/">SEC</a></li>
+            <li><a href="https://www.facebook.com/groups/1499711090349840/">UF Hackathoners</a></li>
+            <li><a href="https://www.facebook.com/groups/1695957843991327/">First Time Programmers</a></li>
+            <li><a href="https://www.facebook.com/groups/UFAIClub/">AI Club</a></li>
+            <li><a href="https://www.facebook.com/groups/1050011381726686/">GatorVR</a></li>
+            <li><a href="http://ufsit.org/">UFSIT</a></li>
+            <li><a href="https://www.facebook.com/groups/ufdas/">UF DAS</a></li>
+            <li><a href="https://www.facebook.com/groups/1831203810447278/">UF Financial Technology Group</a></li>
+            <li><a href="https://www.facebook.com/groups/162833737423706/">UF Open Source Club </a></li>
+        </ul>
+        </li>
+        <li><a href="https://www.facebook.com/ufacm/" target="_blank"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i><span class="sr-only">Facebook</span></a></li>
+        <li><a href="https://www.instagram.com/uf.acm/" target="_blank"><i class="fa fa-instagram fa-lg" aria-hidden="true"></i><span class="sr-only">Instagram</span></a></li>
+      </div>
+      <div class="push-right">
+        <% if (typeof user == 'undefined') { %>
+        <li><a class="login">Log In</a></li>
+        <li><a class="signup">Sign Up</a></li>
+        <% } %>
+        <% if (typeof user !== 'undefined') { %>
+          <li><a href="/profile">Profile</a></li>
+          <li><a href="/logout">Log Out</a></li>
+        <% } %>
+      </div>
+    </ul>
+</nav>
