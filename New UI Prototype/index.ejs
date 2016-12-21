@@ -1,13 +1,7 @@
 <!DOCTYPE html>
 <!--
 TODO:
-- add translucent background behind navbar once user starts scrolling down
-- add down arrow at bottom of intro section that scrolls down to the next section
-  -implement smooth scrolling from Ink framework
 -fix event stream layout
--make login/signup modals
--change buttons when user is logged in
--add SIGS dropdown
  -->
 <html>
   <head>
@@ -109,23 +103,40 @@ TODO:
           </div>
         </div>
     </div>
-    <header class="ink-grid" style="height: 0px;">
-      <nav class="ink-navigation ink-sticky column-group">
-        <div class="push-left all-70">
-          <ul class="pills horizontal blue push-left">
-            <li class="active"><a href="#page-top">Home</a></li>
-            <li><a href="#">Events</a></li>
-            <li><a href="#">Contact Us</a></li>
-            <li><a href="#">Our Staff</a></li>
-            <li><a href="#">SIGs</a></li>
-          </ul>
-        </div>
-        <div class="all-30">
-          <button class="ink-button blue signup push-right" style="margin-left: 5px;">Sign Up</button>
-          <button class="ink-button green login push-right">Login</button>
-        </div>
-        </nav>
-    </header>
+    <nav class="ink-navigation ink-sticky">
+        <ul class="menu horizontal blue">
+          <div class="push-left">
+            <li class="active"><a href="/">Home</a></li>
+            <li><a href="/events">Events</a></li>
+            <li><a href="/contactus">Contact Us</a></li>
+            <li><a href="/contact">Our Staff</a></li>
+            <li><a href="#">SIGS <i class="fa fa-caret-down" aria-hidden="true"></i></a>
+              <ul class="submenu">
+                <li><a href="/ufpt">UFPT</a></li>
+                <li><a href="http://ufsec.com/">SEC</a></li>
+                <li><a href="https://www.facebook.com/groups/1499711090349840/">UF Hackathoners</a></li>
+                <li><a href="https://www.facebook.com/groups/1695957843991327/">First Time Programmers</a></li>
+                <li><a href="https://www.facebook.com/groups/UFAIClub/">AI Club</a></li>
+                <li><a href="https://www.facebook.com/groups/1050011381726686/">GatorVR</a></li>
+                <li><a href="http://ufsit.org/">UFSIT</a></li>
+                <li><a href="https://www.facebook.com/groups/ufdas/">UF DAS</a></li>
+                <li><a href="https://www.facebook.com/groups/1831203810447278/">UF Financial Technology Group</a></li>
+                <li><a href="https://www.facebook.com/groups/162833737423706/">UF Open Source Club </a></li>
+            </ul>
+            </li>
+          </div>
+          <div class="push-right">
+            <!-- <% if (typeof user == 'undefined') { %> -->
+            <li><a class="login">Log In</a></li>
+            <li><a class="signup">Sign Up</a></li>
+            <!-- <% } %> -->
+            <!-- <% if (typeof user !== 'undefined') { %> -->
+              <li><a href="/profile">Profile</a></li>
+              <li><a href="/logout">Log Out</a></li>
+            <!-- <% } %> -->
+          </div>
+        </ul>
+    </nav>
     <div class="ink-flex">
       <div class="intro column-group">
         <div class="logo all-50 push-center push-middle">
@@ -154,7 +165,7 @@ TODO:
         <div class="what all-50 tiny-100 small-100">
           <span>
              <h3>What do we do?</h3>
-             During the year, you can find us bringing companies like Google and Microsoft to campus, promoting cool Special Interest Groups and throwing awesome department-wide events. <i><b>You should checkout some of our Special Interest Groups (SIGs) in the top right corner!</b></i>
+             During the year, you can find us bringing companies like Google and Microsoft to campus, promoting cool Special Interest Groups, and throwing awesome department-wide events. <i><b>You should checkout some of our Special Interest Groups (SIGs) in the top right corner!</b></i>
           </span>
         </div>
       </section>
@@ -204,8 +215,9 @@ TODO:
       });
       Ink.requireModules([
           'Ink.UI.Modal_1',
-          'Ink.UI.FormValidator_2'
-        ], function( Modal, FormValidator){
+          'Ink.UI.FormValidator_2',
+          'Ink.UI.Sticky_1'
+        ], function( Modal, FormValidator, Sticky){
           //Set up modals
           var loginModal = new Modal('#loginModal', {closeOnClick: true});
           var signupModal = new Modal('#signupModal', {closeOnClick: true});
@@ -213,6 +225,11 @@ TODO:
           //Set up forms
           var loginForm = new FormValidator('#loginForm');
           var signupForm = new FormValidator('#signupForm');
+
+          //Change message for requried fields to sound more natural
+          FormValidator.setRule('required', 'A {field} is required', function( value ){
+            return ( (typeof value !== 'undefined') && ( !(/^\s*$/).test(value) ) );
+          });
 
           //Change message from password confirmation field when passwords do not match
           FormValidator.setRule('matches', 'Passwords do not match', function( value, fieldToCompare ){
@@ -241,6 +258,25 @@ TODO:
             return value === otherFieldValue;
           });
 
+          //Set navbar to stick
+          new Sticky('.ink-sticky');
+
+          var didScroll;
+          var lastScrollTop = 0;
+          var delta = 5;
+          var navbarHeight = $('nav').outerHeight();
+
+          $(window).scroll(function(event){
+              didScroll = true;
+          });
+
+          setInterval(function() {
+              if (didScroll) {
+                  hasScrolled();
+                  didScroll = false;
+              }
+          }, 250);
+
           $('.intro').css('height', ($(window).height() * .9));
           if($(window).width()   < 823){
             $('.buttons').removeClass('push-right');
@@ -262,6 +298,29 @@ TODO:
               $('.buttons').addClass('push-right');
             }
           });
+
+          function hasScrolled() {
+
+              var st = $(this).scrollTop();
+
+              // Make sure they scroll more than delta
+              if(Math.abs(lastScrollTop - st) <= delta)
+                  return;
+
+              // If they scrolled down and are past the navbar, change top value.
+              // This is necessary so you never see what is "behind" the navbar.
+              if (st > lastScrollTop && st > navbarHeight /*&& $('.navbar-toggle').attr('aria-expanded') === "false"*/){
+                  // Scroll Down
+                  $('nav').removeClass('nav-down').addClass('nav-up');
+              } else {
+                  // Scroll Up
+                  if(st + $(window).height() < $(document).height()) {
+                      $('nav').removeClass('nav-up').addClass('nav-down');
+                  }
+              }
+
+              lastScrollTop = st;
+          }
       });
     </script>
   </body>
@@ -282,12 +341,6 @@ TODO:
       color: #fff;
       font-size: 1.5em;
     }
-    .ink-navigation ul.pills li{
-      border-radius: 50px;
-    }
-    .ink-navigation ul.pills.blue li a{
-      font-weight: 400;
-    }
     .parallax-window {
       min-height: 350px;
       width: 100%;
@@ -299,6 +352,23 @@ TODO:
     }
     .ink-navigation .pills li a{
       padding: 6.5px 1em;
+    }
+    .nav-up{
+      top: -45px !important;
+    }
+    .nav-down{
+      top: 0 !important;
+    }
+    nav{
+      -webkit-transition: top .5s; /* Safari */
+      transition: top .5s;
+      font-weight: 500;
+    }
+    .ink-sticky-wrapper{
+      background-color: #20acdb;
+    }
+    .ink-navigation ul.menu.blue {
+      background-color: #20acdb;
     }
   </style>
 </html>
