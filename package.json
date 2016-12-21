@@ -6,7 +6,7 @@
   "precommit": "gulp precommit",
   "repository": {
     "type": "git",
-    "url": "https://github.com/UniversityOfFloridaACM/WebAPP.git"
+    "url": "https://github.com/ufacm/ufacm.xyz.git"
   },
   "main": "server.js",
   "dependencies": {
