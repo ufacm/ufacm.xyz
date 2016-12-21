@@ -5,8 +5,9 @@ Modernizr.load({
 Ink.requireModules([
     'Ink.UI.Modal_1',
     'Ink.UI.FormValidator_2',
-    'Ink.UI.Sticky_1'
-  ], function( Modal, FormValidator, Sticky){
+    'Ink.UI.Sticky_1',
+    'Ink.Util.Validator_1'
+  ], function( Modal, FormValidator, Sticky, InkValidator){
     //Set up modals
     var loginModal = new Modal('#loginModal', {closeOnClick: true});
     var signupModal = new Modal('#signupModal', {closeOnClick: true});
@@ -18,6 +19,11 @@ Ink.requireModules([
     //Change message for requried fields to sound more natural
     FormValidator.setRule('required', 'A {field} is required', function( value ){
       return ( (typeof value !== 'undefined') && ( !(/^\s*$/).test(value) ) );
+    });
+
+    //Change message for email fields to sound more natural
+    FormValidator.setRule('email', 'Email address is invalid', function( value ){
+      return ( ( typeof value === 'string' ) && InkValidator.mail( value ) );
     });
 
     //Change message from password confirmation field when passwords do not match
