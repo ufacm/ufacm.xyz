@@ -66,28 +66,6 @@ Ink.requireModules([
         }
     }, 250);
 
-    $('.intro').css('height', ($(window).height() * .9));
-    if($(window).width()   < 823){
-      $('.buttons').removeClass('push-right');
-      $('.buttons').addClass('push-center');
-    } else {
-      $('.buttons').removeClass('push-center');
-      $('.buttons').addClass('push-right');
-    }
-    $('.where-map>iframe').attr('width', $('.what').width())
-
-    $(window).resize(function(){
-      $('.intro').css('height', ($(window).height() * .9));
-      $('.where-map>iframe').attr('width', $('.what').width());
-      if($(window).width()   < 823){
-        $('.buttons').removeClass('push-right');
-        $('.buttons').addClass('push-center');
-      } else {
-        $('.buttons').removeClass('push-center');
-        $('.buttons').addClass('push-right');
-      }
-    });
-
     function hasScrolled() {
 
         var st = $(this).scrollTop();

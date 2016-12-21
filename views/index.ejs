@@ -9,7 +9,6 @@ TODO:
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
     <link rel="icon " type = "image/x-icon" href="img/favicon.png"/>
     <title>UF ACM | University of Florida Association for Computing Machinery</title>
-    <link rel="stylesheet" type="text/css" href="http://fastly.ink.sapo.pt/3.1.10/css/ink.css"> <!-- inks css file  -->
     <!-- Ink Flexbox support -->
     <link rel="stylesheet" href="http://cdn.ink.sapo.pt/3.1.10/css/ink-flex.min.css">
     <!--[if lt IE 9 ]>
@@ -89,5 +88,28 @@ TODO:
     <script type="text/javascript" src="http://cdn.ink.sapo.pt/3.1.10/js/modernizr.js"></script>
     <script type="text/javascript" src="js/bin/parallax.min.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
+    <script type="text/javascript">
+    $('.intro').css('height', ($(window).height() * .9 - $('nav').outerHeight()));
+    if($(window).width()   < 823){
+      $('.buttons').removeClass('push-right');
+      $('.buttons').addClass('push-center');
+    } else {
+      $('.buttons').removeClass('push-center');
+      $('.buttons').addClass('push-right');
+    }
+    $('.where-map>iframe').attr('width', $('.what').width())
+
+    $(window).resize(function(){
+      $('.intro').css('height', ($(window).height() * .9 - $('nav').outerHeight()));
+      $('.where-map>iframe').attr('width', $('.what').width());
+      if($(window).width()   < 823){
+        $('.buttons').removeClass('push-right');
+        $('.buttons').addClass('push-center');
+      } else {
+        $('.buttons').removeClass('push-center');
+        $('.buttons').addClass('push-right');
+      }
+    });
+    </script>
   </body>
 </html>
