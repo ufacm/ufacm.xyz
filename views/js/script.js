@@ -94,4 +94,11 @@ Ink.requireModules([
 
         lastScrollTop = st;
     }
+    $(document).ready(function(){
+
+      document.getElementById("loginSub").onclick = function() {
+          document.getElementById("loginForm").submit();
+      }
+
+    });
 });

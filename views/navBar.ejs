@@ -5,20 +5,20 @@
           <h2 id="login-title">Login</h2>
       </div>
       <div class="modal-body" id="loginContent">
-        <form id="loginForm" class="ink-form ink-formvalidator" method="post" action="#">
+        <form id="loginForm" class="ink-form ink-formvalidator" method="post" action="/login">
           <div class="control-group required">
               <label for="e-mail">Email</label>
               <div class="control">
-                  <input type="text" name="e-mail" id="e-mail" data-rules="required|email" />
+                  <input type="email" name="e-mail" id="email" data-rules="required|email" />
               </div>
           </div>
           <div class="control-group required">
               <label for="pass">Password</label>
               <div class="control">
-                  <input type="password" name="password" id="pass" data-rules="required" />
+                  <input type="password" name="password" id="password" data-rules="required" />
               </div>
           </div>
-          <input type="submit" name="sub" value="Submit" class="ink-button success" />
+          <input type="submit" name="sub" value="Submit" id="loginSub" class="ink-button success" />
         </form>
       </div>
     </div>
