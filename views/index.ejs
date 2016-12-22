@@ -26,8 +26,14 @@ TODO:
           <figcaption class="ink-flex">
             <div class="logo-caption push-center push-middle">University of Florida</div>
             <div class="buttons push-right logo-buttons">
-              <button class="ink-button green login">Login</button>
-              <button class="ink-button blue signup">Sign Up</button>
+              <% if (typeof user == 'undefined') { %>
+                <button class="ink-button green login">Log In</button>
+                <button class="ink-button blue signup">Sign Up</button>
+              <% } %>
+              <% if (typeof user !== 'undefined') { %>
+                <button class="ink-button green" id="profile-button">Profile</button>
+                <button class="ink-button blue" id="logout-button">Log Out</button>
+              <% } %>
             </div>
           </figcaption>
         </div>
@@ -109,6 +115,12 @@ TODO:
         $('.buttons').removeClass('push-center');
         $('.buttons').addClass('push-right');
       }
+    });
+    $('#profile-button').click(function(){
+      location.href = "/profile";
+    });
+    $('#logout-button').click(function(){
+      location.href = "/logout";
     });
     </script>
   </body>
