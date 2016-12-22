@@ -8,6 +8,9 @@ Ink.requireModules([
     'Ink.UI.Sticky_1',
     'Ink.Util.Validator_1'
   ], function( Modal, FormValidator, Sticky, InkValidator){
+    //Highlight active nav
+    addActiveNav()
+
     //Set up modals
     var loginModal = new Modal('#loginModal', {closeOnClick: true});
     var signupModal = new Modal('#signupModal', {closeOnClick: true});
@@ -94,5 +97,17 @@ Ink.requireModules([
 
         lastScrollTop = st;
     }
-    
+    function addActiveNav(){
+      //add the active class to the current navbar item
+      var href = window.location.href;
+      var curLocation = href.substr(href.lastIndexOf('/'));
+      $('ul.menu * li').each(function(){
+        if (curLocation === $(this).children('a').attr('href')){
+          $(this).addClass('active');
+          if($(this).parent().has('ul.dropdown-menu')){
+            $(this).parents('li.dropdown').addClass('active');
+          }
+        }
+      });
+    }
 });

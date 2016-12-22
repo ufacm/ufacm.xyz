@@ -79,11 +79,7 @@ TODO:
         <div class="all-100 align-center"><img src="img/airwatch.png" style = "width: 40%; height: auto; padding-bottom:40px;"/> </div>
         <div class="all-100 align-center"><img style="width:15%; height:auto;"src="img/statefarm.jpg"/></div>
       </section>
-      <section class="event-stream">
-        <h2 class="thin">Events Stream</h2>
-        <div class="results">
-        </div>
-      </section>
+      <% include eventStream/eventstream %>
     </div>
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
@@ -93,8 +89,12 @@ TODO:
     <!-- <script type="text/javascript" src="http://fastly.ink.sapo.pt/3.1.10/js/autoload.js"></script> -->
     <script type="text/javascript" src="http://cdn.ink.sapo.pt/3.1.10/js/modernizr.js"></script>
     <script type="text/javascript" src="js/bin/parallax.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
     <script type="text/javascript">
+    //Pull event stream
+    getEventStream();
+
     $('.intro').css('height', ($(window).height() * .9 - $('nav').outerHeight()));
     if($(window).width()   < 823){
       $('.buttons').removeClass('push-right');

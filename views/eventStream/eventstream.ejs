@@ -1,6 +1,7 @@
 <h2 class="thin">Events Stream</h2>
 <div class="results"></div>
 <script>
+function getEventStream(){
 var request = $.ajax(
   {
     url: "/eventStream",
@@ -24,11 +25,12 @@ var request = $.ajax(
           this.description = "";
       }
 
-      $('.results').prepend('<div class="row"><div class="col s12 m3"><p>'+(moment(this.starttime).format('dddd, MMMM Do')) +'</p><p> at&nbsp'+(moment(this.starttime).format('h:mm a'))+'</p></div><div class="col s12 m3"></div><div class="col s12 m6"><h3>'+this.name+'</h3><p></p>'+'<p>'+this.description+'</p>'+'<div class="row"><div class="col s10"><p><i class="material-icons">location_on</i>'+this.place.name+'</p></div><div class="col s2"><a href="'+'https://www.facebook.com/events/' + this.facebookEventId +'"><img style="width:30px;"src="font/material-design-icons/social-media.svg"</a></div></div></div></div>');
+      $('.results').prepend('<div class="column-group"><div class="all-33 tiny-100 small-100"><p>'+(moment(this.starttime).format('dddd, MMMM Do')) +'</p><p> at&nbsp'+(moment(this.starttime).format('h:mm a'))+'</p></div><div class="all-66 tiny-100 small-100"><h3>'+this.name+'</h3><p></p>'+'<p>'+this.description+'</p>'+'<div class="column-group"><div class="all-95"><p><i class="fa fa-map-marker fa-lg" aria-hidden="true"></i> '+this.place.name+'</p></div><div class="all-5"><a href="'+'https://www.facebook.com/events/' + this.facebookEventId +'"><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i></a></div></div></div></div>');
     })
   });
   request.fail(function()
   {
     console.log('something happened to the event stream. Contact an ACM officer to proceed');
   });
+}
 </script>
