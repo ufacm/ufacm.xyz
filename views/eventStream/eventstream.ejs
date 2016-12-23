@@ -25,7 +25,7 @@ var request = $.ajax(
           this.description = "";
       }
 
-      $('.results').prepend('<div class="column-group"><div class="all-33 tiny-100 small-100"><p>'+(moment(this.starttime).format('dddd, MMMM Do')) +'</p><p> at&nbsp'+(moment(this.starttime).format('h:mm a'))+'</p></div><div class="all-66 tiny-100 small-100"><h3>'+this.name+'</h3><p></p>'+'<p>'+this.description+'</p>'+'<div class="column-group"><div class="all-95"><p><i class="fa fa-map-marker fa-lg" aria-hidden="true"></i> '+this.place.name+'</p></div><div class="all-5"><a href="'+'https://www.facebook.com/events/' + this.facebookEventId +'"><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i></a></div></div></div></div>');
+      $('.results').prepend('<div class="column-group"><div class="all-33 tiny-100 small-100"><p>'+(moment(this.starttime).format('dddd, MMMM Do')) +'</p><p> at&nbsp'+(moment(this.starttime).format('h:mm a'))+'</p></div><div class="all-66 tiny-100 small-100"><h3>'+this.name+'</h3><p></p>'+'<p>'+this.description+'</p>'+'<div class="column-group"><div class="all-95"><p><i class="fa fa-map-marker fa-lg" aria-hidden="true"></i> '+this.place.name+'</p></div><div class="all-5"><a href="'+'https://www.facebook.com/events/' + this.facebookEventId +'" target="_blank"><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i></a></div></div></div></div>');
     })
   });
   request.fail(function()
