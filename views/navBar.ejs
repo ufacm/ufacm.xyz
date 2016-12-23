@@ -88,7 +88,10 @@
 </div>
 <nav class="ink-navigation ink-sticky">
     <ul class="menu horizontal blue">
-      <div class="push-left">
+      <li class="push-left hide-all show-tiny show-small show-medium">
+        <button class="fa fa-bars left-drawer-trigger"></button>
+      </li>
+      <div class="push-left hide-small hide-tiny hide-medium">
         <li><a href="/">Home</a></li>
         <li><a href="/events">Events</a></li>
         <li><a href="/contactus">Contact Us</a></li>
@@ -110,7 +113,7 @@
         <li><a href="https://www.facebook.com/ufacm/" target="_blank"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i><span class="sr-only">Facebook</span></a></li>
         <li><a href="https://www.instagram.com/uf.acm/" target="_blank"><i class="fa fa-instagram fa-lg" aria-hidden="true"></i><span class="sr-only">Instagram</span></a></li>
       </div>
-      <div class="push-right">
+      <div class="push-right hide-small hide-tiny hide-medium">
         <% if (typeof user == 'undefined') { %>
         <li><a class="login">Log In</a></li>
         <li><a class="signup">Sign Up</a></li>

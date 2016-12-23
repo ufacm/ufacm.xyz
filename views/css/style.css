@@ -27,7 +27,7 @@ main {
 
 /*navbar*/
 .nav-up{
-	top: -46px !important;
+	top: -48px !important;
 }
 .nav-down{
 	top: 0 !important;
@@ -42,6 +42,14 @@ nav{
 }
 .ink-navigation ul.menu.blue {
 	background-color: #20acdb;
+}
+button.fa-bars{
+	background: 0 0;
+	font-size: 1.2em;
+	color: #fff;
+	border: 0;
+	padding: .8em .8em .8em .8em;
+	float: left;
 }
 
 /*homepage*/
