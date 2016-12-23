@@ -20,7 +20,7 @@ Ink.requireModules([
     var signupForm = new FormValidator('#signupForm');
 
     //Change message for requried fields to sound more natural
-    FormValidator.setRule('required', 'A {field} is required', function( value ){
+    FormValidator.setRule('required', 'You forgot to fill out this field!', function( value ){
       return ( (typeof value !== 'undefined') && ( !(/^\s*$/).test(value) ) );
     });
 

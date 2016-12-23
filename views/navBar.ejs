@@ -30,31 +30,31 @@
           <h2 id="login-title">Sign Up</h2>
       </div>
       <div class="modal-body" id="signupContent">
-        <form id="signupForm" class="ink-form ink-formvalidator" method="post" action="#">
+        <form id="signupForm" class="ink-form ink-formvalidator" method="post" action="/signup">
           <div class="column-group gutters">
               <div class="control-group required all-50">
                   <label for="fname">First Name</label>
                   <div class="control">
-                      <input type="text" name="first name" id="fname" data-rules="required|alpha_dash" />
+                      <input type="text" name="firstName" id="fname" data-rules="required|alpha_dash" />
                   </div>
               </div>
               <div class="control-group required all-50">
                   <label for="lname">Last Name</label>
                   <div class="control">
-                      <input type="text" name="last name" id="lname" data-rules="required|alpha_dash" />
+                      <input type="text" name="lastName" id="lname" data-rules="required|alpha_dash" />
                   </div>
               </div>
           </div>
           <div class="control-group required">
               <label for="e-mail">Email</label>
               <div class="control">
-                  <input type="text" name="e-mail" id="e-mail" data-rules="required|email" />
+                  <input type="text" name="email" id="email" data-rules="required|email" />
               </div>
           </div>
           <div class="control-group">
               <label for="phone">Phone</label>
               <div class="control">
-                  <input type="text" name="phone number" id="phone" data-rules="min_length[10]|max_length[11]" />
+                  <input type="text" name="phoneNumber" id="phone" data-rules="min_length[10]|max_length[11]" />
               </div>
           </div>
           <div class="control-group required">
