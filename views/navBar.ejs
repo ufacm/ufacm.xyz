@@ -45,29 +45,41 @@
                   </div>
               </div>
           </div>
-          <div class="control-group required">
-              <label for="e-mail">Email</label>
-              <div class="control">
-                  <input type="text" name="email" id="email" data-rules="required|email" />
-              </div>
+          <div class="column-group gutters">
+            <div class="control-group required all-50">
+                <label for="e-mail">Email</label>
+                <div class="control">
+                    <input type="text" name="email" id="email" data-rules="required|email" />
+                </div>
+            </div>
+            <div class="control-group all-50">
+                <label for="phone">Phone</label>
+                <div class="control">
+                    <input type="text" name="phoneNumber" id="phone" data-rules="min_length[10]|max_length[11]" />
+                </div>
+            </div>
           </div>
-          <div class="control-group">
-              <label for="phone">Phone</label>
-              <div class="control">
-                  <input type="text" name="phoneNumber" id="phone" data-rules="min_length[10]|max_length[11]" />
-              </div>
+          <div class="control-group" style="margin-bottom: 0;">
+            <p class="label">Would you like to be put on the ACM list serve?</p>
+            <ul class="control unstyled">
+                <li><input type="radio" id="LSYes" name="listServe" value="true"><label for="rb1">Yes</label></li>
+                <li><input type="radio" id="LSNo" name="listServe" value="false"><label for="rb2">No</label></li>
+                <li><input type="radio" id="LSAlreadyOnIt" name="listServe" value="true"><label for="rb3">Already on it!</label></li>
+            </ul>
           </div>
-          <div class="control-group required">
-              <label for="pass">Password </label>
-              <div class="control">
-                  <input type="password" name="password" id="pass" data-rules="required|min_length[8]" />
-              </div>
-          </div>
-          <div class="control-group required">
-              <label for="confpass">Confirm Password:</label>
-              <div class="control">
-                  <input type="password" name="password confirmation" id="confpass" data-rules="required|matches[password]" data-label="password confirmation" />
-              </div>
+          <div class="column-group gutters">
+            <div class="control-group required all-50">
+                <label for="pass">Password</label>
+                <div class="control">
+                    <input type="password" name="password" id="pass" data-rules="required|min_length[8]" />
+                </div>
+            </div>
+            <div class="control-group required all-50">
+                <label for="confpass">Confirm Password:</label>
+                <div class="control">
+                    <input type="password" name="password confirmation" id="confpass" data-rules="required|matches[password]" data-label="password confirmation" />
+                </div>
+            </div>
           </div>
           <input type="submit" name="sub" value="Submit" class="ink-button success" />
         </form>
