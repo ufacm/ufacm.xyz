@@ -25,12 +25,6 @@ const secEvents = require('./middleware/secEvents');
 
 module.exports = (app, passport, mongoose) => {
 
-    // setup resume repo password for Companies Only
-    // const basic = auth.basic({
-    //     realm: 'Sponsoring companies only.',
-    //     file: __dirname + '/users.htpasswd'
-    //   });
-
     // get the page for all student repo's
     app.get('/repo', (req, res) => {
         res.render('resume/repo.ejs', {
@@ -60,14 +54,14 @@ module.exports = (app, passport, mongoose) => {
         for (let i = 0; i < req.body.pdfs.length; i++) {
           let str = req.body.pdfs[i].slice(24, req.body.pdfs[i].length);
           pdfs.push({
-                  path: __dirname + '/../localStorage/pdfs/' + req.body.pdfs[i],
-                  name: str
-                });
+              path: __dirname + '/../localStorage/pdfs/' + req.body.pdfs[i],
+              name: str
+            });
 
           // Assuming localstorage/pdfs is name on local directory
         }
 
-        res.send('');
+        res.send('test');
       });
 
     // mass download PDFs but this is still not secure
@@ -251,7 +245,7 @@ module.exports = (app, passport, mongoose) => {
       });
 
     // gets Tags
-    app.get('/getTags',  (req, res) => {
+    app.get('/tags',  (req, res) => {
       res.send(req.user.local.tags);
     });
 
@@ -268,10 +262,6 @@ module.exports = (app, passport, mongoose) => {
               res.send(users);
             });
         }
-
-        // User.find({}, (err, users) => {
-        //   res.send(users);
-        // });
       });
 
     app.get('/update', isLoggedIn, (req, res) => {

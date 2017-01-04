@@ -22,7 +22,7 @@
             $(".dropdown-button").dropdown();
        
             
-            $.get( "/getTags", function( data ) {
+            $.get( "/tags", function( data ) {
                 $('#technologies').val(data);
                 $('#technologies').material_select();
             });
