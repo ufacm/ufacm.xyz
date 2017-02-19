@@ -155,3 +155,6 @@ Temporary Items
 
 # Ignore DB config
 config/database.js
+
+# Ignore SASS cache
+*/.sass-cache
