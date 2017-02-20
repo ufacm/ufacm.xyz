@@ -6,9 +6,11 @@ const session  = require('express-session');
 const flash    = require('connect-flash');
 
 // connect to our MongoDB database and load our model
-const db = require('mongoose').createConnection('mongodb://cal:asdfasdf@ds017246.mlab.com:17246/acmlocaldb');
+const db = require('mongoose').createConnection(require('./config/database.js').url);
 const userSchema = require('./models/user.js');
 const User = db.model('ContestUser', userSchema);
+
+db.on('error', console.error.bind(console, 'HSPC Site MongoDB connection error:'));
 
 // session library required to use flash for displaying alerts
 router.use(session({

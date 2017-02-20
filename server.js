@@ -18,6 +18,7 @@ const configDB = require('./config/database.js');
 // const Subgroup  = require('./app/models/subgroup');
 
 mongoose.connect(configDB.url); // connect to our database
+mongoose.connection.on('error', console.error.bind(console, 'ACM Site MongoDB connection error:'));
 
 require('./config/passport')(passport); // pass passport for configuration
 
