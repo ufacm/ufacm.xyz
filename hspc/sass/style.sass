@@ -1,0 +1,85 @@
+$blue: #0151c1
+$orange: #ea9a2a
+
+html
+  overflow-y: scroll
+  overflow-x: hidden
+  body
+    background-color: #f1f1f1
+    overflow-x: hidden
+    header.header-image
+      background-image: url('../img/hspc.jpg')
+      .headline
+        h1
+          color: $orange
+          font-size: 5em
+          @media screen and (min-width: 768px)
+            font-size: 7em
+        h2
+          color: lighten(saturate($blue,15%),5%)
+          font-size: 3.5em
+    .info-container
+      padding: 0
+      margin-left: -15px
+      margin-right: -15px
+      display: flex
+      justify-content: space-around
+      flex-wrap: wrap
+      .infobox
+        border: 1px solid #d5d5d5
+        background-color: white
+        margin: .5em .5em
+        width: 300px
+        flex-grow: 1
+        padding: 0 1em
+        border-radius: 1em 1em
+        hr
+          margin: .3em -.2em
+          margin-top: -.4em
+    .container
+      img.pull-right
+        margin-bottom: 2em
+        padding: 0em .5em
+        max-height: 200px
+        float: none!important
+        margin: auto
+        margin-top: 45px
+        @media screen and (min-width: 375px)
+          margin-top: 0px
+          float: right!important
+        @media screen and (min-width: 768px)
+          max-height: 280px
+        @media screen and (min-width: 992px)
+          max-height: 315px
+        @media screen and (min-width: 1200px)
+          max-height: 350px
+
+      .registration-form
+        label
+          display: inline-block
+          float: left
+        .radio-inline
+          padding-top: 0px
+          @media (min-width: 768px)
+            padding-top: 7px
+          margin-left: 15px
+        display: inline-block
+        width: 100%
+        @media screen and (min-width: 768px)
+          width: 550px
+      h2.featurette-heading
+        padding-top: 1em
+        @media screen and (min-width: 768px)
+          padding-top: 1.25em
+        @media screen and (min-width: 992px)
+          padding-top: 1.8em
+        @media screen and (min-width: 1200px)
+          padding-top: 1.25em
+        color: darken($blue,0)
+        .text-muted
+          color: desaturate(orange, 30%)
+      .spacer
+        @media screen and (min-width: 768px)
+          margin-top: 4em
+      footer
+        margin: 25px 0

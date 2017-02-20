@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>UF Programming Team - Online Highschool Programming Contest</title>
+
+  <!-- Bootstrap Core CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link href="css/one-page-wonder.css" rel="stylesheet">
+
+	<link href="css/style.css" rel="stylesheet">
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+</head>
+
+<body>
+  <% include navBar %>
+  <!-- Page Content -->
+  <div class="container">
+    <!-- First Featurette -->
+    <div class="main-content">
+      <% if (errorMessage.length > 0) { %>
+        <div class="alert alert-danger"><%= errorMessage %></div>
+      <% } %>
+      <% if (success.length > 0) { %>
+        <div class="alert alert-success alert-dismissable">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          <strong>Success!</strong> We'll be in contact with your teacher and let them know what the next steps are.
+        </div>
+      <% } %>
+    	<img class="featurette-image img-circle img-responsive pull-right" src="img/frenchfries.jpg">
+      <h2 class="featurette-heading">Register now
+          <span class="text-muted">and be prepared for the incredible.</span>
+      </h2>
+			<p class="lead">This is our first year hosting an online contest, and we can't wait to have you compete.</p><p class="lead"> Students, we'll need your coaches to confirm your registration, so hang tight for the confirmation after submitting.</p>
+      <div class="spacer"></div>
+      <form action="register" method="post" class="form-horizontal registration-form">
+			  <div class="form-group  <%= firstNameError %>">
+				<label class="control-label col-sm-3" for="firstName">First Name:</label>
+				<div class="col-sm-9">
+				  <input class="form-control" id="firstName" value="<%= firstName %>" name="firstName" placeholder="Enter first name">
+				</div>
+        </div>
+        <div class="form-group  <%= lastNameError %>">
+				<label class="control-label col-sm-3" for="lastName">Last Name:</label>
+				<div class="col-sm-9">
+				  <input class="form-control" id="lastName" value="<%= lastName %>" name="lastName" placeholder="Enter last name">
+				</div>
+			  </div>
+			  <div class="form-group  <%= emailError %>">
+				<label class="control-label col-sm-3" for="email">Email:</label>
+				<div class="col-sm-9">
+				  <input type="email" class="form-control" id="email" value="<%= email %>" name="email" placeholder="Enter email">
+				</div>
+			  </div>
+			  <div class="form-group  <%= teacherEmailError %>">
+				<label class="control-label col-sm-3" for="teacherEmail">Teacher's Email:</label>
+				<div class="col-sm-9">
+				  <input type="email" class="form-control" id="teacherEmail" value="<%= teacherEmail %>" name="teacherEmail" placeholder="Enter teacher's email">
+				</div>
+			  </div>
+			  <div class="form-group <%= schoolNameError %>">
+				<label class="control-label col-sm-3" for="schoolName">School Name:</label>
+				<div class="col-sm-9">
+				  <input class="form-control" id="schoolName" name="schoolName" value="<%= schoolName %>" placeholder="Enter school name">
+				</div>
+			  </div>
+			  <div class="form-group <%= schoolNameError %>">
+				<label class="control-label col-sm-3">School Type:</label>
+        <div style="display:inline-block">
+    			<label class="radio-inline">
+    			  <input type="radio" name="schoolType" id="inlineRadio1" value="public"> Public
+    			</label>
+    			<label class="radio-inline">
+    			  <input type="radio" name="schoolType" id="inlineRadio2" value="private"> Private
+    			</label>
+    			<label class="radio-inline">
+    			  <input type="radio" name="schoolType" id="inlineRadio3" value="homeschool"> Homeschool
+    			</label>
+        </div>
+			  </div>
+        <div class="form-group">
+          <div class="col-sm-offset-3 col-sm-9 checkbox">
+          <label><input type="checkbox" value="verifyStudent">I attend a school in Florida and meet the eligibility requirements outlined on the home page.</label>
+          </div><br><br>
+        </div>
+			  <div class="form-group">
+				<div class="col-sm-offset-3 col-sm-9">
+				  <button type="submit" class="btn btn-default">Submit</button>
+				</div>
+			  </div>
+			</form>
+    </div>
+  </div>
+  <% include footer %>
+</body>
+</html>
