@@ -2,13 +2,22 @@
 
 const express  = require('express');
 const router   = express.Router();
+const randtoken    = require('rand-token')
 const session  = require('express-session');
 const flash    = require('connect-flash');
 
+const mailer = require('./mailer.js');
+const moniker = require('moniker');
+
 // connect to our MongoDB database and load our model
-const db = require('mongoose').createConnection(require('./config/database.js').url);
+var mongoose = require('mongoose');
+mongoose.Promise = global.Promise;
+
+const db = mongoose.createConnection(require('./config/database.js').url);
 const userSchema = require('./models/user.js');
+const teacherSchema = require('./models/teacher.js');
 const User = db.model('ContestUser', userSchema);
+const Teacher = db.model('Teacher', teacherSchema);
 
 db.on('error', console.error.bind(console, 'HSPC Site MongoDB connection error:'));
 
@@ -19,6 +28,121 @@ router.use(session({
   saveUninitialized: true
 }));
 router.use(flash());
+
+router.post('/unverify', function(req, res) {
+  let code = req.body.v;
+  let uid = req.body.uid;
+
+  // Pull up the student's record
+  User.findOne({_id: uid}, function(err, student) {
+    if (err) {
+      console.log(err);
+      res.redirect(303, '/hspc');
+      return;
+    }
+
+    let teacherEmail = student.teacherEmail;
+    Teacher.findOne({email: teacherEmail}, function(err, teacher) {
+      if (err) {
+        console.log(err);
+        res.redirect(303, '/hspc');
+        return;
+      }
+      if (!teacher) {
+        console.log('Teacher does not exist');
+        res.redirect(303, '/hspc');
+        return;
+      }
+
+      if (teacher.code == req.body.v) {
+        console.log("Changing student")
+        student.verified = false;
+        student.save(function(err, student, rows) {
+          res.redirect(303, '/hspc/verifyStudents?email='+teacherEmail+'&code='+req.body.v);
+        });
+      }
+    });
+  });
+});
+
+router.post('/verify', function(req, res) {
+  let code = req.body.v;
+  let uid = req.body.uid;
+
+  // Pull up the student's record
+  User.findOne({_id: uid}, function(err, student) {
+    if (err) {
+      console.log(err);
+      res.redirect(303, '/hspc');
+      return;
+    }
+
+    let teacherEmail = student.teacherEmail;
+    Teacher.findOne({email: teacherEmail}, function(err, teacher) {
+      if (err) {
+        console.log(err);
+        res.redirect(303, '/hspc');
+        return;
+      }
+      if (!teacher) {
+        console.log('Teacher does not exist');
+        res.redirect(303, '/hspc');
+        return;
+      }
+
+      if (teacher.code == req.body.v) {
+        console.log("Changing student")
+        student.verified = true;
+        student.username = moniker.choose();
+        student.password = randtoken.generate(8);
+        student.save(function(err, student, rows) {
+          res.redirect(303, '/hspc/verifyStudents?email='+teacherEmail+'&code='+req.body.v);
+		      mailer.contactStudent(student.email, student.username, student.password);
+        });
+      }
+    });
+  });
+});
+
+router.get('/verifyStudents', function(req, res) {
+  let teacherEmail = req.query.email;
+  let code = req.query.code;
+
+  if (!code || !teacherEmail) {
+    res.redirect(303, '/hspc');
+    return
+  }
+  Teacher.findOne({ email: teacherEmail, code: code }, function (err, teacher) {
+    if (!teacher) {
+      res.redirect(303, '/hspc');
+      return
+    }
+    User.find({ teacherEmail: teacherEmail, verified: true}, function (err, verifiedUsers) {
+      if (err) {
+        console.log(err);
+        res.redirect(303, '/hspc');
+        return
+      }
+
+      User.find({ teacherEmail: teacherEmail, $or: [{verified: false}, {verified: null}] }, function(err, nonverifiedUsers) {
+        if (err) {
+          console.log(err);
+          res.redirect(303, '/hspc');
+          return
+        }
+
+        res.render('hspc/verifyStudents', {
+          validation: code,
+          verifiedUsers: verifiedUsers,
+          nonverifiedUsers: nonverifiedUsers
+        });
+      });
+    });
+  });
+
+
+});
+
 
 // register a new user
 router.post('/register', function(req, res) {
