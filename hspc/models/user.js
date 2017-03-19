@@ -10,12 +10,19 @@ let safeTextValidator = {
 };
 
 const userSchema = mongoose.Schema({
-  updated: {
+  regDate: {
     type: Date,
     default: Date.now
   },
-  verfied: {
+  verified: {
+    type: Boolean,
     default: false
+  },
+  username: {
+    type: String
+  },
+  password: {
+    type: String
   },
   email: {
     type: String,

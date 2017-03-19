@@ -1,0 +1,144 @@
+<% include header %>
+<body>
+  <style>
+
+    form {
+      text-align: left;
+    }
+
+    .user {
+      background-color: #FEFEFE;
+      border: 1px solid black;
+      padding: 1em 0em;
+      margin: 1em;
+      overflow: auto;
+      line-height: 1.5em;
+    }
+
+    .password:hover {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    .unconfirm, .confirm {
+      padding: 0px;
+      text-align: right;
+    }
+
+    .unconfirm button {
+      vertical-align: middle;
+      background-color: transparent;
+      background-image: url('/hspc/img/x.png');
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+      width: 1.5em;
+      height: 1.5em;
+      padding-right: 15px;
+      margin-right: 15px;
+
+    }
+    .confirm button {
+      vertical-align: middle;
+      background-repeat: no-repeat;
+      background-color: transparent;
+      background-image: url('/hspc/img/check.png');
+      background-size: contain;
+      width: 1.5em;
+      height: 1.5em;
+      margin-right: 15px;
+    }
+    @media (max-width: 768px) {
+      .button-flex {
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+      .button-flex button {
+        position: absolute;
+        top: .5em;
+        right: .5em;
+
+      }
+      .heading {
+        display: none;
+      }
+    }
+    b {
+      font-weight: bold;
+      font-size: .8em;
+    }
+
+
+  </style>
+  <script>
+    function togglePassword(id, pass) {
+      var node = document.getElementById(id);
+      if (node.innerText == 'show/hide') {
+        node.innerText = pass;
+      }
+      else {
+        node.innerText = 'show/hide';
+      }
+    }
+  </script>
+  <% include navBar %>
+  <div class="container">
+    <div class="row">
+      <h3>Your Confirmed Students</h3>
+    </div>
+
+    <% if (verifiedUsers.length > 0) { %>
+      <div class="row heading">
+        <div class="user" style="border-color:transparent; margin: 0em 0em  -.8em 0em; padding: 0em 15px; background-color:transparent">
+        <div class="col-xs-0 col-sm-3">
+        <span><b>Name</b></span></div>
+        <div class='col-xs-0 col-sm-2'><span><b>Username</b></span></div>
+        <div class='col-xs-0 col-sm-2'><span><b>Password</b></span></div>
+        <div class='col-xs-0 col-sm-4'> <span><b>Email</b></span> </div>
+        </div>
+      </div>
+    <% } %>
+    <div class="row">
+      <% for (let i = 0; i < verifiedUsers.length; i++) {
+          var identifier = verifiedUsers[i]._id; %>
+        <div class="user" style="position: relative;">
+        <form action="/hspc/unverify" method="post" >
+          <div class="col-xs-12 col-sm-3">
+          <span><%= verifiedUsers[i].firstName %> <%= verifiedUsers[i].lastName %></span></div>
+          <div class='col-xs-12 col-sm-2'><span><%= verifiedUsers[i].username %></span></div>
+          <div class='col-xs-12 col-sm-2'><span id='<%= identifier %>' class='password' onclick="togglePassword('<%= identifier %>','<%= verifiedUsers[i].password %>')">show/hide</span></div>
+          <div class='col-xs-12 col-sm-3'> <span><%= verifiedUsers[i].email %></span> </div>
+          <input type='hidden' name='v' value='<%= validation %>'/>
+          <input type='hidden' name='uid' value='<%= verifiedUsers[i]._id %>'/>
+          <div class='col-sm-2 button-flex'><button class="btn btn-danger" type="submit">Unconfirm</button></div>
+        </form>
+        </div>
+      <% } %>
+      <% if (verifiedUsers.length == 0) { %>
+        <h4 style='margin-left:1em'>You have not verified any students yet.</h4>
+      <% } %>
+    </div>
+    <div class="row">
+
+    <hr>
+      <% if (nonverifiedUsers.length > 0) { %>
+        <h3>Unconfirmed Students</h3>
+        <% for (let i = 0; i < nonverifiedUsers.length; i++) { %>
+          <div class="user" style="position: relative;">
+          <form action="/hspc/verify" method="post">
+            <div class="col-xs-12 col-sm-7">
+              <span><%= nonverifiedUsers[i].firstName %> <%= nonverifiedUsers[i].lastName %></span>
+            </div>
+            <div class="col-cs-12 col-sm-3"><span><%= nonverifiedUsers[i].email %></span></div>
+            <input type='hidden' name='v' value='<%= validation %>'/>
+            <input type='hidden' name='uid' value='<%= nonverifiedUsers[i]._id %>'/>
+            <div class="col-sm-2 button-flex"><button class="btn btn-primary" type="submit">Confirm</button></div>
+          </form>
+          </div>
+        <% } %>
+      <% } %>
+    </div>
+  </div>
+</body>
+<% include footer %>
