@@ -28,6 +28,7 @@
     "htpasswd": "^2.2.6",
     "http-auth": "2.4.4",
     "mongoose": "^4.5.9",
+    "moniker": "^0.1.2",
     "morgan": "^1.8.1",
     "multer": "1.1.0",
     "node-schedule": "^1.1.0",

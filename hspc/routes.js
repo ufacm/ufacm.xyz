@@ -1,13 +1,12 @@
 'use strict';
 
-const express  = require('express');
-const router   = express.Router();
-const randtoken    = require('rand-token')
-const session  = require('express-session');
-const flash    = require('connect-flash');
+const express   = require('express');
+const router    = express.Router();
+const randtoken = require('rand-token')
+const session   = require('express-session');
+const flash     = require('connect-flash');
 
 const mailer = require('./mailer.js');
-const moniker = require('moniker');
 
 // connect to our MongoDB database and load our model
 var mongoose = require('mongoose');
@@ -93,8 +92,6 @@ router.post('/verify', function(req, res) {
       if (teacher.code == req.body.v) {
         console.log("Changing student")
         student.verified = true;
-        student.username = moniker.choose();
-        student.password = randtoken.generate(8);
         student.save(function(err, student, rows) {
           res.redirect(303, '/hspc/verifyStudents?email='+teacherEmail+'&code='+req.body.v);
 		      mailer.contactStudent(student.email, student.username, student.password);
@@ -109,14 +106,17 @@ router.get('/verifyStudents', function(req, res) {
   let code = req.query.code;
 
   if (!code || !teacherEmail) {
+    console.log("Teacher Found!");
     res.redirect(303, '/hspc');
     return
   }
   Teacher.findOne({ email: teacherEmail, code: code }, function (err, teacher) {
     if (!teacher) {
+      console.log("Teacher Not Found!")
       res.redirect(303, '/hspc');
       return
     }
+    console.log("Teacher Found!");
     User.find({ teacherEmail: teacherEmail, verified: true}, function (err, verifiedUsers) {
       if (err) {
         console.log(err);
@@ -139,8 +139,6 @@ router.get('/verifyStudents', function(req, res) {
       });
     });
   });
-
-
 });
 
 
