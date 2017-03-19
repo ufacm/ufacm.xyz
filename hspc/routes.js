@@ -5,6 +5,7 @@ const router    = express.Router();
 const randtoken = require('rand-token')
 const session   = require('express-session');
 const flash     = require('connect-flash');
+const moniker   = require('moniker');
 
 const mailer = require('./mailer.js');
 
@@ -151,7 +152,9 @@ router.post('/register', function(req, res) {
     email: req.body.email,
     teacherEmail: req.body.teacherEmail,
     schoolName: req.body.schoolName,
-    schoolType: req.body.schoolType
+    schoolType: req.body.schoolType,
+    password: randtoken.generate(8),
+    username: moniker.choose()
   });
 
   newUser.save(function (err) {

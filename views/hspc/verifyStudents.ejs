@@ -29,8 +29,9 @@
       vertical-align: middle;
       background-color: transparent;
       background-image: url('/hspc/img/x.png');
+      background-repeat: no-repeat;
       background-size: contain;
-      border: 0px;
+      background-position: center;
       width: 1.5em;
       height: 1.5em;
       padding-right: 15px;
@@ -39,27 +40,24 @@
     }
     .confirm button {
       vertical-align: middle;
+      background-repeat: no-repeat;
       background-color: transparent;
       background-image: url('/hspc/img/check.png');
       background-size: contain;
-      border: 0px;
       width: 1.5em;
       height: 1.5em;
       margin-right: 15px;
     }
     @media (max-width: 768px) {
-      .confirm, .unconfirm {
+      .button-flex {
         position: absolute;
         top: 0;
         right: 0;
       }
-      .unconfirm button, .confirm button {
+      .button-flex button {
         position: absolute;
         top: .5em;
         right: .5em;
-        width: 1.75em;
-        height: 1.75em;
-        margin-right: 0px;
 
       }
       .heading {
@@ -110,10 +108,10 @@
           <span><%= verifiedUsers[i].firstName %> <%= verifiedUsers[i].lastName %></span></div>
           <div class='col-xs-12 col-sm-2'><span><%= verifiedUsers[i].username %></span></div>
           <div class='col-xs-12 col-sm-2'><span id='<%= identifier %>' class='password' onclick="togglePassword('<%= identifier %>','<%= verifiedUsers[i].password %>')">show/hide</span></div>
-          <div class='col-xs-12 col-sm-4'> <span><%= verifiedUsers[i].email %></span> </div>
+          <div class='col-xs-12 col-sm-3'> <span><%= verifiedUsers[i].email %></span> </div>
           <input type='hidden' name='v' value='<%= validation %>'/>
           <input type='hidden' name='uid' value='<%= verifiedUsers[i]._id %>'/>
-          <div class='col-sm-1 unconfirm'><button type="submit"></button></div>
+          <div class='col-sm-2 button-flex'><button class="btn btn-danger" type="submit">Unconfirm</button></div>
         </form>
         </div>
       <% } %>
@@ -132,10 +130,10 @@
             <div class="col-xs-12 col-sm-7">
               <span><%= nonverifiedUsers[i].firstName %> <%= nonverifiedUsers[i].lastName %></span>
             </div>
-            <div class="col-cs-12 col-sm-4"><span><%= nonverifiedUsers[i].email %></span></div>
+            <div class="col-cs-12 col-sm-3"><span><%= nonverifiedUsers[i].email %></span></div>
             <input type='hidden' name='v' value='<%= validation %>'/>
             <input type='hidden' name='uid' value='<%= nonverifiedUsers[i]._id %>'/>
-            <div class="col-sm-1 confirm"><button type="submit"></button></div>
+            <div class="col-sm-2 button-flex"><button class="btn btn-primary" type="submit">Confirm</button></div>
           </form>
           </div>
         <% } %>
