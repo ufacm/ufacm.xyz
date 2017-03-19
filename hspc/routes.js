@@ -150,7 +150,7 @@ router.post('/register', function(req, res) {
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     email: req.body.email,
-    teacherEmail: req.body.teacherEmail,
+    teacherEmail: req.body.teacherEmail.toLowerCase(),
     schoolName: req.body.schoolName,
     schoolType: req.body.schoolType,
     password: randtoken.generate(8),
