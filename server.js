@@ -2,7 +2,7 @@
 
 const express  = require('express');
 const app      = express();
-const port     = process.env.PORT || 8080;
+const port     = process.env.PORT || 1488;
 const mongoose = require('mongoose');
 const passport = require('passport');
 const flash    = require('connect-flash');

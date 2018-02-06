@@ -2,22 +2,20 @@
 const nodemailer = require('nodemailer');
 
 let transporter = nodemailer.createTransport({
-	host: 'smtp.mail.ufl.edu',
-	port: 587,
-	pool: false,
+	service: 'gmail',
 	auth: {
-		user: '<email>',
-		pass: '<password>'
+		user: 'ohspc2017@gmail.com',
+		pass: 'thisisplaintext'
 	}
 });
 
 let Mailer = new function() {
 	this.contactStudent = function(email, username, password) {
 		let mailOptions = {
-			from: '"UF Programming Team" <XXXX@ufl.edu>',
+			from: '"UF Programming Team" <cal2u@ufl.edu>',
 			to: email,
 			subject: 'Login Information for OHSPC 2017',
-			text: "Here are your credentials for the University of Florida's Online High School Programming Contest. "+
+			text: "Here are your credentials for the University of Florida's Online High School Programming Contest! "+
 						"The contest will be held Saturday, March 25th from 2-4pm.\n\n"+
 						"Username: "+username+"\n"+
 						"Password: "+password+"\n"

@@ -159,9 +159,9 @@ module.exports = (app, passport, mongoose) => {
             }
 
             // save the essential questions
-            user.local.question1 = fields.question1.trim();
-            user.local.question2 = fields.question2.trim();
-            user.local.question3 = fields.question3.trim();
+            // user.local.question1 = fields.question1.trim();
+            // user.local.question2 = fields.question2.trim();
+            // user.local.question3 = fields.question3.trim();
 
             user.save();
 

@@ -159,3 +159,5 @@ config/database.js
 
 # Ignore SASS cache
 */.sass-cache
+
+logs.txt

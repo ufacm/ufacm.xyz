@@ -89,29 +89,6 @@
                             <label for="technologies">What are some technologies and skills you are familiar with?</label>
                         </div>
                     </div> -->
-                    <div class="row">
-                        <div class="col s12">
-                            <p>You may answer the three optional essential questions below, but <em><b>please upload your resume!</b></em> Sponsors will be able to see your resume and optional responses!</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <textarea id="question1" class="materialize-textarea" name="question1" placeholder=""><%= user.local.question1 %></textarea>
-                            <label for="question1">How would you design a alarm clock for the blind?</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <textarea id="question2" class="materialize-textarea" name="question2"><%= user.local.question2 %></textarea>
-                            <label for="question2">If you were behind schedule on a project, how would you handle it?</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <textarea id="question3" class="materialize-textarea" name="question3"><%= user.local.question3 %></textarea>
-                            <label for="question3">What was the hardest bug you have faced in a project, how did you fix it?</label>
-                        </div>
-                    </div>
 
                     <!-- if you have a submitted resume, display it -->
                     <% if (user.local.resumeLink !== undefined) { %>
